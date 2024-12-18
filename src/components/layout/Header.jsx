@@ -10,7 +10,7 @@ function Header() {
         <header className="header">
             {/* Logo và Tên web */}
             <div className="logo" onClick={() => window.location.href = "/"}>
-                <img src="Logo.svg" alt="Logo" className="logo-img" />
+                <img src="/Logo.svg" alt="Logo" className="logo-img" />
                 <span className="website-name">Prescripto</span>
             </div>
 
@@ -64,7 +64,7 @@ function Header() {
                 <Link className="dropdown-item text-danger" to="/" onClick={logoutHandler}> Đăng xuất{" "} </Link>
                 */}
 
-                <a className="dropdown-item" href="/me/my-appointment"> Lịch khám{" "} </a>
+                <a className="dropdown-item" href="/me/my-appointments"> Lịch khám{" "} </a>
                 <a className="dropdown-item" href="/me/medical-records"> Hồ sơ bệnh án{" "} </a>   
                 <a className="dropdown-item text-danger" href="/" onClick={() => setIsLoggedIn(false)}> Đăng xuất{" "} </a>  
               </div>
