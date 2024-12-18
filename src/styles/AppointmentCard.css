@@ -1,0 +1,44 @@
+.appointment {
+    border: 1px solid #BABABA;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    font-family: "Work Sans", sans-serif;
+    margin: 0px 24px;
+    display: flex; /* Kích hoạt flexbox */
+    justify-content: space-between; /* Tách nhóm trái và nhóm phải */
+    align-items: center;            /* Căn chỉnh theo chiều dọc (nếu cần) */
+    padding: 20px 0px;
+}
+
+.left-group {
+    display: flex;
+    gap: 20px;                      /* Khoảng cách giữa Cột 1 và Cột 2 */
+  }
+
+.appointment-info > div {
+    margin-bottom: 17px;
+    color: #4B5563;
+}
+
+.doctor-info > div  {
+    margin-bottom: 4px;
+}
+
+.doctor-name {
+    font-weight: 500;
+    font-size: 22px;
+    color: #262626;
+}
+
+.datetime-title {
+    font-weight: 500;
+}
+
+.right-group {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;        /* Xếp phần tử theo chiều dọc */
+    align-items: center;           /* Căn giữa theo chiều ngang trong nhóm phải */
+    gap: 10px;     
+}
