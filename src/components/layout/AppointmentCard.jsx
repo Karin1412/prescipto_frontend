@@ -3,7 +3,7 @@ import '../../styles/AppointmentCard.css';
 import WhiteWithBlackBorderBtn from './WhiteWithBlackBorderBtn';
 import "../../styles/WhiteWithBlackBorderBtn.css"
 
-const Appointment = () => {
+const AppointmentCard = () => {
   return (
     <div className='appointment'>
         <div className='left-group'>
@@ -35,4 +35,4 @@ const Appointment = () => {
   )
 }
 
-export default Appointment
+export default AppointmentCard
