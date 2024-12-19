@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './styles/DoctorsPage.css';
 import './styles/SelectionList.css';
+import DoctorCard from './layout/DoctorCard.jsx';
 
 const doctorsData = [
   { id: 1, name: 'Dr. Richard James', specialty: 'Bác sĩ đa khoa', status: 'Có sẵn' },
@@ -56,24 +57,7 @@ const DoctorsPage = () => {
         {/* Hiển thị danh sách bác sĩ */}
         <div className="doctors-grid">
           {filteredDoctors.map((doctor) => (
-            <div className="doctor-card" key={doctor.id}>
-              <img
-                src="https://via.placeholder.com/100"
-                alt={doctor.name}
-                className="doctor-image"
-              />
-              <div className="doctor-info">
-                <span
-                  className={`status ${
-                    doctor.status === 'Có sẵn' ? 'available' : 'busy'
-                  }`}
-                >
-                  <span className="dot">•</span>{doctor.status}
-                </span>
-                <h3>{doctor.name}</h3>
-                <p>{doctor.specialty}</p>
-              </div>
-            </div>
+            <DoctorCard key={doctor.id} doctor={doctor} />
           ))}
         </div>
       </div>
