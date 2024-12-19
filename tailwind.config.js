@@ -1,5 +1,10 @@
-export const content = ["./pages/**/*.{js,jsx}", "./components/**/*.{js,jsx}"];
-export const theme = {
-  extend: {},
+module.exports = {
+  content: [
+    "./index.html", // File HTML chính
+    "./src/**/*.{js,jsx,ts,tsx}", // Các file React trong src
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 };
-export const plugins = [];
