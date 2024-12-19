@@ -1,35 +1,60 @@
 import React from 'react';
 import '../../styles/AppointmentCard.css';
 import SharpCornerBlackBorderBtn from './SharpCornerBlackBorderBtn';
-import "../../styles/SharpCornerBlackBorderBtn.css"
+import "../../styles/SharpCornerBlackBorderBtn.css" 
 
-const AppointmentCard = () => {
-  return (
-    <div className='appointment'>
-        <div className='left-group'>
-            <div className='doctor-image'>
-                <img src='/Doctor image.png' alt='Doctor image' />
-            </div>
-            
-            <div className='appointment-info'>
-                <div className='doctor-info'>
-                    <div className='doctor-name'>Dr. Richard James</div>
-                    <div className='department'> Bác sĩ đa khoa</div>
+const AppointmentCard = ({appointment}) => {
+    if (!appointment || !appointment.doctor) {
+        console.log("Dữ liệu không đủ cho AppointmentCard:", appointment);
+        return null; // Tránh render nếu dữ liệu không đầy đủ
+      }
+
+    const { doctor, appointmentTime, status } = appointment;
+
+     // Chuyển trạng thái thành class tương ứng
+     const getStatusClass = (status) => {
+        switch (status) {
+            case "Chờ duyệt":
+                return "pending";
+            case "Đã khám":
+                return "completed";
+            case "Đã hủy":
+                return "cancelled";
+            case "Bị từ chối":
+                return "rejected";
+            case "Được duyệt":
+                return "accepted";    
+            default:
+                return "";
+        }
+    };
+
+    return (
+        <div className='appointment'>
+            <div className='left-group'>
+                <div className='doctor-image'>
+                    <img src={doctor.profileImage} alt={doctor.name} />
                 </div>
                 
-                <div className='datetime'>
-                    <span className='datetime-title'>Ngày & Giờ: </span>
-                    <span>25, Tháng 6, 2024 |  8:30 PM</span>
+                <div className='appointment-info'>
+                    <div className='doctor-info'>
+                        <div className='doctor-name'>{doctor.name}</div>
+                        <div className='specialty'>{doctor.specialty}</div>
+                    </div>
+                    
+                    <div className='datetime'>
+                        <span className='datetime-title'>Ngày & Giờ: </span>
+                        <span>{new Date(appointmentTime).toLocaleString()}</span>
+                    </div>
                 </div>
             </div>
-        </div>
-       
+        
 
-        <div className='right-group'>
-            <div className='status'>Đang chờ duyệt</div>
-            <SharpCornerBlackBorderBtn className='sharp-corner-black-border-btn' 
-                text="Hủy lịch hẹn" 
-                variant="primary"/>
+            <div className='right-group'>
+                <div className={`status ${getStatusClass(status)}`}>{status}</div>
+                <SharpCornerBlackBorderBtn className='sharp-corner-black-border-btn' 
+                    text="Hủy lịch hẹn" 
+                    variant="primary"/>
             </div>
     </div>
   )

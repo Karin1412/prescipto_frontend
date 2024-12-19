@@ -11,34 +11,59 @@
     padding: 20px 0px;
 }
 
-.left-group {
+.appointment .left-group {
     display: flex;
     gap: 20px;                      /* Khoảng cách giữa Cột 1 và Cột 2 */
   }
 
-.appointment-info > div {
+  .appointment .appointment-info > div {
     margin-bottom: 17px;
     color: #4B5563;
 }
 
-.doctor-info > div  {
+.appointment .doctor-info > div  {
     margin-bottom: 4px;
 }
 
-.doctor-name {
+.appointment .doctor-name {
     font-weight: 500;
     font-size: 22px;
     color: #262626;
 }
 
-.datetime-title {
+.appointment .datetime-title {
     font-weight: 500;
 }
 
-.right-group {
+.appointment .right-group {
     align-self: flex-end;
     display: flex;
     flex-direction: column;        /* Xếp phần tử theo chiều dọc */
     align-items: center;           /* Căn giữa theo chiều ngang trong nhóm phải */
     gap: 10px;     
+}
+
+.appointment .status {
+
+    font-size: 20px;
+}
+
+.appointment .status.pending {
+    color: #A49703; 
+}
+
+.appointment .status.completed {
+    color: #5F6FFF;
+}
+
+.appointment .status.rejected {
+    color: #FF6767;
+}
+
+.appointment .status.cancelled {
+    color: #4B5563;
+}
+
+.appointment .status.accepted {
+    color: #0FBF00;
 }

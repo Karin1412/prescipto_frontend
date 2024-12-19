@@ -3,24 +3,24 @@
     text-align: center; /* Căn giữa theo chiều ngang */
 }
 
-.image {
+.home-page .image {
     width: 95vw;
     margin: 26px;
 }
 
-.title {
+.home-page .home-page-title {
     text-transform: none;
     font-size: 40px;
     font-weight: 500;
 }
 
-.section-description {
+.home-page .section-description {
     font-size: 18px;
     margin: 10px;
     line-height: 27px;
 }
 
-.specialization-list {
+.home-page .specialty-list {
     display: grid;
     grid-auto-flow: column;
     gap: 30px;
@@ -29,24 +29,24 @@
     margin-bottom: 115px;
 }
 
-.specialization {
+.home-page .specialty {
     display: flex;
     flex-direction: column; /* Sắp xếp theo chiều dọc */
     align-items: center;
     text-decoration: none;
 }
 
-.specialization-name {
+.home-page .specialty-name {
     font-size: 18px;
     color: #4B5563;
     margin-top: 15px;
 }
 
-.specialization-image{
+.home-page .specialty-image{
     width: 100px;
 }
 
-.top-doctor-list {
+.home-page .top-doctor-list {
     justify-self: center;
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* 5 cột có chiều rộng bằng nhau */
@@ -58,7 +58,7 @@
     transition: max-height 0.3s ease; /* Hiệu ứng mở rộng */
 }
 
-.doctor-card {
+.home-page .doctor-card {
     height: 385px;
     text-decoration: none;
 }

@@ -17,7 +17,7 @@ function Header() {
 
             {/* Navigation chính giữa */}
             <nav className="nav">
-                <a href="/home" className="nav-link">Trang Chủ</a>
+                <a href="/" className="nav-link">Trang Chủ</a>
                 <a href="/all-doctors" className="nav-link">Danh sách bác sĩ</a>
                 <a href="/about" className="nav-link">Về chúng tôi</a>
                 <a href="/contact" className="nav-link">Liên hệ</a>

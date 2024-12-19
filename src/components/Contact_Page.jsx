@@ -6,11 +6,11 @@ import "../styles/SharpCornerBlackBorderBtn.css"
 const Contact_Page = () => {
   return (
     <div className='Contact_Page'>
-        <div className='main-title'>Liên hệ với chúng tôi</div>
+        <div className='contact-page-main-title'>Liên hệ với chúng tôi</div>
         <div className='img_and_contact'>
             <img className='contact_image' src="contact_image.png"></img>
             <div>
-                <div className='title'>Văn Phòng</div>
+                <div className='contact-page-title'>Văn Phòng</div>
                 <div className="multiline-text">
                     54709 Willms Station <br/>
                     Suite 350, Washington, USA
@@ -20,7 +20,7 @@ const Contact_Page = () => {
                     Email: greatstackdev@gmail.com
                 </div>
 
-                <div className='title'>việc làm tại bệnh viện</div>
+                <div className='contact-page-title'>việc làm tại bệnh viện</div>
                 <div className="multiline-text">
                     Tìm hiểu thêm về đội ngũ của chúng tôi và cơ hội việc làm.
                 </div>
