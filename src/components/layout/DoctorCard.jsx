@@ -5,7 +5,7 @@ const DoctorCard = ({ doctor }) => {
   return (
     <div className="doctor-card">
       <img
-        src="https://via.placeholder.com/100"
+        src={doctor.image || "https://via.placeholder.com/100"}
         alt={doctor.name}
         className="doctor-image"
       />
