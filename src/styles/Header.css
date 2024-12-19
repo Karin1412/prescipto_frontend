@@ -1,0 +1,88 @@
+/* Header tổng */
+.header {
+    margin: 0px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    padding: 0 20px;
+    height: 60px;
+    font-family: "Work Sans", sans-serif;
+    padding-bottom: 5px;
+    border-bottom: 1.5px solid #ADADAD; 
+}
+
+/* Logo + tên web (bên trái) */
+.logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.website-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000B6D;
+}
+
+/* Navigation chính giữa */
+.nav {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.nav-link {
+    font-family: "Raleway", serif;
+    color: #000B6D;
+    text-decoration: none;
+    margin: 0 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    padding-top: 8px;
+    padding-bottom: 5px; /* Add space for underline */
+}
+
+/* Add underline effect using ::after */
+.nav-link::after {
+    content: ''; /* Empty content for pseudo-element */
+    position: absolute;
+    bottom: 0; /* Gạch chân nằm ở dưới chữ */
+    left: 50%; /* Bắt đầu từ giữa */
+    width: 0; /* Ban đầu ẩn gạch chân */
+    height: 2px; /* Độ dày của dấu gạch chân */
+    background-color: #000B6D;
+    transition: all 0.3s ease; /* Làm mượt hiệu ứng */
+    transform: translateX(-50%); /* Căn giữa dấu gạch chân */
+}
+
+/* Expand underline on hover */
+.nav-link:hover::after {
+    width: 100%; /* Expand to full width */    
+}
+
+/* Đăng nhập hoặc user area (bên phải) */
+.user-area {
+    display: flex;
+    align-items: center;
+}
+
+.logged-in {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+

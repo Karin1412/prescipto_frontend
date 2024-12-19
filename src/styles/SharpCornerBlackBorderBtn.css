@@ -1,0 +1,41 @@
+.sharp-corner-black-border-btn {
+    padding: 10px 25px;
+    font-size: 16px;
+    border: 1px solid #BABABA;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px; 
+  }
+  
+  .sharp-corner-black-border-btn.primary {
+    background-color: #fff;
+    color: black;
+  }
+  
+  .sharp-corner-black-border-btn.primary:hover {
+    background-color: #e1e4ff;
+  }
+  
+  .sharp-corner-black-border-btn.secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .sharp-corner-black-border-btn.secondary:hover {
+    background-color: #5a6268;
+  }
+  
+  .sharp-corner-black-border-btn.danger {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .sharp-corner-black-border-btn.danger:hover {
+    background-color: #bd2130;
+  }
+  
+  .sharp-corner-black-border-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  

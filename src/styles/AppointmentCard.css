@@ -1,0 +1,69 @@
+.appointment {
+    border: 1px solid #BABABA;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    font-family: "Work Sans", sans-serif;
+    margin: 0px 24px;
+    display: flex; /* Kích hoạt flexbox */
+    justify-content: space-between; /* Tách nhóm trái và nhóm phải */
+    align-items: center;            /* Căn chỉnh theo chiều dọc (nếu cần) */
+    padding: 20px 0px;
+}
+
+.appointment .left-group {
+    display: flex;
+    gap: 20px;                      /* Khoảng cách giữa Cột 1 và Cột 2 */
+  }
+
+  .appointment .appointment-info > div {
+    margin-bottom: 17px;
+    color: #4B5563;
+}
+
+.appointment .doctor-info > div  {
+    margin-bottom: 4px;
+}
+
+.appointment .doctor-name {
+    font-weight: 500;
+    font-size: 22px;
+    color: #262626;
+}
+
+.appointment .datetime-title {
+    font-weight: 500;
+}
+
+.appointment .right-group {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;        /* Xếp phần tử theo chiều dọc */
+    align-items: center;           /* Căn giữa theo chiều ngang trong nhóm phải */
+    gap: 10px;     
+}
+
+.appointment .status {
+
+    font-size: 20px;
+}
+
+.appointment .status.pending {
+    color: #A49703; 
+}
+
+.appointment .status.completed {
+    color: #5F6FFF;
+}
+
+.appointment .status.rejected {
+    color: #FF6767;
+}
+
+.appointment .status.cancelled {
+    color: #4B5563;
+}
+
+.appointment .status.accepted {
+    color: #0FBF00;
+}

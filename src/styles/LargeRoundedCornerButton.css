@@ -1,0 +1,41 @@
+.large-rounded-corner-button {
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 50px; 
+    border: none;
+  }
+  
+  .large-rounded-corner-button.primary {
+    background-color: #5F6FFF;
+    color: #fff;
+  }
+  
+  .large-rounded-corner-button.primary:hover {
+    background-color: #8692ff;
+  }
+  
+  .large-rounded-corner-button.secondary {
+    background-color: #EAEFFF;
+    color: #4B5563;
+  }
+  
+  .large-rounded-corner-button.secondary:hover {
+    background-color: #ced8fc;
+  }
+  
+  .large-rounded-corner-button.danger {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .large-rounded-corner-button.danger:hover {
+    background-color: #bd2130;
+  }
+  
+  .large-rounded-corner-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
