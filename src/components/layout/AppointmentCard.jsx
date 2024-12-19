@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/AppointmentCard.css';
-import WhiteWithBlackBorderBtn from './WhiteWithBlackBorderBtn';
-import "../../styles/WhiteWithBlackBorderBtn.css"
+import SharpCornerBlackBorderBtn from './SharpCornerBlackBorderBtn';
+import "../../styles/SharpCornerBlackBorderBtn.css"
 
 const AppointmentCard = () => {
   return (
@@ -27,7 +27,7 @@ const AppointmentCard = () => {
 
         <div className='right-group'>
             <div className='status'>Đang chờ duyệt</div>
-            <WhiteWithBlackBorderBtn 
+            <SharpCornerBlackBorderBtn className='sharp-corner-black-border-btn' 
                 text="Hủy lịch hẹn" 
                 variant="primary"/>
             </div>

@@ -1,0 +1,64 @@
+.home-page {
+    font-family: "Work Sans", sans-serif;
+    text-align: center; /* Căn giữa theo chiều ngang */
+}
+
+.image {
+    width: 95vw;
+    margin: 26px;
+}
+
+.title {
+    text-transform: none;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.section-description {
+    font-size: 18px;
+    margin: 10px;
+    line-height: 27px;
+}
+
+.specialization-list {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 30px;
+    justify-self: center;
+    margin-top: 62px;
+    margin-bottom: 115px;
+}
+
+.specialization {
+    display: flex;
+    flex-direction: column; /* Sắp xếp theo chiều dọc */
+    align-items: center;
+    text-decoration: none;
+}
+
+.specialization-name {
+    font-size: 18px;
+    color: #4B5563;
+    margin-top: 15px;
+}
+
+.specialization-image{
+    width: 100px;
+}
+
+.top-doctor-list {
+    justify-self: center;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 cột có chiều rộng bằng nhau */
+    margin: 40px 0px;
+    width: 80vw;
+    gap: 35px; /* Khoảng cách giữa các phần tử */
+    max-height: calc(2 * 420px); /*385px chiều cao mỗi item + 35px gap */
+    overflow: hidden; /* Ẩn phần còn lại */
+    transition: max-height 0.3s ease; /* Hiệu ứng mở rộng */
+}
+
+.doctor-card {
+    height: 385px;
+    text-decoration: none;
+}

@@ -1,8 +1,7 @@
 import React from 'react'
-import "../styles/global.css";
 import "../styles/Contact_page.css";
-import WhiteWithBlackBorderBtn from './layout/WhiteWithBlackBorderBtn';
-import "../styles/WhiteWithBlackBorderBtn.css"
+import SharpCornerBlackBorderBtn from './layout/SharpCornerBlackBorderBtn';
+import "../styles/SharpCornerBlackBorderBtn.css"
 
 const Contact_Page = () => {
   return (
@@ -26,7 +25,7 @@ const Contact_Page = () => {
                     Tìm hiểu thêm về đội ngũ của chúng tôi và cơ hội việc làm.
                 </div>
 
-                <WhiteWithBlackBorderBtn 
+                <SharpCornerBlackBorderBtn className='sharp-corner-black-border-btn' 
                 text="Khám phá việc làm"
                 variant="primary" />
             </div>

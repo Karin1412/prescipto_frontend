@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../styles/Header.css";
-import "../../styles/global.css";
+import LargeRoundedCornerButton from './LargeRoundedCornerButton';
+import '../../styles/LargeRoundedCornerButton.css';
 
 function Header() {
     // Trạng thái xác định đã đăng nhập hay chưa
@@ -73,7 +74,10 @@ function Header() {
             // Nếu không phải loading status, chỉ hiện nút đăng nhập
             !isLoggedIn && (
               //<Link to="/login" className="btn ms-4" id="login_btn"> Đăng nhập </Link>
-                <button className="blue-large-round-btn" onClick={() => setIsLoggedIn(true)}>Đăng nhập</button>          
+                <LargeRoundedCornerButton className="large-rounded-corner-button"
+                                    text='Đăng nhập'
+                                    variant='primary'
+                                    onClick={() => setIsLoggedIn(true)}/>        
               )
           )}  
         </div>
