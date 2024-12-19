@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [message, setMessage] = useState('');
+    const navigate = useNavigate(); // Sử dụng hook useNavigate
+
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,7 +18,8 @@ const Login = () => {
         try {
             const res = await axios.post('http://localhost:5000/api/users/login', formData);
             localStorage.setItem('token', res.data.token);
-            setMessage('Login successful');
+            // setMessage('Login successful');
+            navigate('/');
         } catch (err) {
             setMessage(err.response.data.message);
         }
