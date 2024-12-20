@@ -28,7 +28,9 @@ const Login = () => {
     return (
         <div className="flex justify-center items-center h-screen bg-gray-100">
             <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-2xl font-bold mb-4 text-center text-gray-700">Login</h2>
+                <img src="/Logo.svg" alt="logo" className="w-20 h-20 mx-auto mb-4" />
+                <h2 className="text-2xl font-bold mb-2 text-left text-[#4B5563]">Đăng nhập</h2>
+                <p className="text-lg mb-5 text-left text-[#4B5563]">Vui lòng đăng nhập để đặt lịch</p>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <input
                         type="email"
@@ -48,11 +50,13 @@ const Login = () => {
                     />
                     <button
                         type="submit"
-                        className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+                        className="w-full bg-[#5F6FFF] text-white py-2 rounded-lg hover:bg-[#8692ff] transition"
                     >
-                        Login
+                        Đăng nhập
                     </button>
                 </form>
+
+                <p className="text-base mt-6 text-left text-[#4B5563]">Bạn chưa có tài khoản? <a href="/register" className="text-[#5F6FFF] underline">Đăng ký</a></p>
                 {message && <p className="mt-4 text-center text-red-500">{message}</p>}
             </div>
         </div>

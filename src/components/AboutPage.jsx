@@ -11,7 +11,6 @@ const AboutPage = () => {
                 <img src={aboutImage} alt="Doctors" className="image" />
             </div>
             <div className="about-text">
-                    
                 <p>
                 Chào mừng bạn đến với Prescripto, đối tác đáng tin cậy của bạn trong việc quản lý nhu cầu chăm sóc sức khỏe một cách thuận tiện và hiệu quả. Tại Prescripto, chúng tôi hiểu rõ những thách thức mà mọi người gặp phải khi đặt lịch hẹn với bác sĩ và quản lý hồ sơ sức khỏe của mình.
                 </p>
@@ -25,18 +24,18 @@ const AboutPage = () => {
             </div>
         </div>
         <section className="reasons-section">
-            <h2>LÝ DO CHỌN CHÚNG TÔI</h2>
+            <h2>LÝ DO <strong>CHỌN</strong> CHÚNG TÔI</h2>
             <div className="reason-boxes">
                 <div className="reason-box">
-                    <h3>HIỆU QUẢ</h3>
+                    <h3>HIỆU QUẢ:</h3>
                     <p>Lên lịch cuộc hẹn hợp lý phù hợp với lối sống bận rộn của bạn.</p>
                 </div>
                 <div className="reason-box">
-                    <h3>TIỆN LỢI</h3>
+                    <h3>TIỆN LỢI:</h3>
                     <p>Truy cập vào mạng lưới các chuyên gia chăm sóc sức khỏe đáng tin cậy trong khu vực của bạn.</p>
                 </div>
                 <div className="reason-box">
-                    <h3>CÁ NHÂN HÓA</h3>
+                    <h3>CÁ NHÂN HÓA:</h3>
                     <p>Các đề xuất và lời nhắc phù hợp để giúp bạn luôn cập nhật về sức khỏe của mình.</p>
                 </div>
             </div>

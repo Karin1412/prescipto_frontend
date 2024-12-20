@@ -4,7 +4,8 @@
     border-radius: 10px;
     padding: 15px;
     text-align:left;
-    height: auto;
+    width: 274px;
+    height: 385px;
     transition: transform 0.3s ease;
   }
   

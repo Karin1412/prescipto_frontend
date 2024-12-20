@@ -46,19 +46,12 @@
     width: 100px;
 }
 
-.home-page .top-doctor-list {
+.home-page .top-doctors-list {
     justify-self: center;
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 cột có chiều rộng bằng nhau */
+    grid-template-columns: repeat(4, 1fr); /* 5 cột có chiều rộng bằng nhau */
     margin: 40px 0px;
-    width: 80vw;
-    gap: 35px; /* Khoảng cách giữa các phần tử */
-    max-height: calc(2 * 420px); /*385px chiều cao mỗi item + 35px gap */
-    overflow: hidden; /* Ẩn phần còn lại */
-    transition: max-height 0.3s ease; /* Hiệu ứng mở rộng */
-}
-
-.home-page .doctor-card {
-    height: 385px;
-    text-decoration: none;
+    width: 95vw;
+    gap: 25px; /* Khoảng cách giữa các phần tử */
+    max-height: calc(2 * 410px); /*385px chiều cao mỗi item + 25px gap */
 }
