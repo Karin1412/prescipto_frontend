@@ -8,10 +8,11 @@
     margin: 26px;
 }
 
-.home-page .home-page-title {
+.home-page .title {
     text-transform: none;
     font-size: 40px;
     font-weight: 500;
+    margin-top: 115px;
 }
 
 .home-page .section-description {
@@ -26,7 +27,6 @@
     gap: 30px;
     justify-self: center;
     margin-top: 62px;
-    margin-bottom: 115px;
 }
 
 .home-page .specialty {

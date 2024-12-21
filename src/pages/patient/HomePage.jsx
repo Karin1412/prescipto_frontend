@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import LargeRoundedCornerButton from './layout/LargeRoundedCornerButton';
-import '../styles/LargeRoundedCornerButton.css';
-import '../styles/Home_Page.css';
-import './styles/DoctorCard.css';
+import LargeRoundedCornerButton from '../../components/layout/LargeRoundedCornerButton';
+import '../../styles/LargeRoundedCornerButton.css';
+import '../../styles/HomePage.css';
+import '../../styles/DoctorCard.css';
 import { Link } from 'react-router-dom';
-import DoctorCard from './layout/DoctorCard';
+import DoctorCard from '../../components/layout/DoctorCard';
   
   const fakeApi = async (url) => {
     const data = {
@@ -102,7 +102,7 @@ import DoctorCard from './layout/DoctorCard';
   };
 
   
-const Home_Page = () => {
+const HomePage = () => {
 
   const [doctors, setDoctors] = useState([]);
   /*
@@ -133,11 +133,11 @@ const Home_Page = () => {
   return (
     <div className='home-page'>
         <a href='/doctor-list'>
-            <img src='/View doctor image.svg' className='image'></img>
+            <img src='/src/assets/View doctor image.svg' className='image'></img>
         </a>
 
         <div className='search-by-specialty'>
-                    <div className='home-page-title'>
+                    <div className='title'>
                     Tìm theo chuyên ngành
                     </div>
                     <div className='section-description'>
@@ -145,34 +145,34 @@ const Home_Page = () => {
                     </div>
                     <div className='specialty-list'>
                         <Link to="/all-doctors?specialty=general-physician" className='specialty'>
-                            <img src='/General_physician.svg' className='specialty-image'/>
+                            <img src='/src/assets/General_physician.svg' className='specialty-image'/>
                             <span className='specialty-name'>Bác sĩ đa khoa</span>
                         </Link>
                         <Link to="/all-doctors?specialty=gynecologist" className='specialty'>
-                            <img src='/Gynecologist.svg' className='specialty-image'/>
+                            <img src='/src/assets/Gynecologist.svg' className='specialty-image'/>
                             <span className='specialty-name'>Bác sĩ phụ khoa</span>
                         </Link>
                         <Link to="/all-doctors?specialty=dermatologist" className='specialty'>
-                            <img src='/Dermatologist.svg' className='specialty-image'/>
+                            <img src='/src/assets/Dermatologist.svg' className='specialty-image'/>
                             <span className='specialty-name'>Bác sĩ da liễu</span>
                         </Link>
                         <Link to="/all-doctors?specialty=pediatricians" className='specialty'>
-                            <img src='/Pediatricians.svg' className='specialty-image'/>
+                            <img src='/src/assets/Pediatricians.svg' className='specialty-image'/>
                             <span className='specialty-name'>Bác sĩ nhi khoa</span>
                         </Link>
                         <Link to="/all-doctors?specialty=neurologist" className='specialty'>
-                            <img src='/Neurologist.svg' className='specialty-image'/>
+                            <img src='/src/assets/Neurologist.svg' className='specialty-image'/>
                             <span className='specialty-name'>Bác sĩ thần kinh</span>
                         </Link>
                         <Link to="/all-doctors?specialty=gastroenterologist" className='specialty'>
-                            <img src='/Gastroenterologist.svg' className='specialty-image'/>
+                            <img src='/src/assets/Gastroenterologist.svg' className='specialty-image'/>
                             <span className='specialty-name'>Bác sĩ tiêu hóa</span>
                         </Link>
                     </div>
         </div>
 
         <div className='top-doctor'>
-            <div className='home-page-title'>Các bác sĩ hàng đầu</div>
+            <div className='title'>Các bác sĩ hàng đầu</div>
             <div className='section-description'>
               Chỉ cần duyệt qua danh sách các bác sĩ đáng tin cậy của chúng tôi
             </div>
@@ -191,10 +191,10 @@ const Home_Page = () => {
         </div>
 
         <a href='/register'>
-            <img src='/Sign up image.svg' className='image'></img>
+            <img src='/src/assets/Sign up image.svg' className='image'></img>
         </a>
     </div>
   )
 }
 
-export default Home_Page
+export default HomePage

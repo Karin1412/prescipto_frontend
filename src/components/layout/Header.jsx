@@ -15,7 +15,7 @@ function Header() {
         <header className="header">
             {/* Logo và Tên web */}
             <div className="logo" onClick={() => window.location.href = "/"}>
-                <img src="/Logo.svg" alt="Logo" className="logo-img" />
+                <img src="/src/assets/Logo.svg" alt="Logo" className="logo-img" />
                 <span className="website-name">Prescripto</span>
             </div>
 
