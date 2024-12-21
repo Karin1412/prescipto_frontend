@@ -2,12 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
-import Header from './components/layout/Header';
-import Contact_Page from './components/Contact_Page';
-import My_Appointments_Page from './components/My_Appointments_Page';
-import Home_Page from './components/Home_Page';
-import DoctorsPage from './components/DoctorsPage';
-import AboutPage from './components/AboutPage';
+import Contact_Page from './page/Contact_Page';
+import My_Appointments_Page from './page/My_Appointments_Page';
+import Home_Page from './page/Home_Page';
+import DoctorsPage from './page/DoctorsPage';
+import AboutPage from './page/AboutPage';
+import AppointmentPage from './page/AppointmentPage';
 
 import Layout from './layout';
 
@@ -22,6 +22,7 @@ const App = () => {
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/all-doctors" element={<DoctorsPage />} />
                         <Route path="/me/my-appointments" element={<My_Appointments_Page />} />
+                        <Route path="/appointment/:id" element={<AppointmentPage />} />
                     </Route>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />

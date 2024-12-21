@@ -1,5 +1,5 @@
 import React from 'react'
-import LargeRoundedCornerButton from './layout/LargeRoundedCornerButton';
+import LargeRoundedCornerButton from '../components/layout/LargeRoundedCornerButton';
 import '../styles/LargeRoundedCornerButton.css';
 import '../styles/Home_Page.css';
 import { Link } from 'react-router-dom';

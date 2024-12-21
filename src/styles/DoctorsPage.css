@@ -1,0 +1,14 @@
+.doctors-page {
+  padding: 20px 50px;;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+  min-height: 1000px;
+  font-family: "Work Sans", sans-serif;
+}
+
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  flex: 1;
+}

@@ -1,0 +1,134 @@
+.appointment-page {
+    padding: 20px 50px;
+    font-family: "Work Sans", sans-serif;
+    background-color: #FFFFFF;
+  }
+  
+  .appointment-content {
+    margin: 0 auto;
+    color: #4B5563;
+    overflow: hidden;
+  }
+  
+  /* Chi tiết bác sĩ */
+  .doctor-section {
+    display: flex;
+    padding: 20px;
+  }
+  
+  .doctor-image2 {
+    width: 331px;
+    height: 376px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  .doctor-detailinfo {
+    flex: 1;
+    height: 376px;
+    border: 1px solid #ddd;
+    padding: 30px;
+    border-radius: 10px;
+  }
+  
+  .doctor-details-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px
+  }
+  .doctor-details-row .experience {
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 30px;
+  }
+
+  .doctor-detailinfo h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #1F2937
+  }
+  
+  .doctor-detailinfo .description {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  .doctor-detailinfo .fee {
+    font-size: 16px;
+  }
+  
+  /* Thời gian đặt lịch */
+  .appointment-time {
+    padding: 20px;
+    margin-left: 170px;
+  }
+  
+  .appointment-time h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  .day-selector {
+    display: flex;
+    justify-content: flex-start; /* Dồn nút về bên trái */
+    gap: 10px; /* Giảm khoảng cách giữa các nút */
+    margin-bottom: 20px;
+  }
+  
+  .day-button {
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .day-button.active {
+    background-color: #5F6FFF;
+    color: #fff;
+  }
+  
+  .day-button span {
+    display: block;
+    font-size: 12px;
+  }
+  
+  .time-slots {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .time-button {
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .time-button.active {
+    background-color: #5F6FFF;
+    color: #FFFFFF;
+  }
+  
+  .book-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: #5F6FFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }

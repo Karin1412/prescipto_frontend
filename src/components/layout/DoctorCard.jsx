@@ -1,9 +1,9 @@
 import React from 'react';
-import '../styles/DoctorCard.css';
+import '../../styles/DoctorCard.css';
 
-const DoctorCard = ({ doctor }) => {
+const DoctorCard = ({ doctor, onClick }) => {
   return (
-    <div className="doctor-card">
+    <div className="doctor-card" onClick={onClick}>
       <img
         src={doctor.image || "https://via.placeholder.com/100"}
         alt={doctor.name}

@@ -1,6 +1,6 @@
 import React from 'react'
 import "../styles/Contact_page.css";
-import SharpCornerBlackBorderBtn from './layout/SharpCornerBlackBorderBtn';
+import SharpCornerBlackBorderBtn from '../components/layout/SharpCornerBlackBorderBtn';
 import "../styles/SharpCornerBlackBorderBtn.css"
 
 const Contact_Page = () => {
