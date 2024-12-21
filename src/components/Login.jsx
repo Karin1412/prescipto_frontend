@@ -16,15 +16,19 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/api/users/login', formData);
-            localStorage.setItem('token', res.data.token);
-            // setMessage('Login successful');
+            // Gửi yêu cầu login
+            const res = await axios.post('http://localhost:5000/api/users/login', formData, { withCredentials: true });
+
+            localStorage.setItem('token', res.data.token);  // Lưu token nếu cần
+            // Lưu thông tin người dùng (có thể lưu tên hoặc các thông tin cần thiết)
+            localStorage.setItem('user', JSON.stringify(res.data.user));
+
+            // Chuyển hướng đến trang chủ hoặc trang sau khi đăng nhập
             navigate('/');
         } catch (err) {
-            setMessage(err.response.data.message);
+            setMessage(err.response?.data?.message || 'Đăng nhập thất bại');
         }
     };
-
     return (
         <div className="flex justify-center items-center h-screen bg-gray-100">
             <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
