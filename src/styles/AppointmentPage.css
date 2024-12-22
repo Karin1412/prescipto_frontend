@@ -64,7 +64,7 @@
   /* Thời gian đặt lịch */
   .appointment-time {
     padding: 20px;
-    margin-left: 170px;
+    margin-left: 331px;
   }
   
   .appointment-time h3 {
@@ -74,8 +74,8 @@
   
   .day-selector {
     display: flex;
-    justify-content: flex-start; /* Dồn nút về bên trái */
-    gap: 10px; /* Giảm khoảng cách giữa các nút */
+    justify-content: flex-start;
+    gap: 10px;
     margin-bottom: 20px;
   }
   

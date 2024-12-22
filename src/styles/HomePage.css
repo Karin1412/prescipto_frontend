@@ -1,0 +1,59 @@
+.home-page {
+    padding: 20px 20px;
+    font-family: "Work Sans", sans-serif;
+    text-align: center; /* Căn giữa theo chiều ngang */
+}
+
+.home-page .image {
+    width: 95vw;
+    margin: 26px;
+}
+
+.home-page .home-page-title {
+    text-transform: none;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.home-page .section-description {
+    font-size: 18px;
+    margin: 10px;
+    line-height: 27px;
+}
+
+.home-page .specialty-list {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 30px;
+    justify-self:flex-start;
+    padding: 100px 150px;
+}
+
+.home-page .specialty {
+    display: flex;
+    flex-direction:column; /* Sắp xếp theo chiều dọc */
+    align-items: center;
+    text-decoration: none;
+}
+
+.home-page .specialty-name {
+    font-size: 18px;
+    color: #4B5563;
+    margin-top: 10px; /* Space between image and name */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.home-page .specialty-image {
+    width: 100px; /* Set all images to the same size */
+    height: 100px; /* Ensure the images maintain a square aspect ratio */
+    object-fit: cover; /* Make sure the images cover the container without stretching */
+}
+
+.top-doctor-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Display cards in a grid */
+    gap: 15px; /* Adjust the spacing between doctor cards */
+    max-height: 800px; /* Optional: Limit the height of the doctor list */
+    overflow: hidden;
+    padding: 10px;
+}

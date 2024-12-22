@@ -1,62 +1,73 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/DoctorsPage.css';
 import '../styles/SelectionList.css';
 import DoctorCard from '../components/layout/DoctorCard.jsx';
 import doctorsData from '../data/doctorsData.jsx';
 
 const specialties = [
-  'Bác sĩ đa khoa',
-  'Bác sĩ phụ khoa',
-  'Bác sĩ da liễu',
-  'Bác sĩ nhi khoa',
-  'Bác sĩ thần kinh',
-  'Bác sĩ tiêu hóa',
+  { label: 'Tất cả bác sĩ', value: null },
+  { label: 'Bác sĩ đa khoa', value: 'general-physician' },
+  { label: 'Bác sĩ phụ khoa', value: 'gynecologist' },
+  { label: 'Bác sĩ da liễu', value: 'dermatologist' },
+  { label: 'Bác sĩ nhi khoa', value: 'pediatrician' },
+  { label: 'Bác sĩ thần kinh', value: 'neurologist' },
+  { label: 'Bác sĩ tiêu hóa', value: 'gastroenterologist' },
 ];
 
 const DoctorsPage = () => {
+  const location = useLocation();
   const [selectedSpecialty, setSelectedSpecialty] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (location.state?.specialty) {
+      setSelectedSpecialty(location.state.specialty);
+    }
+  }, [location.state]);
+
+  console.log(selectedSpecialty); // Kiểm tra giá trị chuyên ngành
+
+  // Lọc bác sĩ theo chuyên khoa
   const filteredDoctors = selectedSpecialty
     ? doctorsData.filter((doctor) => doctor.specialty === selectedSpecialty)
     : doctorsData;
-  
-    const handleDoctorSelect = (doctor) => {
-      navigate(`/appointment/${doctor.id}`, { state: { doctor } });
-    }
+
+  const handleDoctorSelect = (doctor) => {
+    navigate(`/appointment/${doctor.id}`, { state: { doctor } });
+  };
 
   return (
     <div className="doctors-page">
       <div className="layout">
         {/* Danh sách chọn chuyên khoa */}
         <div className="specialty-list">
-          <button
-            className={`specialty-button ${selectedSpecialty === null ? 'active' : ''}`}
-            onClick={() => setSelectedSpecialty(null)}
-          >
-            Tất cả bác sĩ
-          </button>
           {specialties.map((specialty) => (
             <button
-              key={specialty}
+              key={specialty.value}
               className={`specialty-button ${
-                selectedSpecialty === specialty ? 'active' : ''
+                selectedSpecialty === specialty.value ? 'active' : ''
               }`}
-              onClick={() => setSelectedSpecialty(specialty)}
+              onClick={() => setSelectedSpecialty(specialty.value)}
             >
-              {specialty}
+              {specialty.label}
             </button>
           ))}
         </div>
 
         {/* Hiển thị danh sách bác sĩ */}
         <div className="doctors-grid">
-          {filteredDoctors.map((doctor) => (
-            <DoctorCard key={doctor.id} doctor={doctor} 
-            onClick={() => handleDoctorSelect(doctor)}
-            />
-          ))}
+          {filteredDoctors.length > 0 ? (
+            filteredDoctors.map((doctor) => (
+              <DoctorCard
+                key={doctor.id}
+                doctor={doctor}
+                onClick={() => handleDoctorSelect(doctor)}
+              />
+            ))
+          ) : (
+            <p className="no-doctors-message">Không có bác sĩ nào phù hợp.</p>
+          )}
         </div>
       </div>
     </div>
