@@ -21,6 +21,10 @@ const DoctorsPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0, 0); // Cuộn lên vị trí (0, 0)
+  }, []);
+
+  useEffect(() => {
     if (location.state?.specialty) {
       setSelectedSpecialty(location.state.specialty);
     }
@@ -46,7 +50,7 @@ const DoctorsPage = () => {
             <button
               key={specialty.value}
               className={`specialty-button ${
-                selectedSpecialty === specialty ? 'active' : ''
+                selectedSpecialty === specialty.value ? 'active' : ''
               }`}
               onClick={() => setSelectedSpecialty(specialty.value)}
             >
