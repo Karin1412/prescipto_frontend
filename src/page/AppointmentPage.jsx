@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/AppointmentPage.css';
 import DoctorCard from '../components/layout/DoctorCard.jsx';
@@ -8,6 +8,10 @@ const AppointmentPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { doctor } = location.state || {};
+
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
   const [selectedDay, setSelectedDay] = useState(0);
   const [selectedTime, setSelectedTime] = useState(null);
@@ -104,7 +108,10 @@ const AppointmentPage = () => {
                 <DoctorCard
                   key={doc.id}
                   doctor={doc}
-                  onClick={() => navigate(`/appointment/${doc.id}`, { state: { doctor: doc } })}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    navigate(`/appointment/${doc.id}`, { state: { doctor: doc } })}
+                  }
                 />
               ))}
             </div>
