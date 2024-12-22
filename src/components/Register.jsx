@@ -22,7 +22,9 @@ const Register = () => {
     return (
         <div className="flex justify-center items-center h-screen bg-gray-100">
             <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-2xl font-bold mb-4 text-center text-gray-700">Register</h2>
+                <img src="/Logo.svg" alt="logo" className="w-20 h-20 mx-auto mb-4" />
+                <h2 className="text-2xl font-bold mb-2 text-centertext-[#4B5563]">Tạo tài khoản</h2>
+                <p className="text-lg mb-5 text-left text-[#4B5563]">Vui lòng đăng ký để đặt lịch</p>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <input
                         type="text"
@@ -50,11 +52,13 @@ const Register = () => {
                     />
                     <button
                         type="submit"
-                        className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+                        className="w-full bg-[#5F6FFF] text-white py-2 rounded-lg hover:bg-[#8692ff] transition"
                     >
-                        Register
+                        Tạo tài khoản
                     </button>
                 </form>
+
+                <p className="text-base mt-4 text-left text-[#4B5563]">Đã có tài khoản? <a href="/login" className="text-[#5F6FFF] underline">Đăng nhập</a></p>
                 {message && <p className="mt-4 text-center text-red-500">{message}</p>}
             </div>
         </div>

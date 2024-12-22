@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useLocation } from 'react-router-dom';
 import "../../styles/Header.css";
 import LargeRoundedCornerButton from './LargeRoundedCornerButton';
 import '../../styles/LargeRoundedCornerButton.css';
@@ -6,25 +7,28 @@ import '../../styles/LargeRoundedCornerButton.css';
 function Header() {
     // Trạng thái xác định đã đăng nhập hay chưa
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const location = useLocation();
+
+    const isActive = (path) => location.pathname === path;
 
     return (
         <header className="header">
             {/* Logo và Tên web */}
             <div className="logo" onClick={() => window.location.href = "/"}>
-                <img src="/Logo.svg" alt="Logo" className="logo-img" />
+                <img src="/src/assets/Logo.svg" alt="Logo" className="logo-img" />
                 <span className="website-name">Prescripto</span>
             </div>
 
             {/* Navigation chính giữa */}
             <nav className="nav">
-                <a href="/" className="nav-link">Trang Chủ</a>
-                <a href="/all-doctors" className="nav-link">Danh sách bác sĩ</a>
-                <a href="/about" className="nav-link">Về chúng tôi</a>
-                <a href="/contact" className="nav-link">Liên hệ</a>
+                <Link to="/" className={`nav-item ${isActive('/') ? 'active' : ''}`}>Trang Chủ</Link>
+                <Link to="/all-doctors" className={`nav-item ${isActive('/all-doctors') ? 'active' : ''}`}>Danh sách bác sĩ</Link>
+                <Link to="/about" className={`nav-item ${isActive('/about') ? 'active' : ''}`}>Về chúng tôi</Link>
+                <Link to="/contact" className={`nav-item ${isActive('/contact') ? 'active' : ''}`}>Liên hệ</Link>
             </nav>
 
             {/* Đăng nhập hoặc Combobox và Avatar*/}
-            <div className="col-6 col-md-2 mt-4 mt-md-0 text-center text-md-end">          
+            <div className="user-login-or-avatar">          
           {/*{user ? ( */}
           {isLoggedIn ? (
             <div className="ms-4 dropdown">

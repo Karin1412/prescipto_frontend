@@ -5,10 +5,9 @@
     justify-content: space-between;
     align-items: center;
     background-color: transparent;
-    padding: 0 20px;
+    padding: 5px 20px;
     height: 60px;
     font-family: "Work Sans", sans-serif;
-    padding-bottom: 5px;
     border-bottom: 1.5px solid #ADADAD; 
 }
 
@@ -38,7 +37,7 @@
     flex: 1;
 }
 
-.nav-link {
+.nav-item {
     font-family: "Raleway", serif;
     color: #000B6D;
     text-decoration: none;
@@ -52,7 +51,7 @@
 }
 
 /* Add underline effect using ::after */
-.nav-link::after {
+.nav-item::after {
     content: ''; /* Empty content for pseudo-element */
     position: absolute;
     bottom: 0; /* Gạch chân nằm ở dưới chữ */
@@ -65,8 +64,13 @@
 }
 
 /* Expand underline on hover */
-.nav-link:hover::after {
+.nav-item:hover::after {
     width: 100%; /* Expand to full width */    
+}
+
+.nav-item.active::after {
+    width: 100%; /* Gạch chân luôn hiển thị */
+    background-color: #000B6D; /* Giữ nguyên màu */
 }
 
 /* Đăng nhập hoặc user area (bên phải) */
@@ -84,5 +88,9 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+}
+
+.header .large-rounded-corner-button {
+    justify-self: center;
 }
 

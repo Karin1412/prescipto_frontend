@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './styles/DoctorsPage.css';
-import './styles/SelectionList.css';
-import DoctorCard from './layout/DoctorCard.jsx';
+import '../../styles/DoctorsPage.css';
+import '../../styles/SelectionList.css';
+import DoctorCard from '../../components/layout/DoctorCard.jsx';
 
 const doctorsData = [
   { id: 1, name: 'Dr. Richard James', specialty: 'Bác sĩ đa khoa', status: 'Có sẵn' },

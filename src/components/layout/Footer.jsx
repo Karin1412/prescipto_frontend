@@ -1,13 +1,12 @@
 import React from 'react';
 import '../styles/Footer.css';
-import logo from '../../assets/logo_image.png';
 
 const Footer = () => {
     return (
         <footer className="footer">
             <div className="footer-section">
                 <div className="logo-container">
-                    <img src={logo} alt="Prescripto Logo" className="logo" />
+                    <img src="/src/assets/Logo.svg" alt="Prescripto Logo" className="logo" />
                     <span className="app-name">Prescripto</span>
                 </div>
                 <p>

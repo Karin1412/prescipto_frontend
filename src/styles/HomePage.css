@@ -8,10 +8,11 @@
     margin: 26px;
 }
 
-.home-page .home-page-title {
+.home-page .title {
     text-transform: none;
     font-size: 40px;
     font-weight: 500;
+    margin-top: 115px;
 }
 
 .home-page .section-description {
@@ -26,7 +27,6 @@
     gap: 30px;
     justify-self: center;
     margin-top: 62px;
-    margin-bottom: 115px;
 }
 
 .home-page .specialty {
@@ -46,19 +46,12 @@
     width: 100px;
 }
 
-.home-page .top-doctor-list {
+.home-page .top-doctors-list {
     justify-self: center;
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 cột có chiều rộng bằng nhau */
+    grid-template-columns: repeat(4, 1fr); /* 5 cột có chiều rộng bằng nhau */
     margin: 40px 0px;
-    width: 80vw;
-    gap: 35px; /* Khoảng cách giữa các phần tử */
-    max-height: calc(2 * 420px); /*385px chiều cao mỗi item + 35px gap */
-    overflow: hidden; /* Ẩn phần còn lại */
-    transition: max-height 0.3s ease; /* Hiệu ứng mở rộng */
-}
-
-.home-page .doctor-card {
-    height: 385px;
-    text-decoration: none;
+    width: 95vw;
+    gap: 25px; /* Khoảng cách giữa các phần tử */
+    max-height: calc(2 * 410px); /*385px chiều cao mỗi item + 25px gap */
 }

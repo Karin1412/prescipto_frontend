@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import AppointmentCard from './layout/AppointmentCard';
-import '../styles/My_Appointments_Page.css';
+import AppointmentCard from '../../components/layout/AppointmentCard';
+import '../../styles/MyAppointmentsPage.css';
 
 const fakeApi = async (url) => {
   const data = {
@@ -61,7 +61,7 @@ const fakeApi = async (url) => {
 };
 
 
-const My_Appointments_Page = () => {
+const MyAppointmentsPage = () => {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
@@ -106,4 +106,4 @@ const My_Appointments_Page = () => {
   );
 };
 
-export default My_Appointments_Page
+export default MyAppointmentsPage
