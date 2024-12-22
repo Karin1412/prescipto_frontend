@@ -27,27 +27,27 @@ const Home_Page = () => {
           lên lịch cuộc hẹn của bạn một cách dễ dàng.
         </div>
         <div className="specialty-list">
-          <div className="specialty" onClick={() => handleSpecialtyClick('general-physician')}>
+          <div className="specialty" onClick={() => handleSpecialtyClick('Bác sĩ đa khoa')}>
             <img src="/General_physician.svg" className="specialty-image" alt="General Physician" />
             <span className="specialty-name">Bác sĩ đa khoa</span>
           </div>
-          <div className="specialty" onClick={() => handleSpecialtyClick('gynecologist')}>
+          <div className="specialty" onClick={() => handleSpecialtyClick('Bác sĩ phụ khoa')}>
             <img src="/Gynecologist.svg" className="specialty-image" alt="Gynecologist" />
             <span className="specialty-name">Bác sĩ phụ khoa</span>
           </div>
-          <div className="specialty" onClick={() => handleSpecialtyClick('dermatologist')}>
+          <div className="specialty" onClick={() => handleSpecialtyClick('Bác sĩ da liễu')}>
             <img src='/Dermatologist.svg' className='specialty-image' alt="Dermatologist"/>
             <span className='specialty-name'>Bác sĩ da liễu</span>
           </div>
-          <div className="specialty" onClick={() => handleSpecialtyClick('pediatrician')}>
+          <div className="specialty" onClick={() => handleSpecialtyClick('Bác sĩ nhi khoa')}>
             <img src='/Pediatricians.svg' className='specialty-image' alt="Pediatrician"/>
             <span className='specialty-name'>Bác sĩ nhi khoa</span>
           </div>
-          <div className="specialty" onClick={() => handleSpecialtyClick('neurologist')}>
+          <div className="specialty" onClick={() => handleSpecialtyClick('Bác sĩ thần kinh')}>
             <img src='Neurologist.svg' className='specialty-image' alt="Neurologist"/>
             <span className='specialty-name'>Bác sĩ thần kinh</span>
           </div>
-          <div className="specialty" onClick={() => handleSpecialtyClick('gastroenterologist')}>
+          <div className="specialty" onClick={() => handleSpecialtyClick('Bác sĩ tiêu hóa')}>
             <img src='/Gastroenterologist.svg' className='specialty-image' alt="Gastroenterologist"/>
             <span className='specialty-name'>Bác sĩ tiêu hóa</span>
           </div>

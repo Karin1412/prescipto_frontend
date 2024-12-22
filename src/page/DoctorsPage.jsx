@@ -7,12 +7,12 @@ import doctorsData from '../data/doctorsData.jsx';
 
 const specialties = [
   { label: 'Tất cả bác sĩ', value: null },
-  { label: 'Bác sĩ đa khoa', value: 'general-physician' },
-  { label: 'Bác sĩ phụ khoa', value: 'gynecologist' },
-  { label: 'Bác sĩ da liễu', value: 'dermatologist' },
-  { label: 'Bác sĩ nhi khoa', value: 'pediatrician' },
-  { label: 'Bác sĩ thần kinh', value: 'neurologist' },
-  { label: 'Bác sĩ tiêu hóa', value: 'gastroenterologist' },
+  { label: 'Bác sĩ đa khoa', value: 'Bác sĩ đa khoa' },
+  { label: 'Bác sĩ phụ khoa', value: 'Bác sĩ phụ khoa' },
+  { label: 'Bác sĩ da liễu', value: 'Bác sĩ da liễu' },
+  { label: 'Bác sĩ nhi khoa', value: 'Bác sĩ nhi khoa' },
+  { label: 'Bác sĩ thần kinh', value: 'Bác sĩ thần kinh' },
+  { label: 'Bác sĩ tiêu hóa', value: 'Bác sĩ tiêu hóa' },
 ];
 
 const DoctorsPage = () => {
@@ -46,7 +46,7 @@ const DoctorsPage = () => {
             <button
               key={specialty.value}
               className={`specialty-button ${
-                selectedSpecialty === specialty.value ? 'active' : ''
+                selectedSpecialty === specialty ? 'active' : ''
               }`}
               onClick={() => setSelectedSpecialty(specialty.value)}
             >
