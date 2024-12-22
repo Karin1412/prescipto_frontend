@@ -1,7 +1,7 @@
 .home-page {
     padding: 20px 20px;
     font-family: "Work Sans", sans-serif;
-    text-align: center; /* Căn giữa theo chiều ngang */
+    text-align: center;
 }
 
 .home-page .image {
@@ -31,7 +31,7 @@
 
 .home-page .specialty {
     display: flex;
-    flex-direction:column; /* Sắp xếp theo chiều dọc */
+    flex-direction:column;
     align-items: center;
     text-decoration: none;
 }
@@ -39,21 +39,21 @@
 .home-page .specialty-name {
     font-size: 18px;
     color: #4B5563;
-    margin-top: 10px; /* Space between image and name */
-    white-space: nowrap; /* Prevent text from wrapping */
+    margin-top: 10px;
+    white-space: nowrap;
 }
 
 .home-page .specialty-image {
-    width: 100px; /* Set all images to the same size */
-    height: 100px; /* Ensure the images maintain a square aspect ratio */
-    object-fit: cover; /* Make sure the images cover the container without stretching */
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
 }
 
 .top-doctor-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Display cards in a grid */
-    gap: 15px; /* Adjust the spacing between doctor cards */
-    max-height: 800px; /* Optional: Limit the height of the doctor list */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    max-height: 800px;
     overflow: hidden;
     padding: 10px;
 }

@@ -21,7 +21,7 @@ const DoctorsPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Cuộn lên vị trí (0, 0)
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -30,9 +30,8 @@ const DoctorsPage = () => {
     }
   }, [location.state]);
 
-  console.log(selectedSpecialty); // Kiểm tra giá trị chuyên ngành
-
-  // Lọc bác sĩ theo chuyên khoa
+  console.log(selectedSpecialty); 
+  
   const filteredDoctors = selectedSpecialty
     ? doctorsData.filter((doctor) => doctor.specialty === selectedSpecialty)
     : doctorsData;
