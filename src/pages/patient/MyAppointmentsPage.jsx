@@ -61,7 +61,7 @@ const fakeApi = async (url) => {
 };
 
 
-const My_Appointments_Page = () => {
+const MyAppointmentsPage = () => {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
@@ -106,4 +106,4 @@ const My_Appointments_Page = () => {
   );
 };
 
-export default My_Appointments_Page
+export default MyAppointmentsPage
