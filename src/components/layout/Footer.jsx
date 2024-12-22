@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <footer className="footer">
             <div className="footer-section">
-                <div className="logo-container">
+                <div className="logo-container" onClick={() => window.location.href = "/"}>
                     <img src="/Logo.svg" alt="Logo" className="logo-img" />
                     <span className="website-name">Prescripto</span>
                 </div>
