@@ -3,36 +3,43 @@
     align-items:flex-start;
     padding: 10px 50px 30px;
     background-color: #fff;
-    color: #333;
+    color: #4B5563;
     font-size: 14px;
     font-family: "Work Sans", sans-serif;
     position: relative;
   }
   
-  /* Logo container */
   .logo-container {
-    align-items:center;
-    font-weight: bold;
-    padding: 15px 0;
-    font-size: 24px;
     display: flex;
-    gap: 10px; /* Khoảng cách giữa logo và tên app */
-  }
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.website-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000B6D;
+}
   
-  /* Footer Sections */
   .footer .footer-section {
     flex: 3;
-    text-align: left; /* Căn lề trái */
-    margin-bottom: 30px; /* Đảm bảo đồng nhất khoảng cách giữa các mục */
+    text-align: left;
+    margin-bottom: 30px;
   }
   
   .footer .footer-section:nth-child(2),
   .footer .footer-section:nth-child(3) {
-    flex: 1; /* Hai cột còn lại chiếm tỷ lệ bằng nhau */
+    flex: 1;
     margin-left: 200px;
   }
   
-  /* Tiêu đề trong Footer */
   .footer .footer-section h4 {
     padding: 15px 0;
     font-weight: bold;
@@ -40,7 +47,6 @@
     color: #000;
   }
   
-  /* Nội dung và liên kết */
   .footer .footer-section p,
   .footer .footer-section a {
     margin: 5px 0;
@@ -48,7 +54,6 @@
     text-decoration: none;
   }
   
-  /* Copyright */
   .footer-copyright {
     text-align: center;
     padding: 10px 0;
@@ -57,6 +62,6 @@
     color: #888;
     position: absolute;
     bottom: 0;
-    width: calc(100% - 100px); /* Trừ 50px mỗi bên */
+    width: calc(100% - 100px);
   }
   

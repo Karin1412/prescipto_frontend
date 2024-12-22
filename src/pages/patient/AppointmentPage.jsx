@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import '../styles/AppointmentPage.css';
-import DoctorCard from '../components/layout/DoctorCard.jsx';
-import doctorsData from '../data/doctorsData.jsx';
+import '../../styles/AppointmentPage.css';
+import DoctorCard from '../../components/layout/DoctorCard.jsx';
+import doctorsData from '../../data/doctorsData.jsx';
 
 const AppointmentPage = () => {
   const location = useLocation();

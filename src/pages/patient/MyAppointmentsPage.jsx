@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import AppointmentCard from '../components/layout/AppointmentCard';
-import '../styles/MyAppointmentsPage.css';
+import AppointmentCard from '../../components/layout/AppointmentCard';
+import '../../styles/MyAppointmentsPage.css';
 
 const fakeApi = async (url) => {
   const data = {

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import '../styles/DoctorsPage.css';
-import '../styles/SelectionList.css';
-import DoctorCard from '../components/layout/DoctorCard.jsx';
-import doctorsData from '../data/doctorsData.jsx';
+import '../../styles/DoctorsPage.css';
+import '../../styles/SelectionList.css';
+import DoctorCard from '../../components/layout/DoctorCard.jsx';
+import doctorsData from '../../data/doctorsData.jsx';
 
 const specialties = [
   { label: 'Tất cả bác sĩ', value: null },

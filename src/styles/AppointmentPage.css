@@ -80,6 +80,7 @@
   }
   
   .day-button {
+    cursor: pointer;
     background-color: #f8f9fa;
     border: none;
     border-radius: 20px;
@@ -107,6 +108,7 @@
   }
   
   .time-button {
+    cursor: pointer;
     background-color: #f8f9fa;
     border: none;
     border-radius: 10px;
@@ -122,6 +124,7 @@
   }
   
   .book-button {
+    cursor: pointer;
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;

@@ -2,12 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
-import Contact_Page from './page/ContactPage';
-import My_Appointments_Page from './page/MyAppointmentsPage';
-import Home_Page from './page/HomePage';
-import DoctorsPage from './page/DoctorsPage';
-import AboutPage from './page/AboutPage';
-import AppointmentPage from './page/AppointmentPage';
+import Contact_Page from './pages/patient/ContactPage';
+import My_Appointments_Page from './pages/patient/MyAppointmentsPage';
+import Home_Page from './pages/patient//HomePage';
+import DoctorsPage from './pages/patient/DoctorsPage';
+import AboutPage from './pages/patient/AboutPage';
+import AppointmentPage from './pages/patient/AppointmentPage';
 
 import Layout from './layout';
 

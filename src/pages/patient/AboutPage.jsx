@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/AboutPage.css';
-import aboutImage from '../assets/about_image.png';
+import '../../styles/AboutPage.css';
+import aboutImage from '../../../public/about_image.png';
 
 const AboutPage = () => {
   return (

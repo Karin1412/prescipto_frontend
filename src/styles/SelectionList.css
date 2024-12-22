@@ -5,6 +5,7 @@
   }
   /* Cột bên trái: Danh sách */
   .specialty-list {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     gap: 10px;

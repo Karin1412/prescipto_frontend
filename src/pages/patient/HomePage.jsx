@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import LargeRoundedCornerButton from '../components/layout/LargeRoundedCornerButton.jsx';
-import DoctorCard from '../components/layout/DoctorCard.jsx';
-import doctorsData from '../data/doctorsData.jsx';
-import '../styles/LargeRoundedCornerButton.css';
-import '../styles/HomePage.css';
+import LargeRoundedCornerButton from '../../components/layout/LargeRoundedCornerButton.jsx';
+import DoctorCard from '../../components/layout/DoctorCard.jsx';
+import doctorsData from '../../data/doctorsData.jsx';
+import '../../styles/LargeRoundedCornerButton.css';
+import '../../styles/HomePage.css';
 
 const Home_Page = () => {
   const navigate = useNavigate();
