@@ -8,7 +8,6 @@ import Home_Page from './pages/patient//HomePage';
 import DoctorsPage from './pages/patient/DoctorsPage';
 import AboutPage from './pages/patient/AboutPage';
 import AppointmentPage from './pages/patient/AppointmentPage';
-
 import Layout from './layout';
 
 const App = () => {

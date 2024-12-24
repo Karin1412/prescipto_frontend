@@ -1,20 +1,17 @@
-/* Layout chia thành 2 phần: bên trái và bên phải */
-.layout {
-    display: flex;
-    gap: 20px;
-  }
-  /* Cột bên trái: Danh sách */
-  .selection-list {
+.menu-options {
+    margin-top: 50px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 200px;
     font-family: "Work Sans", sans-serif;
-  }
-  
-  .selection-button {
+    color: #4B5563;
     background-color: #FFFFFF;
+}
+
+/* Selection list buttons */
+.menu-button {
     border: 1px solid #B4B4B4;
     padding: 10px 15px;
     font-size: 14px;
@@ -22,9 +19,22 @@
     cursor: pointer;
     border-radius: 5px;
     transition: all 0.3s ease;
-  }
-  
-  .selection-button.active {
+}
+
+.menu-button:hover {
+    background-color: #ddd;
+}
+
+.active {
     background-color: #E2E5FF;
-    color: #4B5563;
-  }
+}
+
+.logout {
+    color: red;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.logout:hover {
+    background-color: #faa;
+}

@@ -17,7 +17,7 @@ const specialties = [
 
 const DoctorsPage = () => {
   const location = useLocation();
-  const [selectedSpecialty, setSelectedSpecialty] = useState(null);
+  const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,14 +26,14 @@ const DoctorsPage = () => {
 
   useEffect(() => {
     if (location.state?.specialty) {
-      setSelectedSpecialty(location.state.specialty);
+      setSelected(location.state.specialty);
     }
   }, [location.state]);
 
-  console.log(selectedSpecialty); 
+  console.log(selected); 
   
-  const filteredDoctors = selectedSpecialty
-    ? doctorsData.filter((doctor) => doctor.specialty === selectedSpecialty)
+  const filteredDoctors = selected
+    ? doctorsData.filter((doctor) => doctor.specialty === selected)
     : doctorsData;
 
   const handleDoctorSelect = (doctor) => {
@@ -44,14 +44,14 @@ const DoctorsPage = () => {
     <div className="doctors-page">
       <div className="layout">
         {/* Danh sách chọn chuyên khoa */}
-        <div className="specialty-list">
+        <div className="selection-list">
           {specialties.map((specialty) => (
             <button
               key={specialty.value}
-              className={`specialty-button ${
-                selectedSpecialty === specialty.value ? 'active' : ''
+              className={`selection-button ${
+                selected === specialty.value ? 'active' : ''
               }`}
-              onClick={() => setSelectedSpecialty(specialty.value)}
+              onClick={() => setSelected(specialty.value)}
             >
               {specialty.label}
             </button>
