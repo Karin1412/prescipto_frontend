@@ -1,0 +1,57 @@
+.item-action-button {
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 6px;
+}
+
+.item-action-button.danger > img {
+  transition: filter 0.3s ease;
+}
+
+.item-action-button.primary {
+  border: 1px solid #5f6fff;
+}
+
+.item-action-button.primary:hover {
+  background-color: #5f6fff;
+}
+
+.item-action-button.secondary {
+  background-color: white;
+  border: 1px solid #0FBF00;
+}
+
+.item-action-button.secondary:hover {
+  background-color: #0FBF00;
+}
+
+.item-action-button.danger {
+  background-color: white;
+  border: 1px solid #dc3545;
+}
+
+.item-action-button.danger:hover {
+  background-color: #dc3545;
+}
+
+.item-action-button:hover > img {
+  filter: brightness(0) saturate(100%) invert(1); /* Lọc ảnh thành màu trắng */
+}
+
+.item-action-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.item-action-button:disabled:hover {
+  background-color: #cccccc;
+  cursor: not-allowed; 
+  transition: none; 
+}
+
+.item-action-button:disabled:hover > img {
+  filter: none; 
+}
+
+

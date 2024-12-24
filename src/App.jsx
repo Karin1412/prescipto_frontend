@@ -10,6 +10,7 @@ import DoctorsPage from './pages/patient/DoctorsPage';
 import AboutPage from './pages/patient/AboutPage';
 
 import Layout from './layout';
+import AppointmentManagement from './pages/admin/AppointmentManagement';
 
 const App = () => {
     return (
@@ -22,6 +23,7 @@ const App = () => {
                         <Route path="/about" element={<AboutPage />} />
                         <Route path="/all-doctors" element={<DoctorsPage />} />
                         <Route path="/me/my-appointments" element={<MyAppointmentsPage />} />
+                        <Route path="/appointments" element={<AppointmentManagement />} />
                     </Route>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />

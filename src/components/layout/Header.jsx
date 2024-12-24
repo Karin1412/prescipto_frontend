@@ -78,7 +78,7 @@ function Header() {
             // Nếu không phải loading status, chỉ hiện nút đăng nhập
             !isLoggedIn && (
               //<Link to="/login" className="btn ms-4" id="login_btn"> Đăng nhập </Link>
-                <LargeRoundedCornerButton className="large-rounded-corner-button"
+                <LargeRoundedCornerButton className="large-rounded-corner-button pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
                                     text='Đăng nhập'
                                     variant='primary'
                                     onClick={() => setIsLoggedIn(true)}/>        

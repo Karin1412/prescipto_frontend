@@ -4,7 +4,12 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}", // Các file React trong src
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        worksans: ['"Worksans"', 'sans-serif'],
+        raleway: ['"Raleway"', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 };
