@@ -5,7 +5,7 @@ const DoctorCard = ({ doctor, onClick }) => {
   return (
     <div className="doctor-card" onClick={onClick}>
       <img
-        src={doctor.image || "./Placeholder.png"}
+        src={doctor.image || "/Placeholder.png"}
         alt={doctor.name}
         className="doctor-image"
       />

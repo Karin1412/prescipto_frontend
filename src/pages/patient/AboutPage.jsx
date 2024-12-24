@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../styles/AboutPage.css';
-import aboutImage from '../../../public/about_image.png';
 
 const AboutPage = () => {
   return (
@@ -8,7 +7,7 @@ const AboutPage = () => {
         <h1 className="about-title">VỀ CHÚNG TÔI</h1>
         <div className="about-content">
             <div className="about-image">
-                <img src={aboutImage} alt="Doctors" className="image" />
+                <img src="./about_image.png" alt="Doctors" className="image" />
             </div>
             <div className="about-text">
                     

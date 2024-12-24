@@ -58,7 +58,7 @@ const AppointmentPage = () => {
         <div className="appointment-content">
           {/* Chi tiết bác sĩ */}
           <div className="doctor-section">
-            <img src="/path-to-doctor-image.jpg" className="doctor-image2" />
+            <img src={doctor.image || "/Placeholder.png"} className="image" />
             <div className="doctor-detailinfo">
               <h2>{doctor.name}</h2>
               <div className="doctor-details-row">
@@ -102,7 +102,7 @@ const AppointmentPage = () => {
 
           {/* Danh sách bác sĩ tương tự */}
           <div className="similar-doctors">
-            <h3>Các bác sĩ tương tự</h3>
+            <h2>Các bác sĩ tương tự</h2>
             <div className="doctors-grid">
               {similarDoctors.map((doc) => (
                 <DoctorCard

@@ -7,7 +7,7 @@ const doctorsData = [
       experience: '10 năm kinh nghiệm', 
       description: 'Dr. Richard James có nhiều kinh nghiệm trong chăm sóc sức khỏe toàn diện, đặc biệt trong việc quản lý bệnh mãn tính.', 
       fee: '$50' ,
-      image: './Doctor image.png'
+      image: '/doc-image.png'
     },
     { 
       id: 2, 
