@@ -1,15 +1,26 @@
-import React, { useState } from "react";
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
 import "../../styles/Header.css";
 import LargeRoundedCornerButton from './LargeRoundedCornerButton';
 import '../../styles/LargeRoundedCornerButton.css';
 
 function Header() {
-    // Trạng thái xác định đã đăng nhập hay chưa
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const location = useLocation();
+    const [user, setUser] = useState(null);
 
-    const isActive = (path) => location.pathname === path;
+    useEffect(() => {
+        const userInfo = localStorage.getItem('user');
+        if (userInfo) {
+            setIsLoggedIn(true);
+            setUser(JSON.parse(userInfo));  
+        }
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setIsLoggedIn(false);
+        setUser(null);
+    };
 
     return (
         <header className="header">
@@ -27,64 +38,37 @@ function Header() {
                 <Link to="/contact" className={`nav-item ${isActive('/contact') ? 'active' : ''}`}>Liên hệ</Link>
             </nav>
 
-            {/* Đăng nhập hoặc Combobox và Avatar*/}
-            <div className="user-login-or-avatar">          
-          {/*{user ? ( */}
-          {isLoggedIn ? (
-            <div className="ms-4 dropdown">
-              <button
-                className="btn dropdown-toggle text-white custom-dropdown-toggle"
-                type="button"
-                id="dropDownMenuButton"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <figure className="avatar avatar-nav">
-                  {/*<img
-                    src={user?.avatar ? user?.avatar?.url
-                      : "/images/default_avatar.jpg"}
-                    alt="User Avatar"
-                    className="rounded-circle"
-                  />*/}
-                  <img alt="User Avatar"
-                    className="rounded-circle"></img>
-                </figure>
-                <span className="username">Name</span>
-                {/* Lấy tên (từ khoản trắng cuối cùng) */}
-                {/*<span className="username">{user?.name.split(' ').pop()}</span>*/}
-              </button>
-              <div className="dropdown-menu w-100" aria-labelledby="dropDownMenuButton">
-                {/*{user?.role === "admin" && (
-                  <Link className="dropdown-item" to="/admin/dashboard"> Admin Dashboard{" "} </Link>
+            {/* Đăng nhập hoặc Combobox và Avatar */}
+            <div className="col-6 col-md-2 mt-4 mt-md-0 text-center text-md-end">          
+                {isLoggedIn ? (
+                    <div className="ms-4 dropdown">
+                        <button
+                            className="btn dropdown-toggle text-white custom-dropdown-toggle"
+                            type="button"
+                            id="dropDownMenuButton"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            <figure className="avatar avatar-nav">
+                                <img alt="User Avatar" className="rounded-circle"></img>
+                            </figure>
+                            <span className="username">{user?.name}</span>
+                        </button>
+                        <div className="dropdown-menu w-100" aria-labelledby="dropDownMenuButton">
+                            <a className="dropdown-item" href="/me/my-appointments"> Lịch khám </a>
+                            <a className="dropdown-item" href="/me/medical-records"> Hồ sơ bệnh án </a>   
+                            <a className="dropdown-item text-danger" href="/" onClick={handleLogout}> Đăng xuất </a>  
+                        </div>
+                    </div>
+                ) : (
+                    <LargeRoundedCornerButton 
+                        className="large-rounded-corner-button"
+                        text='Đăng nhập'
+                        variant='primary'
+                        onClick={() => window.location.href = '/login'}  // Dẫn đến trang đăng nhập
+                    />
                 )}
-                
-                {user?.role === "patient" && (
-                <Link className="dropdown-item" to="/me/orders"> Lịch khám{" "} </Link>
-                )}
-
-                {user?.role === "patient" && (
-                <Link className="dropdown-item" to="/me/profile"> Hồ sơ bệnh án{" "} </Link>              
-                )}
-
-                <Link className="dropdown-item text-danger" to="/" onClick={logoutHandler}> Đăng xuất{" "} </Link>
-                */}
-
-                <a className="dropdown-item" href="/me/my-appointments"> Lịch khám{" "} </a>
-                <a className="dropdown-item" href="/me/medical-records"> Hồ sơ bệnh án{" "} </a>   
-                <a className="dropdown-item text-danger" href="/" onClick={() => setIsLoggedIn(false)}> Đăng xuất{" "} </a>  
-              </div>
             </div>
-          ): (
-            // Nếu không phải loading status, chỉ hiện nút đăng nhập
-            !isLoggedIn && (
-              //<Link to="/login" className="btn ms-4" id="login_btn"> Đăng nhập </Link>
-                <LargeRoundedCornerButton className="large-rounded-corner-button pt-[10px] pb-[10px] pl-[30px] pr-[30px]"
-                                    text='Đăng nhập'
-                                    variant='primary'
-                                    onClick={() => setIsLoggedIn(true)}/>        
-              )
-          )}  
-        </div>
         </header>
     );
 }

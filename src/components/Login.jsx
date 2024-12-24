@@ -1,29 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [message, setMessage] = useState('');
-    const navigate = useNavigate(); // Sử dụng hook useNavigate
+    const navigate = useNavigate();
 
+    // Kiểm tra xem đã đăng nhập chưa khi component được render
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        console.log(token)
+        if (token) {
+            navigate('/');
+        }
+    }, [navigate]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const res = await axios.post('http://localhost:5000/api/users/login', formData);
+    e.preventDefault();
+    try {
+        const res = await axios.post('http://localhost:5000/api/users/login', formData, { withCredentials: true });
+
+        if (res.data.token) {
             localStorage.setItem('token', res.data.token);
-            // setMessage('Login successful');
-            navigate('/');
-        } catch (err) {
-            setMessage(err.response.data.message);
+            localStorage.setItem('user', JSON.stringify(res.data.user));
         }
-    };
+
+        navigate('/');
+    } catch (err) {
+        setMessage(err.response?.data?.message || 'Đăng nhập thất bại');
+    }
+};
 
     return (
         <div className="flex justify-center items-center h-screen bg-gray-100">
