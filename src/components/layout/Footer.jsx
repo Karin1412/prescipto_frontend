@@ -20,7 +20,7 @@ const Footer = () => {
                 <p><a href="/contact">Liên lạc</a></p>
             </div>
             <div className="footer-section">
-                <h4>Liên lạc</h4>
+                <h4>LIÊN LẠC</h4>
                 <p>+1-212-456-7890</p>
                 <p>info@gmail.com</p>
             </div>

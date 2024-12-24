@@ -16,12 +16,13 @@
 
 .doctor-card .doctor-image {
   object-fit: cover;
+  height: 200px;
   width: 100%;
 }
 
 .doctor-card .doctor-info h3 {
   font-size: 16px;
-  margin: 5px 0;
+  margin-top: -5px;
   color: #262626;
 }
 
@@ -31,7 +32,7 @@
 }
 
 .doctor-card .status {
-  display: flex;
+  
   align-items: center;
   font-size: 12px;
   margin-top: 10px;
