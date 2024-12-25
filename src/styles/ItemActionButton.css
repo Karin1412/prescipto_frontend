@@ -3,6 +3,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 6px;
+  justify-items: center;
 }
 
 .item-action-button.danger > img {

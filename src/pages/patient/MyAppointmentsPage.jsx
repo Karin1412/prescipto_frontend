@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AppointmentCard from "../../components/layout/AppointmentCard";
 import "../../styles/MyAppointmentsPage.css";
-import appointmentsData from "../../data/appointmentData";
+import appointmentsData from "../../data/appointmentsData";
 import doctorsData from "../../data/doctorsData";
 import patientsData from "../../data/patientsData";
 

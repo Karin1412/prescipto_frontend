@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { AgGridReact } from "ag-grid-react";
 import { ModuleRegistry } from "ag-grid-community";
 import { ClientSideRowModelModule } from "ag-grid-community";
-import appointmentsData from "../../data/appointmentData";
+import appointmentsData from "../../data/appointmentsData";
 import doctorsData from "../../data/doctorsData";
 import patientsData from "../../data/patientsData";
 import ItemActionButton from "../../components/layout/ItemActionButton";
