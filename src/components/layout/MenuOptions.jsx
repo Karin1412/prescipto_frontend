@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../styles/MenuOptions.css';
-
 const MenuOptions = ({ options, activeOption, onOptionClick }) => {
   return (
     <div className="menu-options">

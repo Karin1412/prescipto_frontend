@@ -8,6 +8,9 @@ import Home_Page from './pages/patient//HomePage';
 import DoctorsPage from './pages/patient/DoctorsPage';
 import AboutPage from './pages/patient/AboutPage';
 import AppointmentPage from './pages/patient/AppointmentPage';
+import AddInvoicePage from './pages/doctor/AddInvoicePage';
+import SupplierManagementPage from './pages/doctor/SupplierManagementPage';
+import InvoiceManagementPage from './pages/doctor/InvoiceManagementPage';
 import Layout from './layout';
 
 const App = () => {
@@ -25,6 +28,9 @@ const App = () => {
                     </Route>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/doctor/invoice/add" element={<AddInvoicePage />} />
+                    <Route path="/doctor/suppliers" exact element={<SupplierManagementPage />} />
+                    <Route path="/doctor/invoice" exact element={<InvoiceManagementPage />} />
                 </Routes>
             </BrowserRouter>
             

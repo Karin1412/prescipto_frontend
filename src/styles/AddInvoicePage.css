@@ -1,0 +1,106 @@
+.invoice-form-container {
+    display: flex;
+    font-family: "Work Sans", sans-serif;
+}
+  
+  .form-section {
+    width: 80%;
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .form-row .form-group {
+    flex: 1;
+    margin-right: 15px;
+  }
+  
+  .form-row .form-group:last-child {
+    margin-right: 0;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-total {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .form-row-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: auto;
+    width: 40%;
+  }
+  
+  .form-row-right .form-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  .form-row-right .form-group label {
+    flex: 0 0 30%;
+    text-align: left;
+    margin-right: 10px;
+  }
+  
+  .form-row-right .form-group input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+
+  .input-unit {
+    width: 40px;
+    text-align: right;
+  }
+
+  .vat-display {
+    margin-left: auto;
+  }
+  
+  .total{
+    margin-left: auto;
+  }
+
+  /* Button Styling */
+  .create-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .create-button:hover {
+    background-color: #0056b3;
+  }
+  
