@@ -7,9 +7,8 @@ import "../../styles/ItemActionButton.css";
 
 const SuppilerInfomationPage = () => {
   // Get the current supplier ID
-  const { id } = useParams(); // Lấy id từ URL
-  console.log("Current Supplier ID:", id);
-  const [supplier, setsupplier] = useState([]);
+  const { id } = useParams();
+  const [supplier, setSupplier] = useState([]);
 
   useEffect(() => {
     const currentSupplier = suppliersData.find(
@@ -17,7 +16,7 @@ const SuppilerInfomationPage = () => {
     );
 
     if (currentSupplier) {
-      setsupplier(currentSupplier);
+      setSupplier(currentSupplier);
     }
   }, []);
 
@@ -27,7 +26,7 @@ const SuppilerInfomationPage = () => {
   };
 
   return (
-    <div className="flex flex-row gap-5 mt-7">
+    <div className="flex flex-row gap-5 mt-7 mr-16">
       <div className="w-1/6 ml-6">//Admin nav</div>
       <div className="w-5/6 mr-6">
         <div className="display flex flex-row gap-5 mb-7 items-center">

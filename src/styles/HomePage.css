@@ -48,6 +48,7 @@
 
 .home-page .top-doctors-list {
     justify-self: center;
+    justify-items: center;
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 5 cột có chiều rộng bằng nhau */
     margin: 40px 0px;

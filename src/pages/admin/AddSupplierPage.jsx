@@ -9,7 +9,7 @@ const AddSupplierPage = () => {
   const handleCreateNewSupplier = (e) => {
     e.preventDefault(); 
     if (!inputName.trim()) {
-      alert("Xin điền đầy đủ thông tin!");
+      alert("Vui lòng nhập tên nhà cung cấp!");
     } else {
       toast.success("Tạo nhà cung cấp mới thành công");
       console.log("Tạo nhà cung cấp mới thành công");
@@ -17,7 +17,7 @@ const AddSupplierPage = () => {
   };
 
   return (
-    <div className="flex flex-row gap-5 mt-7">
+    <div className="flex flex-row gap-5 mt-7 mr-16">
       <div className="w-1/6 ml-6">//Admin nav</div>
       <div className="w-5/6 mr-6">
         <div className="display flex flex-row justify-between mb-7 ">
@@ -35,7 +35,7 @@ const AddSupplierPage = () => {
             <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans w-1/4">
               Mã nhà cung cấp:
             </span>
-            <p className="border-[#B4B4B4] rounded-lg h-8 border px-4 pt-1 bg-[#B4B4B4]">
+            <p className="border-[#B4B4B4] rounded-lg h-8 w-fit border px-4 pt-1 bg-[#B4B4B4]">
               NCC001
             </p>
           </div>

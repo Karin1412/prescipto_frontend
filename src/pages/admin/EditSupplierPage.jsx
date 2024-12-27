@@ -8,8 +8,7 @@ import suppliersData from "../../data/suppliersData";
 const EditSupplierPage = () => {
   // Get the current supplier ID
   const { id } = useParams(); // Lấy id từ URL
-
-  const [supplier, setSupplier] = useState([]);
+  const [supplierName, setSupplierName] = useState("");
   const [status, setStatus] = useState("");
 
   useEffect(() => {
@@ -18,7 +17,7 @@ const EditSupplierPage = () => {
     );
 
     if (currentSupplier) {
-      setSupplier(currentSupplier);
+      setSupplierName(currentSupplier.supplierName || "");
       setStatus(currentSupplier.status);
     }
   }, []);
@@ -27,12 +26,20 @@ const EditSupplierPage = () => {
     setStatus(event.target.value);
   };
 
-  const handleUpdateSupplierData = () => {
+
+  const handleUpdateSupplierData = (event) => {
+    event.preventDefault();
+  
+    if (!supplierName.trim()) {
+      alert("Vui lòng nhập tên nhà cung cấp.");
+      return;
+    }
+  
     alert("Lưu thông tin nhà cung cấp thành công");
   };
 
   return (
-    <div className="flex flex-row gap-5 mt-7">
+    <div className="flex flex-row gap-5 mt-7 mr-16">
       <div className="w-1/6 ml-6">//Admin nav</div>
       <div className="w-5/6 mr-6">
         <div className="display flex flex-row gap-5 mb-7">
@@ -48,7 +55,7 @@ const EditSupplierPage = () => {
               Mã nhà cung cấp:
             </span>
             <p className="border-[#B4B4B4] rounded-lg h-8 border px-4 pt-1 bg-[#B4B4B4]">
-              {supplier.id}
+              {id}
             </p>
           </div>
           <div className="display flex flex-row justify-start">
@@ -59,7 +66,7 @@ const EditSupplierPage = () => {
               type="text"
               className="border-[#B4B4B4] rounded-lg h-8 border pl-4 w-1/2"
               placeholder="Nhập tên nhà cung cấp"
-              defaultValue={supplier.supplierName}
+              defaultValue={supplierName}
             />
           </div>
           <div className="display flex flex-row justify-start">
@@ -72,8 +79,8 @@ const EditSupplierPage = () => {
               value={status}
               onChange={handleStatusChange}
             >
-              <option value="Đang hoạt động">Đang hoạt động</option>
-              <option value="Ngừng hoạt động">Ngừng hoạt động</option>
+              <option value="Đang cung cấp">Đang cung cấp</option>
+              <option value="Ngừng cung cấp">Ngừng cung cấp</option>
             </select>
           </div>
 

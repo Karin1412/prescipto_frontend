@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { AgGridReact } from "ag-grid-react";
 import { ModuleRegistry } from "ag-grid-community";
 import { ClientSideRowModelModule } from "ag-grid-community";
-import suppliersData from "../../data/suppliersData";
+import drugsData from "../../data/drugsData";
 import ItemActionButton from "../../components/layout/ItemActionButton";
 import "../../styles/ItemActionButton.css";
 import "../../styles/Popup.css";
@@ -14,60 +14,77 @@ import "../../styles/LargeRoundedCornerButton.css";
 // Đăng ký module ClientSideRowModelModule
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
-const SupplierManagementPage = () => {
-  const [suppilers, setSuppilers] = useState([]);
+const DrugManagementPage = () => {
+  const [drugs, setDrugs] = useState([]);
   const [quickFilterText, setQuickFilterText] = useState("");
   const [showDetelePopup, setShowDetelePopup] = useState(false); // State for detele popup visibility
-  const [suppilerToDelete, setSuppilerToDelete] = useState(null); // Store the suppiler to delete
+  const [drugToDelete, setDrugToDelete] = useState(null); // Store the drug to delete
 
   useEffect(() => {
-    setSuppilers(suppliersData);
+    setDrugs(drugsData);
   }, []);
 
-  // Handle the deletion of an suppiler
-  const deleteSuppilerHandle = (id) => {
-    setSuppilerToDelete(id); // Set the suppiler ID for deletion
+  // Handle the deletion of an drug
+  const deleteDrugHandle = (id) => {
+    setDrugToDelete(id); // Set the drug ID for deletion
     setShowDetelePopup(true); // Show the popup
   };
 
   const handleDeletionConfirmation = () => {
-    const updatedSuppilers = suppliersData.map((suppiler) => {
-      if (suppiler.id === suppilerToDelete) {
-        return { ...suppiler, status: "Ngừng cung cấp" };
+    const updatedDrugs = drugsData.map((drug) => {
+      if (drug.id === drugToDelete) {
+        return { ...drug, status: "Ngừng sử dụng" };
       }
-      return suppiler;
+      return drug;
     });
-    setSuppilers(updatedSuppilers); // Update the state
-    console.log("Nhà cung cấp đã được xóa");
-    toast.success("Nhà cung cấp đã được xóa");
+    setDrugs(updatedDrugs); // Update the state
+    console.log("Thuốc đã được xóa");
+    toast.success("Thuốc đã được xóa");
 
     // Close the popup and reset
     setShowDetelePopup(false);
-    setSuppilerToDelete(null);
+    setDrugToDelete(null);
   };
 
   const handleDeletionCancel = () => {
     setShowDetelePopup(false);
-    setSuppilerToDelete(null);
-    console.log("Xóa nhà cung cấp đã bị hủy");
+    setDrugToDelete(null);
+    console.log("Xóa thuốc đã bị hủy");
   };
 
   const columnDefs = [
     {
-      headerName: "Mã nhà cung cấp",
+      headerName: "Mã thuốc",
       field: "id",
       sortable: true,
       filter: true,
       resizable: true,
+      width: 100,
     },
     {
-      headerName: "Tên nhà cung cấp",
-      field: "supplierName",
+      headerName: "Tên thuốc",
+      field: "drugName",
       sortable: true,
       filter: true,
       resizable: true,
       cellClass: "grid-cell-centered",
-      width: 300,
+    },
+    {
+      headerName: "Hạn sử dụng",
+      field: "expiryDate",
+      sortable: true,
+      filter: true,
+      resizable: true,
+      cellClass: "grid-cell-centered",
+    },
+    {
+      headerName: "Số lượng",
+      field: "quantity",
+      sortable: true,
+      filter: true,
+      resizable: true,
+      cellClass: "grid-cell-centered",
+      width: 100,
     },
     {
       headerName: "Trạng thái",
@@ -79,10 +96,10 @@ const SupplierManagementPage = () => {
       cellStyle: (params) => {
         // Change color based on status value
         switch (params.value) {
-          case "Đang cung cấp":
+          case "Đang sử dụng":
             color = "#5F6FFF";
             break;
-          case "Ngừng cung cấp":
+          case "Ngừng sử dụng":
             color = "#4B5563";
             break;
           default:
@@ -96,14 +113,14 @@ const SupplierManagementPage = () => {
       field: "actions",
       cellRenderer: (params) => (
         <div className="flex">
-          <Link to={`/admin/supplier/${params.data.id}`}>
+          <Link to={`/admin/drug/${params.data.id}`}>
             <ItemActionButton
               img="/src/assets/Information Circle Contained.svg"
               variant="primary"
               className="item-action-button h-6 w-6 m-2 p-1"
             />
           </Link>
-          <Link to={`/admin/supplier/edit/${params.data.id}`}>
+          <Link to={`/admin/drug/edit/${params.data.id}`}>
             <ItemActionButton
               img="/src/assets/Edit.svg"
               variant="secondary"
@@ -114,7 +131,7 @@ const SupplierManagementPage = () => {
             img="/src/assets/Trash.svg"
             variant="danger"
             className="item-action-button h-6 w-6 m-2 p-1"
-            onClick={() => deleteSuppilerHandle(params.data.id)}
+            onClick={() => deleteDrugHandle(params.data.id)}
           />
         </div>
       ),
@@ -122,10 +139,12 @@ const SupplierManagementPage = () => {
     },
   ];
 
-  const rowData = suppilers.map((supplier) => ({
-    id: supplier.id,
-    supplierName: supplier.supplierName,
-    status: supplier.status,
+  const rowData = drugs.map((drug) => ({
+    id: drug.id,
+    drugName: drug.drugName,
+    expiryDate: drug.expiryDate,
+    quantity: drug.quantity,
+    status: drug.status,
   }));
 
   return (
@@ -134,21 +153,21 @@ const SupplierManagementPage = () => {
       <div className="w-5/6 mr-6">
         <div className="display flex flex-row justify-between">
           <span className="uppercase font-medium text-2xl h-auto w-auto text-[#2A2A2A] mb-7 font-raleway">
-            Danh sách Nhà cung cấp
+            Danh sách Thuốc
           </span>
         </div>
 
-        {/* Supplier List */}
+        {/* Drug List */}
         <div className="container">
           <div className="flex justify-between mb-4 items-center">
             <div className="flex justify-between items-center">
               <h1 className="size-6 w-auto uppercase text-[#2A2A2A]">
-                {suppilers.length} Nhà cung cấp
+                {drugs.length} Thuốc
               </h1>
-              <Link to="/admin/supplier/add">
+              <Link to="/admin/drug/add">
                 <LargeRoundedCornerButton
                   className="large-rounded-corner-button py-1 px-5 mx-5"
-                  text="Tạo nhà cung cấp mới"
+                  text="Tạo thuốc mới"
                   variant="primary"
                 />
               </Link>
@@ -174,7 +193,7 @@ const SupplierManagementPage = () => {
                 rowHeight={60}
               />
             ) : (
-              <p>Không có nhà cung cấp nào để hiển thị.</p>
+              <p>Không có thuốc nào để hiển thị.</p>
             )}
           </div>
           {/* Delete Supplier Popup */}
@@ -190,7 +209,7 @@ const SupplierManagementPage = () => {
                     <img src="/src/assets/X black.svg" alt="Close" />
                   </button>
                 </div>
-                <p>Nhà cung cấp sẽ trở về trạng thái "Ngừng cung cấp".</p>
+                <p>Thuốc sẽ trở về trạng thái "Ngừng sử dụng".</p>
                 <div className="button-group">
                   <button className="no-button" onClick={handleDeletionCancel}>
                     Không
@@ -211,4 +230,4 @@ const SupplierManagementPage = () => {
   );
 };
 
-export default SupplierManagementPage;
+export default DrugManagementPage;
