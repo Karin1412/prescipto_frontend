@@ -1,9 +1,12 @@
 import { React, useState } from "react";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import LargeRoundedCornerButton from "../../components/layout/LargeRoundedCornerButton";
 import "../../styles/LargeRoundedCornerButton.css";
 
 const AddSupplierPage = () => {
+    const navigate = useNavigate();
+  
   const [inputName, setInputName] = useState("");
 
   const handleCreateNewSupplier = (e) => {
@@ -13,6 +16,7 @@ const AddSupplierPage = () => {
     } else {
       toast.success("Tạo nhà cung cấp mới thành công");
       console.log("Tạo nhà cung cấp mới thành công");
+      navigate("/admin/suppliers");
     }
   };
 

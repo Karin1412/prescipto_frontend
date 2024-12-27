@@ -11,14 +11,21 @@ import AboutPage from './pages/patient/AboutPage';
 
 import Layout from './layout';
 import AppointmentManagement from './pages/admin/AppointmentManagement';
+
 import SupplierManagementPage from './pages/admin/SupplierManagementPage';
 import AddSupplierPage from './pages/admin/AddSupplierPage';
 import EditSupplierPage from './pages/admin/EditSupplierPage';
 import SuppilerInfomationPage from './pages/admin/SuppilerInfomationPage';
+
 import DrugManagementPage from './pages/admin/DrugManagementPage';
 import AddDrugPage from './pages/admin/AddDrugPage';
 import EditDrugPage from './pages/admin/EditDrugPage';
 import DrugInformationPage from './pages/admin/DrugInformationPage';
+
+import GoodsReceiptNoteManagementPage from './pages/admin/GoodsReceiptNoteManagementPage';
+import GoodsReceiptNoteInformationPage from './pages/admin/GoodsReceiptNoteInformationPage';
+import AddDrugToGoodsReceiptNotePage from './pages/admin/AddDrugToGoodsReceiptNotePage';
+import AddGoodsReceiptNotePage from './pages/admin/AddGoodsReceiptNotePage';
 
 const App = () => {
     return (
@@ -40,6 +47,10 @@ const App = () => {
                         <Route path="/admin/drug/add" element={<AddDrugPage />} />
                         <Route path="/admin/drug/edit/:id" element={<EditDrugPage />} />
                         <Route path="/admin/drug/:id" element={<DrugInformationPage />} />
+                        <Route path="/admin/goods-receipt-notes" exact element={<GoodsReceiptNoteManagementPage />} />
+                        <Route path="/admin/goods-receipt-note/:id" element={<GoodsReceiptNoteInformationPage />} />
+                        <Route path="/admin/goods-receipt-note/add" element={<AddGoodsReceiptNotePage />} />
+                        <Route path="/admin/goods-receipt-note/add/add-drug" element={<AddDrugToGoodsReceiptNotePage />} />
                     </Route>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />

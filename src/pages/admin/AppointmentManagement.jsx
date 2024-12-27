@@ -162,12 +162,14 @@ const AppointmentManagement = () => {
             img="/src/assets/Check Square Contained.svg"
             variant="primary"
             className="item-action-button h-6 w-6 m-2 p-1"
+            type="view-info-button"
             onClick={() => approveAppointmentHandle(params.data.id)}
             disabled={params.data.actionsDisabled}
           />
           <ItemActionButton
             img="/src/assets/X red.svg"
             variant="danger"
+            type="reject-button"
             className="item-action-button h-6 w-6 m-2 p-1"
             onClick={() => rejectAppointmentHandle(params.data.id)}
             disabled={params.data.actionsDisabled}

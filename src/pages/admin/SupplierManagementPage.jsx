@@ -101,6 +101,7 @@ const SupplierManagementPage = () => {
               img="/src/assets/Information Circle Contained.svg"
               variant="primary"
               className="item-action-button h-6 w-6 m-2 p-1"
+              type="view-infomation-button"
             />
           </Link>
           <Link to={`/admin/supplier/edit/${params.data.id}`}>
@@ -108,6 +109,7 @@ const SupplierManagementPage = () => {
               img="/src/assets/Edit.svg"
               variant="secondary"
               className="item-action-button h-6 w-6 m-2 p-1"
+              type="edit-button"
             />
           </Link>
           <ItemActionButton
@@ -115,6 +117,7 @@ const SupplierManagementPage = () => {
             variant="danger"
             className="item-action-button h-6 w-6 m-2 p-1"
             onClick={() => deleteSuppilerHandle(params.data.id)}
+            type="delete-button"
           />
         </div>
       ),

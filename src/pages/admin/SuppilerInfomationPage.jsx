@@ -37,6 +37,7 @@ const SuppilerInfomationPage = () => {
             <ItemActionButton
               className="item-action-button p-1 h-9 w-9"
               img="/src/assets/Edit.svg"
+              type="edit-button"
               variant="secondary"
             />
           </Link>
@@ -44,6 +45,7 @@ const SuppilerInfomationPage = () => {
             className="item-action-button p-1 h-9 w-9"
             onClick={handleDeleteSupplier}
             img="/src/assets/Trash.svg"
+            type="delete-button"
             variant="danger"
           />
         </div>

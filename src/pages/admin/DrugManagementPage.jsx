@@ -17,17 +17,16 @@ ModuleRegistry.registerModules([ClientSideRowModelModule]);
 const DrugManagementPage = () => {
   const [drugs, setDrugs] = useState([]);
   const [quickFilterText, setQuickFilterText] = useState("");
-  const [showDetelePopup, setShowDetelePopup] = useState(false); // State for detele popup visibility
-  const [drugToDelete, setDrugToDelete] = useState(null); // Store the drug to delete
+  const [showDetelePopup, setShowDetelePopup] = useState(false); 
+  const [drugToDelete, setDrugToDelete] = useState(null); 
 
   useEffect(() => {
     setDrugs(drugsData);
   }, []);
 
-  // Handle the deletion of an drug
   const deleteDrugHandle = (id) => {
-    setDrugToDelete(id); // Set the drug ID for deletion
-    setShowDetelePopup(true); // Show the popup
+    setDrugToDelete(id); 
+    setShowDetelePopup(true); 
   };
 
   const handleDeletionConfirmation = () => {
@@ -37,11 +36,10 @@ const DrugManagementPage = () => {
       }
       return drug;
     });
-    setDrugs(updatedDrugs); // Update the state
+    setDrugs(updatedDrugs); // Update drug list
     console.log("Thuốc đã được xóa");
     toast.success("Thuốc đã được xóa");
 
-    // Close the popup and reset
     setShowDetelePopup(false);
     setDrugToDelete(null);
   };
@@ -196,7 +194,7 @@ const DrugManagementPage = () => {
               <p>Không có thuốc nào để hiển thị.</p>
             )}
           </div>
-          {/* Delete Supplier Popup */}
+          {/* Delete Drug Popup */}
           {showDetelePopup && (
             <div className="popup-overlay">
               <div className="popup">

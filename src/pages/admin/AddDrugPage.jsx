@@ -3,8 +3,10 @@ import { toast } from "react-toastify";
 import LargeRoundedCornerButton from "../../components/layout/LargeRoundedCornerButton";
 import "../../styles/LargeRoundedCornerButton.css";
 import suppliersData from "../../data/suppliersData";
+import { useNavigate } from "react-router-dom";
 
 const AddDrugPage = () => {
+  const navigate = useNavigate();
   const [inputName, setInputName] = useState("");
   const [inputImportPrice, setInputImportPrice] = useState("");
   const [inputUnit, setInputUnit] = useState("");
@@ -19,47 +21,51 @@ const AddDrugPage = () => {
       alert("Vui lòng nhập tên thuốc.");
       return false;
     }
-  
+
     if (!selectedSupplier) {
       alert("Vui lòng chọn nhà cung cấp.");
       return false;
     }
-  
-    if (!inputImportPrice || isNaN(Number(inputImportPrice)) || Number(inputImportPrice) <= 0) {
+
+    if (
+      !inputImportPrice ||
+      isNaN(Number(inputImportPrice)) ||
+      Number(inputImportPrice) <= 0
+    ) {
       alert("Giá nhập phải là số hợp lệ và lớn hơn 0.");
       return false;
     }
-  
+
     if (!inputUnit.trim()) {
       alert("Vui lòng nhập đơn vị tính.");
       return false;
     }
-  
+
     if (!inputImportDate) {
       alert("Vui lòng nhập ngày nhập.");
       return false;
     }
-  
+
     if (!inputExpiryDate) {
       alert("Vui lòng nhập hạn sử dụng.");
       return false;
     }
-  
+
     if (new Date(inputImportDate) >= new Date(inputExpiryDate)) {
       alert("Hạn sử dụng phải sau ngày nhập.");
       return false;
     }
-  
+
     if (!inputUsesage.trim()) {
       alert("Vui lòng nhập công dụng.");
       return false;
     }
-  
+
     if (!inputDosage.trim()) {
       alert("Vui lòng nhập liều dùng.");
       return false;
     }
-  
+
     return true;
   };
 
@@ -76,7 +82,9 @@ const AddDrugPage = () => {
         inputUsesage,
         inputDosage,
       });
-     toast.success("Tạo thuốc mới thành công");}
+      toast.success("Tạo thuốc mới thành công");
+    }
+    navigate("/admin/drugs");
   };
 
   const handleSupplierChange = (event) => {

@@ -7,8 +7,9 @@ import ItemActionButton from "../../components/layout/ItemActionButton";
 import "../../styles/ItemActionButton.css";
 
 const DrugInformationPage = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const [drug, setDrug] = useState([]);
+  const [showDetelePopup, setShowDetelePopup] = useState(false);
 
   useEffect(() => {
     const combineData = () => {
@@ -19,21 +20,38 @@ const DrugInformationPage = () => {
           (sup) => sup.id === currentDrug.supplierId
         );
 
-        const updatedDrug = {
+        const combinedDrug = {
           ...currentDrug,
           supplier: supplier ? supplier : null,
         };
 
-        setDrug(updatedDrug);
+        setDrug(combinedDrug);
       }
     };
 
     combineData();
   }, [id]);
 
-  const handleDeleteDrug = () => {
-    // Delete supplier
-    console.log("Delete Supplier ID:", id);
+  const deleteDrugHandle = () => {
+    setShowDetelePopup(true);
+  };
+
+  const handleDeletionConfirmation = () => {
+    drugsData.map((drug) => {
+      if (drug.id === drugToDelete) {
+        return { ...drug, status: "Ngừng sử dụng" };
+      }
+      return drug;
+    });
+
+    console.log("Thuốc đã được xóa");
+    toast.success("Thuốc đã được xóa");
+    setShowDetelePopup(false);
+  };
+
+  const handleDeletionCancel = () => {
+    setShowDetelePopup(false);
+    console.log("Xóa thuốc đã bị hủy");
   };
 
   return (
@@ -53,13 +71,13 @@ const DrugInformationPage = () => {
           </Link>
           <ItemActionButton
             className="item-action-button p-1 h-9 w-9"
-            onClick={handleDeleteDrug}
+            onClick={deleteDrugHandle}
             img="/src/assets/Trash.svg"
             variant="danger"
           />
         </div>
 
-        {/*Display supplier information*/}
+        {/*Display drug information*/}
         <div className="grid grid-cols-4 border border-[#B4B4B4]">
           <div className="col-span-1 p-4 border border-[#B4B4B4]">
             <p className="text-xl">Mã thuốc:</p>
@@ -140,6 +158,35 @@ const DrugInformationPage = () => {
           <div className="col-span-3 p-4 border border-[#B4B4B4]">
             <p>{drug.dosage}</p>
           </div>
+
+          {/* Delete Drug Popup */}
+          {showDetelePopup && (
+            <div className="popup-overlay">
+              <div className="popup">
+                <div className="popup-header">
+                  <h2>Bạn có chắc chắn muốn xóa?</h2>
+                  <button
+                    className="close-button"
+                    onClick={handleDeletionCancel}
+                  >
+                    <img src="/src/assets/X black.svg" alt="Close" />
+                  </button>
+                </div>
+                <p>Thuốc sẽ trở về trạng thái "Ngừng sử dụng".</p>
+                <div className="button-group">
+                  <button className="no-button" onClick={handleDeletionCancel}>
+                    Không
+                  </button>
+                  <button
+                    className="yes-button"
+                    onClick={handleDeletionConfirmation}
+                  >
+                    Có
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
