@@ -17,6 +17,7 @@ import AddUserPage from './pages/admin/AddUserPage';
 import UpdateUserPage from './pages/admin/UpdateUserPage';
 import UserInfoPage from './pages/admin/UserInfoPage';
 import InvoiceInfoPage from './pages/admin/InvoiceInfoPage';
+import InventoryReportPage from './pages/admin/InventoryReportPage';
 
 
 const App = () => {
@@ -42,6 +43,7 @@ const App = () => {
                     <Route path="/admin/user/edit/:userId" exact element={<UpdateUserPage />} />
                     <Route path="/admin/user/:userID" exact element={<UserInfoPage />} />
                     <Route path="/admin/invoice/:invoiceID" exact element={<InvoiceInfoPage />} />
+                    <Route path="/admin/report" exact element={<InventoryReportPage />} />
                 </Routes>
             </BrowserRouter>
             
