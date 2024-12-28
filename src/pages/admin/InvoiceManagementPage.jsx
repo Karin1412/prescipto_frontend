@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import MenuOptions from '../../components/layout/MenuOptions.jsx';
 import { menuOptions } from '../../data/menuOptionsData.jsx';
 import useMenuOptionHandler from '../../components/layout/menuOptionHandlers.jsx';
@@ -16,7 +16,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const InvoiceManagementPage = () => {
-  const location = useLocation();
   const [invoices] = useState(invoiceData); 
   const [searchQuery, setSearchQuery] = useState('');
   const [activeOption, setActiveOption] = useState('invoices');
@@ -123,7 +122,7 @@ const InvoiceManagementPage = () => {
         </div>
 
         <div className="flex justify-between items-center mb-4">
-        <Link to="/doctor/invoice/add">
+        <Link to="/admin/invoice/add">
             <LargeRoundedCornerButton
             className="large-rounded-corner-button py-1 px-5"
             text="Tạo hóa đơn"
