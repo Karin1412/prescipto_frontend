@@ -8,6 +8,7 @@ const useMenuOptionHandler = (setActiveOption) => {
   const handleOptionClick = (option) => {
     if (option === 'logout') {
       alert('Bạn đã đăng xuất!');
+      navigate('/');
     } else {
       setActiveOption(option); // Cập nhật option hiện tại
 

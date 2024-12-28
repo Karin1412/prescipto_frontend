@@ -15,8 +15,8 @@ const AddUserPage = () => {
   const navigate = useNavigate();
 
   const handleCreateInvoice = () => {
-    sessionStorage.setItem("invoiceSuccessMessage", "Người dùng đã được tạo thành công!");
-    navigate('/doctor/user');
+    sessionStorage.setItem("userSuccessMessage", "Người dùng đã được tạo thành công!");
+    navigate('/admin/user');
   };
 
   return (
