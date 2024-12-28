@@ -90,8 +90,8 @@ const InventoryReportPage = () => {
             onChange={handleReportChange}
             className="border-[#B4B4B4] border-2 rounded-lg h-10 px-3 font-medium text-lg"
           >
-            <option value="inventory">Báo cáo tồn kho</option>
-            <option value="statistics">Thống kê</option>
+            <option value="inventory">BÁO CÁO TỒN KHO</option>
+            <option value="statistics">THỐNG KÊ</option>
           </select>
         </div>
 

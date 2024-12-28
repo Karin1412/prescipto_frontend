@@ -30,8 +30,9 @@
 }
 
 .logout {
-    color: red;
+    color: #C30000;
     border-radius: 5px;
+    border: 1px solid #C30000;
     transition: background-color 0.3s;
 }
 
