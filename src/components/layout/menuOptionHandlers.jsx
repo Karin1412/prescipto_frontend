@@ -14,25 +14,25 @@ const useMenuOptionHandler = (setActiveOption) => {
       // Chuyển hướng đến trang tương ứng với option
       switch (option) {
         case 'report':
-          navigate('/report');
+          navigate('/admin/report');
           break;
         case 'appointments':
-          navigate('/appointments');
+          navigate('/admin/appointments');
           break;
         case 'medicines':
-          navigate('/medicines');
+          navigate('/admin/medicines');
           break;
         case 'warehouse':
-          navigate('/warehouse');
+          navigate('/admin/warehouse');
           break;
         case 'invoices':
-          navigate('/doctor/invoice');
+          navigate('/admin/invoice');
           break;
         case 'suppliers':
-          navigate('/doctor/suppliers');
+          navigate('/admin/suppliers');
           break;
         case 'users':
-          navigate('/users');
+          navigate('/admin/user');
           break;
         default:
           break;

@@ -8,15 +8,22 @@ import Home_Page from './pages/patient//HomePage';
 import DoctorsPage from './pages/patient/DoctorsPage';
 import AboutPage from './pages/patient/AboutPage';
 import AppointmentPage from './pages/patient/AppointmentPage';
-import AddInvoicePage from './pages/doctor/AddInvoicePage';
-import SupplierManagementPage from './pages/doctor/SupplierManagementPage';
-import InvoiceManagementPage from './pages/doctor/InvoiceManagementPage';
+import AddInvoicePage from './pages/admin/AddInvoicePage';
+import InvoiceManagementPage from './pages/admin/InvoiceManagementPage';
 import Layout from './layout';
+import { ToastContainer } from 'react-toastify';
+import UserManagementPage from './pages/admin/UserManagementPage';
+import AddUserPage from './pages/admin/AddUserPage';
+import UpdateUserPage from './pages/admin/UpdateUserPage';
+import UserInfoPage from './pages/admin/UserInfoPage';
+import InvoiceInfoPage from './pages/admin/InvoiceInfoPage';
+
 
 const App = () => {
     return (
         <div>
             <BrowserRouter>
+            <ToastContainer />
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home_Page />} />
@@ -28,9 +35,13 @@ const App = () => {
                     </Route>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
-                    <Route path="/doctor/invoice/add" element={<AddInvoicePage />} />
-                    <Route path="/doctor/suppliers" exact element={<SupplierManagementPage />} />
-                    <Route path="/doctor/invoice" exact element={<InvoiceManagementPage />} />
+                    <Route path="/admin/invoice/add" element={<AddInvoicePage />} />
+                    <Route path="/admin/invoice" exact element={<InvoiceManagementPage />} />
+                    <Route path="/admin/user" exact element={<UserManagementPage />} />
+                    <Route path="/admin/user/add" exact element={<AddUserPage />} />
+                    <Route path="/admin/user/edit/:userId" exact element={<UpdateUserPage />} />
+                    <Route path="/admin/user/:userID" exact element={<UserInfoPage />} />
+                    <Route path="/admin/invoice/:invoiceID" exact element={<InvoiceInfoPage />} />
                 </Routes>
             </BrowserRouter>
             

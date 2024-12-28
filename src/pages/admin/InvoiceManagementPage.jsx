@@ -17,7 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const InvoiceManagementPage = () => {
   const location = useLocation();
-  const [invoices] = useState(invoiceData); // Dữ liệu hóa đơn giả lập
+  const [invoices] = useState(invoiceData); 
   const [searchQuery, setSearchQuery] = useState('');
   const [activeOption, setActiveOption] = useState('invoices');
 
@@ -83,7 +83,7 @@ const InvoiceManagementPage = () => {
       headerName: "Hành động",
       field: "invoiceID",
       cellRenderer: (params) => (
-        <Link to={`/doctor/invoice/${params.value}`}>
+        <Link to={`/admin/invoice/${params.value}`}>
           <ItemActionButton
             img="/src/assets/Information Circle Contained.svg"
             variant="primary"

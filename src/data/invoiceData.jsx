@@ -1,33 +1,28 @@
-const invoiceData = [
-    {
-      id: 1,
-      code: "HD001",
-      patientName: "Deena Cooley",
-      date: "2025-12-13",
-      status: "Đã thanh toán",
-    },
-    {
-      id: 2,
-      code: "HD002",
-      patientName: "Deena Cooley",
-      date: "2025-01-13",
-      status: "Chưa thanh toán",
-    },
-    {
-      id: 3,
-      code: "HD003",
-      patientName: "Deena Cooley",
-      date: "2035-08-25",
-      status: "Chưa thanh toán",
-    },
-    {
-      id: 4,
-      code: "HD004",
-      patientName: "Deena Cooley",
-      date: "2035-08-25",
-      status: "Chưa thanh toán",
-    },
-  ];
-  
-  export default invoiceData;
-  
+const invoices = [
+  {
+    invoiceID: "HD001",
+    patientName: "Deena Cooley",
+    invoiceDate: "2025-12-13",
+    invoiceStatus: "Đã thanh toán",
+  },
+  {
+    invoiceID: "HD002",
+    patientName: "John Doe",
+    invoiceDate: "2025-01-15",
+    invoiceStatus: "Chưa thanh toán",
+  },
+  {
+    invoiceID: "HD003",
+    patientName: "Alice Johnson",
+    invoiceDate: "2026-03-20",
+    invoiceStatus: "Đã thanh toán",
+  },
+  {
+    invoiceID: "HD004",
+    patientName: "Robert Smith",
+    invoiceDate: "2026-06-10",
+    invoiceStatus: "Chưa thanh toán",
+  },
+];
+
+export default invoices;
