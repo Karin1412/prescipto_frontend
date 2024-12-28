@@ -50,7 +50,7 @@ const GoodsReceiptNoteManagementPage = () => {
     },
     {
       headerName: "Tổng tiền",
-      field: "totalCost",
+      field: "totalPrice",
       sortable: true,
       filter: true,
       resizable: true,
@@ -92,7 +92,7 @@ const GoodsReceiptNoteManagementPage = () => {
 
   const rowData = goodsReceiptNotes.map((goodsReceiptNote) => ({
     id: goodsReceiptNote.id,
-    totalCost: "1.000.000.000 VND",
+    totalPrice: goodsReceiptNote.totalPrice,
     importDate: goodsReceiptNote.importDate,
     supplierName: goodsReceiptNote.suppiler?.supplierName,
   }));

@@ -10,7 +10,8 @@ const drugsData = [
       dosage: "500mg mỗi 4-6 giờ, không quá 4g mỗi ngày",
       status: "Đang sử dụng",
       quantity: 100,
-      importPrice: 100000000
+      importPrice: 100000000,
+      sellingPrice: 200000000
     },
     {
       id: "TC002",
@@ -23,7 +24,8 @@ const drugsData = [
       dosage: "500mg mỗi 8 giờ",
       status: "Đang sử dụng",
       quantity: 200,
-      importPrice: 200000000
+      importPrice: 200000000,
+      sellingPrice: 200000000
     },
     {
       id: "TC003",
@@ -36,7 +38,8 @@ const drugsData = [
       dosage: "200-400mg mỗi 4-6 giờ",
       status: "Đang sử dụng",
       quantity: 150,
-      importPrice: 300000000
+      importPrice: 300000000,
+      sellingPrice: 200000000
     },
     {
       id: "TC004",
@@ -49,7 +52,8 @@ const drugsData = [
       dosage: "250-500mg mỗi 12 giờ",
       status: "Ngừng sử dụng",
       quantity: 50,
-      importPrice: 400000000
+      importPrice: 400000000,
+      sellingPrice: 200000000
     },
     {
       id: "TC005",
@@ -62,7 +66,8 @@ const drugsData = [
       dosage: "75-325mg mỗi ngày",
       status: "Đang sử dụng",
       quantity: 120,
-      importPrice: 500000000
+      importPrice: 500000000,
+      sellingPrice: 200000000
     }
   ];
   

@@ -10,24 +10,35 @@ import drugsData from "../../data/drugsData";
 import { AgGridReact } from "ag-grid-react";
 import { ModuleRegistry } from "ag-grid-community";
 import { ClientSideRowModelModule } from "ag-grid-community";
-import { useLocation } from "react-router-dom";
 import ItemActionButton from "../../components/layout/ItemActionButton";
 
 // Đăng ký module ClientSideRowModelModule
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const AddGoodsReceiptNotePage = () => {
-  const location = useLocation();
-  const [inputImportDate, setInputImportDate] = useState(sessionStorage.getItem("importDate") || "");
-  const [selectedSupplier, setSelectedSupplier] = useState(sessionStorage.getItem("supplierName") || "");
+  const [inputImportDate, setInputImportDate] = useState(
+    sessionStorage.getItem("importDate") || ""
+  );
+  const [selectedSupplier, setSelectedSupplier] = useState(
+    sessionStorage.getItem("supplierName") || ""
+  );
+  const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
   const [drugs, setDrugs] = useState([]);
 
   useEffect(() => {
     const setAddedDrugs = () => {
-        //Tìm các thuốc đã thêm
-        const drugsAdded = drugsData;
-        setDrugs(drugsAdded);
+      //Tìm các thuốc đã thêm
+      const drugsAdded = drugsData;
+      setDrugs(drugsAdded);
+
+      let newTotalPrice = 0;
+
+      drugsAdded.forEach((drug) => {
+        newTotalPrice += drug.importPrice * drug.quantity;
+      });
+      
+      setTotalPrice(newTotalPrice);
     };
 
     setAddedDrugs();
@@ -146,7 +157,7 @@ const AddGoodsReceiptNotePage = () => {
       return;
     }
 
-    if(drugs.length == 0) {
+    if (drugs.length == 0) {
       alert("Vui lòng thêm ít nhất một loại thuốc!");
       return;
     }
@@ -160,11 +171,11 @@ const AddGoodsReceiptNotePage = () => {
       console.log("Form Submitted Successfully:", {
         selectedSupplier,
         inputImportDate,
+        totalPrice,
         drugs,
       });
       toast.success("Tạo phiếu nhập mới thành công");
       navigate("/admin/goods-receipt-notes");
-
     }
   };
 
@@ -174,6 +185,7 @@ const AddGoodsReceiptNotePage = () => {
 
   const handleRemoveDrugFromGoodsReceiptNoteHandle = (event) => {
     //Xóa thuốc khỏi phiếu
+    //tính lại tổng tiền
   };
 
   const handleAddMedicine = () => {
@@ -265,7 +277,7 @@ const AddGoodsReceiptNotePage = () => {
           <div className="container">
             <div className="flex justify-start gap-8 mb-4 items-center">
               <h1 className="size-6 w-auto uppercase text-[#2A2A2A]">
-                {drugs.length} Thuốc
+                {drugs.length} Thuốc - Tổng tiền: {totalPrice} VND
               </h1>
               <LargeRoundedCornerButton
                 className="large-rounded-corner-button px-5 py-1 self-end"
@@ -275,23 +287,22 @@ const AddGoodsReceiptNotePage = () => {
               />
             </div>
             <div>
-                {rowData && rowData.length > 0 ? (
-            <div className="ag-theme-quartz h-[360px]">
-            <AgGridReact
-              columnDefs={columnDefs}
-              rowData={rowData}
-              rowModelType="clientSide"
-              domLayout="normal"
-              pagination={true}
-              paginationPageSize={5}
-              rowHeight={60}
-            />
-        </div>
+              {rowData && rowData.length > 0 ? (
+                <div className="ag-theme-quartz h-[360px]">
+                  <AgGridReact
+                    columnDefs={columnDefs}
+                    rowData={rowData}
+                    rowModelType="clientSide"
+                    domLayout="normal"
+                    pagination={true}
+                    paginationPageSize={5}
+                    rowHeight={60}
+                  />
+                </div>
               ) : (
                 <p className="h-[30px]">Không có thuốc nào để hiển thị.</p>
               )}
             </div>
-
           </div>
 
           <LargeRoundedCornerButton

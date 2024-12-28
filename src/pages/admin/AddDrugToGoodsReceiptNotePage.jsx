@@ -11,14 +11,18 @@ const AddDrugToGoodsReceiptNotePage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { selectedSupplier, importDate } = location.state || {};
-  const [isAddAvailableDrugFormVisible, setIsAddAvailableDrugFormVisible] = useState(true);
+  const [isAddAvailableDrugFormVisible, setIsAddAvailableDrugFormVisible] =
+    useState(true);
   const [inputName, setInputName] = useState("");
-  const [inputImportPrice, setInputImportPrice] = useState("");
+  const [inputNewDrugImportPrice, setInputNewDruImportPrice] = useState();
+  const [inputNewDrugSellingPrice, setInputNewDruSellingPrice] = useState();
   const [inputUnit, setInputUnit] = useState("");
   const [inputNewDrugQuantity, setInputNewDrugQuantity] = useState();
-  const [inputAvailableDrugQuantity, setInputAvailableDrugQuantity] = useState();
+  const [inputAvailableDrugQuantity, setInputAvailableDrugQuantity] =
+    useState();
   const [inputNewDrugExpiryDate, setInputNewDrugExpiryDate] = useState("");
-  const [inputAvailableDrugExpiryDate, setInputAvailableDrugExpiryDate] = useState("");
+  const [inputAvailableDrugExpiryDate, setInputAvailableDrugExpiryDate] =
+    useState("");
   const [inputUsesage, setInputUsesage] = useState("");
   const [inputDosage, setInputDosage] = useState("");
   const [supplier, setSupplier] = useState([]);
@@ -68,15 +72,6 @@ const AddDrugToGoodsReceiptNotePage = () => {
       return false;
     }
 
-    if (
-      !inputImportPrice ||
-      isNaN(Number(inputImportPrice)) ||
-      Number(inputImportPrice) <= 0
-    ) {
-      alert("Giá nhập phải là số hợp lệ và lớn hơn 0.");
-      return false;
-    }
-
     if (isAddAvailableDrugFormVisible) {
       if (
         !inputAvailableDrugQuantity ||
@@ -87,7 +82,30 @@ const AddDrugToGoodsReceiptNotePage = () => {
         alert("Số lượng phải là số số nguyên và lớn hơn 0.");
         return false;
       }
+
+      if (new Date(importDate) >= new Date(inputAvailableDrugExpiryDate)) {
+        alert("Hạn sử dụng phải sau ngày nhập.");
+        return false;
+      }
     } else {
+      if (
+        !inputNewDrugImportPrice ||
+        isNaN(Number(inputNewDrugImportPrice)) ||
+        Number(inputNewDrugImportPrice) <= 0
+      ) {
+        alert("Giá nhập phải là số hợp lệ và lớn hơn 0.");
+        return false;
+      }
+
+      if (
+        !inputNewDrugSellingPrice ||
+        isNaN(Number(inputNewDrugSellingPrice)) ||
+        Number(inputNewDrugSellingPrice) <= 0
+      ) {
+        alert("Giá bán phải là số hợp lệ và lớn hơn 0.");
+        return false;
+      }
+
       if (
         !inputNewDrugQuantity ||
         isNaN(Number(inputNewDrugQuantity)) ||
@@ -95,6 +113,11 @@ const AddDrugToGoodsReceiptNotePage = () => {
         Number(inputNewDrugQuantity) <= 0
       ) {
         alert("Số lượng phải là số số nguyên và lớn hơn 0.");
+        return false;
+      }
+
+      if (new Date(importDate) >= new Date(inputNewDrugExpiryDate)) {
+        alert("Hạn sử dụng phải sau ngày nhập.");
         return false;
       }
     }
@@ -117,18 +140,6 @@ const AddDrugToGoodsReceiptNotePage = () => {
     } else {
       if (!inputNewDrugExpiryDate) {
         alert("Vui lòng nhập hạn sử dụng.");
-        return false;
-      }
-    }
-
-    if (isAddAvailableDrugFormVisible) {
-      if (new Date(importDate) >= new Date(inputAvailableDrugExpiryDate)) {
-        alert("Hạn sử dụng phải sau ngày nhập.");
-        return false;
-      }
-    } else {
-      if (new Date(importDate) >= new Date(inputNewDrugExpiryDate)) {
-        alert("Hạn sử dụng phải sau ngày nhập.");
         return false;
       }
     }
@@ -157,6 +168,9 @@ const AddDrugToGoodsReceiptNotePage = () => {
         toast.success("Tạo thuốc mới và thêm vào phiếu nhập thành công");
       }
 
+      //cộng vào tổng tiền
+
+      
       navigate("/admin/goods-receipt-note/add", {});
     }
   };
@@ -325,8 +339,25 @@ const AddDrugToGoodsReceiptNotePage = () => {
                   type="text"
                   className="border-[#B4B4B4] rounded-lg h-8 border pl-4"
                   placeholder="Nhập giá nhập"
-                  value={inputImportPrice}
-                  onChange={(e) => setInputImportPrice(e.target.value)}
+                  value={inputNewDrugImportPrice}
+                  onChange={(e) => setInputNewDruImportPrice(e.target.value)}
+                />
+                <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
+                  VND
+                </span>
+              </div>
+            </div>
+            <div className="flex flex-col justify-start w-1/4">
+              <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
+                Giá bán:
+              </span>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  className="border-[#B4B4B4] rounded-lg h-8 border pl-4"
+                  placeholder="Nhập giá bán"
+                  value={setInputNewDruSellingPrice}
+                  onChange={(e) => setInputNewDruSellingPrice(e.target.value)}
                 />
                 <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
                   VND

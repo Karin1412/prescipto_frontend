@@ -19,7 +19,6 @@ const GoodsReceiptNoteInformationPage = () => {
   const [goodsReceiptNotes, setGoodsReceiptNotes] = useState([]);
   const [drugs, setDrugs] = useState([]);
   const [quickFilterText, setQuickFilterText] = useState("");
-  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     const combineData = () => {
@@ -40,23 +39,6 @@ const GoodsReceiptNoteInformationPage = () => {
 
         setGoodsReceiptNotes(combinedGoodsReceiptNote);
       }
-
-      //Find All Drugs
-      const matchingDrugIds = goodsReceiptNoteDetailsData
-        .filter((detail) => detail.GRNId === id) // Lọc các goodsReceiptNoteDetails có GRNId === id
-        .map((detail) => detail.drugId); // Lấy danh sách drugId
-
-      //Lọc drugsData dựa trên drugId
-      const matchingDrugs = drugsData.filter((drug) =>
-        matchingDrugIds.includes(drug.id)
-      );
-      setDrugs(matchingDrugs);
-      
-      // Tính tổng tiền của tất cả các matchingDrugs
-      const totalAmount = matchingDrugs.reduce((total, drug) => {
-        return total + (drug.importPrice * drug.quantity);
-      }, 0); 
-      setTotalPrice(totalAmount);
     };
 
     combineData();
@@ -178,7 +160,7 @@ const GoodsReceiptNoteInformationPage = () => {
           </div>
 
           <div className="col-span-3 p-4 border border-[#B4B4B4]">
-            <p>{totalPrice} VND</p>
+            <p>{goodsReceiptNotes.totalPrice} VND</p>
           </div>
         </div>
 
