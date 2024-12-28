@@ -179,7 +179,7 @@ const UserManagementPage = () => {
       </div>
 
       <div className="w-5/6 mr-6">
-        <div className="flex justify-between items-center mt-10">
+        <div className="flex justify-between items-center mt-5">
           <span className="uppercase font-medium text-2xl text-[#2A2A2A] mb-7 font-raleway">
             DANH SÁCH NGƯỜI DÙNG
           </span>

@@ -38,7 +38,7 @@ const UserInfoPage = () => {
         />
       </div>
       <div className="w-5/6 mr-6">
-        <div className="flex flex-row gap-5 mb-7 items-center">
+        <div className="flex flex-row gap-5 mb-7 mt-5 items-center">
           <span className="uppercase font-medium text-2xl text-[#2A2A2A] font-raleway">
             Chi tiết người dùng
           </span>
