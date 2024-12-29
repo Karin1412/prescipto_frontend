@@ -17,14 +17,14 @@ import AddSupplierPage from './pages/admin/AddSupplierPage';
 import EditSupplierPage from './pages/admin/EditSupplierPage';
 import SuppilerInfomationPage from './pages/admin/SuppilerInfomationPage';
 
-import DrugManagementPage from './pages/admin/DrugManagementPage';
-import AddDrugPage from './pages/admin/AddDrugPage';
-import EditDrugPage from './pages/admin/EditDrugPage';
-import DrugInformationPage from './pages/admin/DrugInformationPage';
+import MedicineManagementPage from './pages/admin/MedicineManagementPage';
+import AddMedicinePage from './pages/admin/AddMedicinePage';
+import EditMedicinePage from './pages/admin/EditMedicinePage';
+import MedicineInformationPage from './pages/admin/MedicineInformationPage';
 
 import GoodsReceiptNoteManagementPage from './pages/admin/GoodsReceiptNoteManagementPage';
 import GoodsReceiptNoteInformationPage from './pages/admin/GoodsReceiptNoteInformationPage';
-import AddDrugToGoodsReceiptNotePage from './pages/admin/AddDrugToGoodsReceiptNotePage';
+import AddMedicineToGoodsReceiptNotePage from './pages/admin/AddMedicineToGoodsReceiptNotePage';
 import AddGoodsReceiptNotePage from './pages/admin/AddGoodsReceiptNotePage';
 
 const App = () => {
@@ -43,14 +43,14 @@ const App = () => {
                         <Route path="/admin/supplier/add" element={<AddSupplierPage />} />
                         <Route path="/admin/supplier/edit/:id" element={<EditSupplierPage />} />
                         <Route path="/admin/supplier/:id" element={<SuppilerInfomationPage />} />
-                        <Route path="/admin/drugs/" exact element={<DrugManagementPage />} />
-                        <Route path="/admin/drug/add" element={<AddDrugPage />} />
-                        <Route path="/admin/drug/edit/:id" element={<EditDrugPage />} />
-                        <Route path="/admin/drug/:id" element={<DrugInformationPage />} />
+                        <Route path="/admin/medicines/" exact element={<MedicineManagementPage />} />
+                        <Route path="/admin/medicine/add" element={<AddMedicinePage />} />
+                        <Route path="/admin/medicine/edit/:id" element={<EditMedicinePage />} />
+                        <Route path="/admin/medicine/:id" element={<MedicineInformationPage />} />
                         <Route path="/admin/goods-receipt-notes" exact element={<GoodsReceiptNoteManagementPage />} />
                         <Route path="/admin/goods-receipt-note/:id" element={<GoodsReceiptNoteInformationPage />} />
                         <Route path="/admin/goods-receipt-note/add" element={<AddGoodsReceiptNotePage />} />
-                        <Route path="/admin/goods-receipt-note/add/add-drug" element={<AddDrugToGoodsReceiptNotePage />} />
+                        <Route path="/admin/goods-receipt-note/add/add-medicine" element={<AddMedicineToGoodsReceiptNotePage />} />
                     </Route>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
