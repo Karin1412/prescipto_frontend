@@ -40,7 +40,7 @@ const InvoiceManagementPage = () => {
   
   const columnDefs = [
     {
-      headerName: "STT",
+      headerName: "#",
       valueGetter: (params) => params.node.rowIndex + 1,
       width: 70,
     },

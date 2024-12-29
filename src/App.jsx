@@ -18,6 +18,8 @@ import UpdateUserPage from './pages/admin/UpdateUserPage';
 import UserInfoPage from './pages/admin/UserInfoPage';
 import InvoiceInfoPage from './pages/admin/InvoiceInfoPage';
 import InventoryReportPage from './pages/admin/InventoryReportPage';
+import PatientProfilePage from './pages/patient/PatientProfilePage';
+import { patientData, testResultsData } from './data/PatientProfileData';
 
 
 const App = () => {
@@ -25,6 +27,7 @@ const App = () => {
         <div>
             <BrowserRouter>
             <ToastContainer />
+            
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home_Page />} />
@@ -33,6 +36,7 @@ const App = () => {
                         <Route path="/all-doctors" element={<DoctorsPage />} />
                         <Route path="/me/my-appointments" element={<My_Appointments_Page />} />
                         <Route path="/appointment/:id" element={<AppointmentPage />} />
+                        <Route path="/me/profile" element={<PatientProfilePage patient={patientData} testResults={testResultsData}/>} />
                     </Route>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
