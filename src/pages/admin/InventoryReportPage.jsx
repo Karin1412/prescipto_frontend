@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
+import { AgGridReact } from "ag-grid-react";
+import { ModuleRegistry } from "ag-grid-community";
+import { ClientSideRowModelModule } from "ag-grid-community";
 import MenuOptions from '../../components/layout/MenuOptions.jsx';
 import { menuOptions } from '../../data/menuOptionsData.jsx';
 import useMenuOptionHandler from '../../components/layout/menuOptionHandlers.jsx';
 import inventoryData from '../../data/inventoryData.jsx';
+
+// Đăng ký các module cần thiết
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
 const InventoryReportPage = () => {
   const navigate = useNavigate();
@@ -18,42 +21,14 @@ const InventoryReportPage = () => {
   const [selectedReport, setSelectedReport] = useState('inventory'); // State để quản lý lựa chọn báo cáo
 
   const columnDefs = [
-    {
-      headerName: "Tháng",
-      field: "month",
-      flex: 1,
-    },
-    {
-      headerName: "Năm",
-      field: "year",
-      flex: 1,
-    },
-    {
-      headerName: "Mã thuốc",
-      field: "medicineID",
-      flex: 2,
-    },
-    {
-      headerName: "Tên thuốc",
-      field: "medicineName",
-      flex: 3,
-    },
-    {
-      headerName: "Tồn đầu",
-      field: "openingStock",
-      flex: 2,
-    },
-    {
-      headerName: "Phát sinh",
-      field: "incurred",
-      flex: 2,
-    },
-    {
-      headerName: "Tồn cuối",
-      field: "closingStock",
-      flex: 2,
-    },
-  ];
+    { headerName: "Tháng", field: "month", flex: 1, headerClass: "font-bold" },
+    { headerName: "Năm", field: "year", flex: 1, headerClass: "font-bold" },
+    { headerName: "Mã thuốc", field: "medicineID", flex: 2, headerClass: "font-bold" },
+    { headerName: "Tên thuốc", field: "medicineName", flex: 3, headerClass: "font-bold" },
+    { headerName: "Tồn đầu", field: "openingStock", flex: 2, headerClass: "font-bold" },
+    { headerName: "Phát sinh", field: "incurred", flex: 2, headerClass: "font-bold" },
+    { headerName: "Tồn cuối", field: "closingStock", flex: 2, headerClass: "font-bold" },
+  ];  
 
   const filteredData = inventoryData.filter(
     (item) =>
@@ -62,14 +37,6 @@ const InventoryReportPage = () => {
       (item.medicineID.includes(searchQuery) ||
         item.medicineName.toLowerCase().includes(searchQuery.toLowerCase()))
   );
-
-  const handleReportChange = (e) => {
-    const selectedValue = e.target.value;
-    setSelectedReport(selectedValue);
-    if (selectedValue === 'statistics') {
-      navigate('/admin/statistics'); // Điều hướng đến trang thống kê
-    }
-  };
 
   return (
     <div className="flex flex-row gap-5 mt-7">
@@ -83,16 +50,10 @@ const InventoryReportPage = () => {
       </div>
 
       <div className="w-5/6 mr-6">
-        {/* Tiêu đề dropdown chuyển đổi báo cáo */}
         <div className="flex justify-between items-center mt-5 mb-5">
-          <select
-            value={selectedReport}
-            onChange={handleReportChange}
-            className="border-[#B4B4B4] border-2 rounded-lg h-10 px-3 font-medium text-lg"
-          >
-            <option value="inventory">BÁO CÁO TỒN KHO</option>
-            <option value="statistics">THỐNG KÊ</option>
-          </select>
+          <span className="uppercase font-medium text-2xl text-[#2A2A2A] font-raleway">
+            BÁO CÁO TỒN
+          </span>
         </div>
 
         {/* Bộ lọc và tìm kiếm */}
@@ -139,9 +100,9 @@ const InventoryReportPage = () => {
         {/* Bảng dữ liệu */}
         <div className="container h-full">
           <div
-            className="ag-theme-alpine bg-white rounded-lg shadow-md"
+            className="ag-theme-quartz"
             style={{
-              height: 'calc(100vh - 200px)',
+              height: 'calc(100vh - 150px)',
             }}
           >
             {filteredData && filteredData.length > 0 ? (
@@ -168,7 +129,6 @@ const InventoryReportPage = () => {
             )}
           </div>
         </div>
-
       </div>
     </div>
   );

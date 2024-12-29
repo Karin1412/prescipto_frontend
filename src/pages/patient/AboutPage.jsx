@@ -7,7 +7,7 @@ const AboutPage = () => {
         <h1 className="about-title">VỀ CHÚNG TÔI</h1>
         <div className="about-content">
             <div className="about-image">
-                <img src="./about_image.png" alt="Doctors" className="image" />
+                <img src="/src/assets/about_image.png" alt="Doctors" className="image" />
             </div>
             <div className="about-text">
                     

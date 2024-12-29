@@ -151,7 +151,7 @@ const InvoiceManagementPage = () => {
               quickFilterText={searchQuery}
               suppressHorizontalScroll={true}
               onGridReady={(params) => {
-                params.api.sizeColumnsToFit(); // Tự động căn chỉnh cột vừa màn hình
+                params.api.sizeColumnsToFit();
               }}
             />
             

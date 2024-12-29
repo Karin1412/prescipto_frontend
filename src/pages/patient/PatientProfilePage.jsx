@@ -28,7 +28,7 @@ const PatientProfilePage = ({ patient = {}, testResults = [] }) => {
   return (
     <div className="p-6 font-sans">
       <section className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">HỒ SƠ BỆNH ÁN</h2>
+       
         <div className="flex items-center">          
           <img
             src={patient.image ||"https://via.placeholder.com/150"}

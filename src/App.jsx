@@ -37,17 +37,18 @@ const App = () => {
                         <Route path="/me/my-appointments" element={<My_Appointments_Page />} />
                         <Route path="/appointment/:id" element={<AppointmentPage />} />
                         <Route path="/me/profile" element={<PatientProfilePage patient={patientData} testResults={testResultsData}/>} />
+                        <Route path="/admin/invoice/add" element={<AddInvoicePage />} />
+                        <Route path="/admin/invoice" exact element={<InvoiceManagementPage />} />
+                        <Route path="/admin/user" exact element={<UserManagementPage />} />
+                        <Route path="/admin/user/add" exact element={<AddUserPage />} />
+                        <Route path="/admin/user/edit/:userId" exact element={<UpdateUserPage />} />
+                        <Route path="/admin/user/:userID" exact element={<UserInfoPage />} />
+                        <Route path="/admin/invoice/:invoiceID" exact element={<InvoiceInfoPage />} />
+                        <Route path="/admin/report" exact element={<InventoryReportPage />} />
                     </Route>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
-                    <Route path="/admin/invoice/add" element={<AddInvoicePage />} />
-                    <Route path="/admin/invoice" exact element={<InvoiceManagementPage />} />
-                    <Route path="/admin/user" exact element={<UserManagementPage />} />
-                    <Route path="/admin/user/add" exact element={<AddUserPage />} />
-                    <Route path="/admin/user/edit/:userId" exact element={<UpdateUserPage />} />
-                    <Route path="/admin/user/:userID" exact element={<UserInfoPage />} />
-                    <Route path="/admin/invoice/:invoiceID" exact element={<InvoiceInfoPage />} />
-                    <Route path="/admin/report" exact element={<InventoryReportPage />} />
+                    
                 </Routes>
             </BrowserRouter>
             
