@@ -6,7 +6,7 @@ import "../../styles/LargeRoundedCornerButton.css";
 import goodsReceiptNotesData from "../../data/goodsReceiptNotesData";
 import goodsReceiptNoteDetailsData from "../../data/goodsReceiptNoteDetailsData";
 import suppliersData from "../../data/suppliersData";
-import drugsData from "../../data/drugsData";
+import medicinesData from "../../data/medicinesData";
 import { AgGridReact } from "ag-grid-react";
 import { ModuleRegistry } from "ag-grid-community";
 import { ClientSideRowModelModule } from "ag-grid-community";
@@ -22,26 +22,26 @@ const AddGoodsReceiptNotePage = () => {
   const [selectedSupplier, setSelectedSupplier] = useState(
     sessionStorage.getItem("supplierName") || ""
   );
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalCost, setTotalCost] = useState(0);
   const navigate = useNavigate();
-  const [drugs, setDrugs] = useState([]);
+  const [medicines, setMedicines] = useState([]);
 
   useEffect(() => {
-    const setAddedDrugs = () => {
+    const setAddedMedicines = () => {
       //Tìm các thuốc đã thêm
-      const drugsAdded = drugsData;
-      setDrugs(drugsAdded);
+      const medicinesAdded = medicinesData;
+      setMedicines(medicinesAdded);
 
-      let newTotalPrice = 0;
+      let newTotalCost = 0;
 
-      drugsAdded.forEach((drug) => {
-        newTotalPrice += drug.importPrice * drug.quantity;
+      medicinesAdded.forEach((medicine) => {
+        newTotalCost += medicine.importPrice * medicine.quantity;
       });
       
-      setTotalPrice(newTotalPrice);
+      setTotalCost(newTotalCost);
     };
 
-    setAddedDrugs();
+    setAddedMedicines();
   }, []);
 
   const columnDefs = [
@@ -55,7 +55,7 @@ const AddGoodsReceiptNotePage = () => {
     },
     {
       headerName: "Tên thuốc",
-      field: "drugName",
+      field: "medicineName",
       sortable: true,
       filter: true,
       resizable: true,
@@ -119,7 +119,7 @@ const AddGoodsReceiptNotePage = () => {
             className="item-action-button h-6 w-6 m-2 p-1"
             type="delete-button"
             onClick={() =>
-              handleRemoveDrugFromGoodsReceiptNoteHandle(params.data.id)
+              handleRemoveMedicineFromGoodsReceiptNoteHandle(params.data.id)
             }
           />
         </div>
@@ -128,14 +128,14 @@ const AddGoodsReceiptNotePage = () => {
     },
   ];
 
-  const rowData = drugs.map((drug) => ({
-    id: drug.id,
-    drugName: drug.drugName,
-    expiryDate: drug.expiryDate,
-    quantity: drug.quantity,
-    unit: drug.unit,
-    importPrice: drug.importPrice + " VND",
-    totalImportPrice: drug.importPrice * drug.quantity + " VND",
+  const rowData = medicines.map((medicine) => ({
+    id: medicine.id,
+    medicineName: medicine.medicineName,
+    expiryDate: medicine.expiryDate,
+    quantity: medicine.quantity,
+    unit: medicine.unit,
+    importPrice: medicine.importPrice + " VND",
+    totalImportPrice: medicine.importPrice * medicine.quantity + " VND",
   }));
 
   const isValidForm = () => {
@@ -157,7 +157,7 @@ const AddGoodsReceiptNotePage = () => {
       return;
     }
 
-    if (drugs.length == 0) {
+    if (medicines.length == 0) {
       alert("Vui lòng thêm ít nhất một loại thuốc!");
       return;
     }
@@ -171,8 +171,8 @@ const AddGoodsReceiptNotePage = () => {
       console.log("Form Submitted Successfully:", {
         selectedSupplier,
         inputImportDate,
-        totalPrice,
-        drugs,
+        totalCost,
+        medicines,
       });
       toast.success("Tạo phiếu nhập mới thành công");
       navigate("/admin/goods-receipt-notes");
@@ -183,7 +183,7 @@ const AddGoodsReceiptNotePage = () => {
     setSelectedSupplier(event.target.value);
   };
 
-  const handleRemoveDrugFromGoodsReceiptNoteHandle = (event) => {
+  const handleRemoveMedicineFromGoodsReceiptNoteHandle = (event) => {
     //Xóa thuốc khỏi phiếu
     //tính lại tổng tiền
   };
@@ -210,7 +210,7 @@ const AddGoodsReceiptNotePage = () => {
     sessionStorage.setItem("selectedSupplier", supplierName);
     sessionStorage.setItem("importDate", importDate);
 
-    navigate("/admin/goods-receipt-note/add/add-drug", {
+    navigate("/admin/goods-receipt-note/add/add-medicine", {
       state: { selectedSupplier, importDate },
     });
   };
@@ -273,11 +273,11 @@ const AddGoodsReceiptNotePage = () => {
             </div>
           </div>
 
-          {/*Display drug list*/}
+          {/*Display medicine list*/}
           <div className="container">
             <div className="flex justify-start gap-8 mb-4 items-center">
               <h1 className="size-6 w-auto uppercase text-[#2A2A2A]">
-                {drugs.length} Thuốc - Tổng tiền: {totalPrice} VND
+                {medicines.length} Thuốc - Tổng tiền: {totalCost} VND
               </h1>
               <LargeRoundedCornerButton
                 className="large-rounded-corner-button px-5 py-1 self-end"

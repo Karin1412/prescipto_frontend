@@ -1,47 +1,47 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import drugsData from "../../data/drugsData";
+import medicinesData from "../../data/medicinesData";
 import suppliersData from "../../data/suppliersData";
 import ItemActionButton from "../../components/layout/ItemActionButton";
 import "../../styles/ItemActionButton.css";
 
-const DrugInformationPage = () => {
+const MedicineInformationPage = () => {
   const { id } = useParams();
-  const [drug, setDrug] = useState([]);
+  const [medicine, setMedicine] = useState([]);
   const [showDetelePopup, setShowDetelePopup] = useState(false);
 
   useEffect(() => {
     const combineData = () => {
-      const currentDrug = drugsData.find((drug) => drug.id === id);
+      const currentMedicine = medicinesData.find((medicine) => medicine.id === id);
 
-      if (currentDrug) {
+      if (currentMedicine) {
         const supplier = suppliersData.find(
-          (sup) => sup.id === currentDrug.supplierId
+          (sup) => sup.id === currentMedicine.supplierId
         );
 
-        const combinedDrug = {
-          ...currentDrug,
+        const combinedMedicine = {
+          ...currentMedicine,
           supplier: supplier ? supplier : null,
         };
 
-        setDrug(combinedDrug);
+        setMedicine(combinedMedicine);
       }
     };
 
     combineData();
   }, [id]);
 
-  const deleteDrugHandle = () => {
+  const deleteMedicineHandle = () => {
     setShowDetelePopup(true);
   };
 
   const handleDeletionConfirmation = () => {
-    drugsData.map((drug) => {
-      if (drug.id === drugToDelete) {
-        return { ...drug, status: "Ngừng sử dụng" };
+    medicinesData.map((medicine) => {
+      if (medicine.id === medicineToDelete) {
+        return { ...medicine, status: "Ngừng sử dụng" };
       }
-      return drug;
+      return medicine;
     });
 
     console.log("Thuốc đã được xóa");
@@ -62,7 +62,7 @@ const DrugInformationPage = () => {
           <span className="uppercase font-medium text-2xl h-auto w-auto text-[#2A2A2A] font-raleway">
             Chi tiết thuốc
           </span>
-          <Link to={`/admin/drug/edit/${drug.id}`}>
+          <Link to={`/admin/medicine/edit/${medicine.id}`}>
             <ItemActionButton
               className="item-action-button p-1 h-9 w-9"
               img="/src/assets/Edit.svg"
@@ -71,20 +71,20 @@ const DrugInformationPage = () => {
           </Link>
           <ItemActionButton
             className="item-action-button p-1 h-9 w-9"
-            onClick={deleteDrugHandle}
+            onClick={deleteMedicineHandle}
             img="/src/assets/Trash.svg"
             variant="danger"
           />
         </div>
 
-        {/*Display drug information*/}
+        {/*Display medicine information*/}
         <div className="grid grid-cols-4 border border-[#B4B4B4]">
           <div className="col-span-1 p-4 border border-[#B4B4B4]">
             <p className="text-xl">Mã thuốc:</p>
           </div>
 
           <div className="col-span-3 p-4 border border-[#B4B4B4]">
-            <p className="text-xl">{drug.id}</p>
+            <p className="text-xl">{medicine.id}</p>
           </div>
 
           <div className="col-span-1 p-4 border border-[#B4B4B4]">
@@ -92,7 +92,7 @@ const DrugInformationPage = () => {
           </div>
 
           <div className="col-span-3 p-4 border border-[#B4B4B4]">
-            <p>{drug.drugName}</p>
+            <p>{medicine.medicineName}</p>
           </div>
 
           <div className="col-span-1 p-4 border border-[#B4B4B4]">
@@ -100,7 +100,7 @@ const DrugInformationPage = () => {
           </div>
 
           <div className="col-span-3 p-4 border border-[#B4B4B4]">
-            <p>{drug.status}</p>
+            <p>{medicine.status}</p>
           </div>
 
           <div className="col-span-1 p-4 border border-[#B4B4B4]">
@@ -108,7 +108,7 @@ const DrugInformationPage = () => {
           </div>
 
           <div className="col-span-3 p-4 border border-[#B4B4B4]">
-            <p>{drug.expiryDate}</p>
+            <p>{medicine.expiryDate}</p>
           </div>
 
           <div className="col-span-1 p-4 border border-[#B4B4B4]">
@@ -116,7 +116,7 @@ const DrugInformationPage = () => {
           </div>
 
           <div className="col-span-3 p-4 border border-[#B4B4B4]">
-            <p>{drug.importDate}</p>
+            <p>{medicine.importDate}</p>
           </div>
 
           <div className="col-span-1 p-4 border border-[#B4B4B4]">
@@ -124,7 +124,7 @@ const DrugInformationPage = () => {
           </div>
 
           <div className="col-span-3 p-4 border border-[#B4B4B4]">
-            <p>{drug.quantity}</p>
+            <p>{medicine.quantity}</p>
           </div>
 
           <div className="col-span-1 p-4 border border-[#B4B4B4]">
@@ -132,7 +132,7 @@ const DrugInformationPage = () => {
           </div>
 
           <div className="col-span-3 p-4 border border-[#B4B4B4]">
-            <p>{drug.unit}</p>
+            <p>{medicine.unit}</p>
           </div>
 
           <div className="col-span-1 p-4 border border-[#B4B4B4]">
@@ -140,7 +140,7 @@ const DrugInformationPage = () => {
           </div>
 
           <div className="col-span-3 p-4 border border-[#B4B4B4]">
-            <p>{drug.supplier?.supplierName}</p>
+            <p>{medicine.supplier?.supplierName}</p>
           </div>
 
           <div className="col-span-1 p-4 border border-[#B4B4B4]">
@@ -148,7 +148,7 @@ const DrugInformationPage = () => {
           </div>
 
           <div className="col-span-3 p-4 border border-[#B4B4B4]">
-            <p>{drug.usesage}</p>
+            <p>{medicine.usesage}</p>
           </div>
 
           <div className="col-span-1 p-4 border border-[#B4B4B4]">
@@ -156,10 +156,10 @@ const DrugInformationPage = () => {
           </div>
 
           <div className="col-span-3 p-4 border border-[#B4B4B4]">
-            <p>{drug.dosage}</p>
+            <p>{medicine.dosage}</p>
           </div>
 
-          {/* Delete Drug Popup */}
+          {/* Delete Medicine Popup */}
           {showDetelePopup && (
             <div className="popup-overlay">
               <div className="popup">
@@ -193,4 +193,4 @@ const DrugInformationPage = () => {
   );
 };
 
-export default DrugInformationPage;
+export default MedicineInformationPage;

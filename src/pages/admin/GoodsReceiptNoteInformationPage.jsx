@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import goodsReceiptNotesData from "../../data/goodsReceiptNotesData";
 import goodsReceiptNoteDetailsData from "../../data/goodsReceiptNoteDetailsData";
 import suppliersData from "../../data/suppliersData";
-import drugsData from "../../data/drugsData";
+import medicinesData from "../../data/medicinesData";
 import "../../styles/ItemActionButton.css";
 import { AgGridReact } from "ag-grid-react";
 import { ModuleRegistry } from "ag-grid-community";
@@ -17,7 +17,7 @@ const GoodsReceiptNoteInformationPage = () => {
   // Get the current supplier ID
   const { id } = useParams();
   const [goodsReceiptNotes, setGoodsReceiptNotes] = useState([]);
-  const [drugs, setDrugs] = useState([]);
+  const [medicines, setMedicines] = useState([]);
   const [quickFilterText, setQuickFilterText] = useState("");
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const GoodsReceiptNoteInformationPage = () => {
     },
     {
       headerName: "Tên thuốc",
-      field: "drugName",
+      field: "medicineName",
       sortable: true,
       filter: true,
       resizable: true,
@@ -109,14 +109,14 @@ const GoodsReceiptNoteInformationPage = () => {
     },
   ];
 
-  const rowData = drugs.map((drug) => ({
-    id: drug.id,
-    drugName: drug.drugName,
-    expiryDate: drug.expiryDate,
-    quantity: drug.quantity,
-    unit: drug.unit,
-    importPrice: drug.importPrice + " VND",
-    totalImportPrice: drug.importPrice * drug.quantity + " VND",
+  const rowData = medicines.map((medicine) => ({
+    id: medicine.id,
+    medicineName: medicine.medicineName,
+    expiryDate: medicine.expiryDate,
+    quantity: medicine.quantity,
+    unit: medicine.unit,
+    importPrice: medicine.importPrice + " VND",
+    totalImportPrice: medicine.importPrice * medicine.quantity + " VND",
   }));
 
   return (
@@ -160,15 +160,15 @@ const GoodsReceiptNoteInformationPage = () => {
           </div>
 
           <div className="col-span-3 p-4 border border-[#B4B4B4]">
-            <p>{goodsReceiptNotes.totalPrice} VND</p>
+            <p>{goodsReceiptNotes.totalCost} VND</p>
           </div>
         </div>
 
-        {/*Display drug list*/}
+        {/*Display medicine list*/}
         <div className="container">
           <div className="flex justify-between mb-4 items-center">
             <h1 className="size-6 w-auto uppercase text-[#2A2A2A]">
-              {drugs.length} Thuốc
+              {medicines.length} Thuốc
             </h1>
 
             <input

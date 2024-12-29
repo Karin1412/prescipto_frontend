@@ -1,7 +1,7 @@
-const drugsData = [
+const medicinesData = [
     {
       id: "TC001",
-      drugName: "Paracetamol",
+      medicineName: "Paracetamol",
       importDate: "2024-01-15",
       expiryDate: "2025-01-15",
       supplierId: "NCC001",
@@ -15,7 +15,7 @@ const drugsData = [
     },
     {
       id: "TC002",
-      drugName: "Amoxicillin",
+      medicineName: "Amoxicillin",
       importDate: "2024-02-10",
       expiryDate: "2025-02-10",
       supplierId: "NCC002",
@@ -29,7 +29,7 @@ const drugsData = [
     },
     {
       id: "TC003",
-      drugName: "Ibuprofen",
+      medicineName: "Ibuprofen",
       importDate: "2024-03-20",
       expiryDate: "2025-03-20",
       supplierId: "NCC003",
@@ -43,7 +43,7 @@ const drugsData = [
     },
     {
       id: "TC004",
-      drugName: "Cefuroxime",
+      medicineName: "Cefuroxime",
       importDate: "2024-04-15",
       expiryDate: "2025-04-15",
       supplierId: "NCC004",
@@ -57,7 +57,7 @@ const drugsData = [
     },
     {
       id: "TC005",
-      drugName: "Aspirin",
+      medicineName: "Aspirin",
       importDate: "2024-05-05",
       expiryDate: "2025-05-05",
       supplierId: "NCC005",
@@ -71,5 +71,5 @@ const drugsData = [
     }
   ];
   
-  export default drugsData;
+  export default medicinesData;
   

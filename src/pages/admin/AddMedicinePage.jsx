@@ -5,7 +5,7 @@ import "../../styles/LargeRoundedCornerButton.css";
 import suppliersData from "../../data/suppliersData";
 import { useNavigate } from "react-router-dom";
 
-const AddDrugPage = () => {
+const AddMedicinePage = () => {
   const navigate = useNavigate();
   const [inputName, setInputName] = useState("");
   const [inputImportPrice, setInputImportPrice] = useState();
@@ -79,7 +79,7 @@ const AddDrugPage = () => {
     return true;
   };
 
-  const handleCreateNewDrug = (e) => {
+  const handleCreateNewMedicine = (e) => {
     e.preventDefault();
     if (isValidForm()) {
       console.log("Form Submitted Successfully:", {
@@ -95,7 +95,7 @@ const AddDrugPage = () => {
       });
       toast.success("Tạo thuốc mới thành công");
     }
-    navigate("/admin/drugs");
+    navigate("/admin/medicines");
   };
 
   const handleSupplierChange = (event) => {
@@ -112,8 +112,8 @@ const AddDrugPage = () => {
           </span>
         </div>
 
-        {/* Add Drug Layout */}
-        <form onSubmit={handleCreateNewDrug} className="flex flex-col gap-8">
+        {/* Add Medicine Layout */}
+        <form onSubmit={handleCreateNewMedicine} className="flex flex-col gap-8">
           <div className="flex flex-row justify-between">
             <div className="flex flex-col justify-start">
               <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
@@ -271,4 +271,4 @@ const AddDrugPage = () => {
   );
 };
 
-export default AddDrugPage;
+export default AddMedicinePage;

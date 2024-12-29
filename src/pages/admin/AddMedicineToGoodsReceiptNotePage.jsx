@@ -4,30 +4,30 @@ import { useLocation } from "react-router-dom";
 import LargeRoundedCornerButton from "../../components/layout/LargeRoundedCornerButton";
 import "../../styles/LargeRoundedCornerButton.css";
 import suppliersData from "../../data/suppliersData";
-import drugsData from "../../data/drugsData";
+import medicinesData from "../../data/medicinesData";
 import { useNavigate } from "react-router-dom";
 
-const AddDrugToGoodsReceiptNotePage = () => {
+const AddMedicineToGoodsReceiptNotePage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { selectedSupplier, importDate } = location.state || {};
-  const [isAddAvailableDrugFormVisible, setIsAddAvailableDrugFormVisible] =
+  const [isAddAvailableMedicineFormVisible, setIsAddAvailableMedicineFormVisible] =
     useState(true);
   const [inputName, setInputName] = useState("");
-  const [inputNewDrugImportPrice, setInputNewDruImportPrice] = useState();
-  const [inputNewDrugSellingPrice, setInputNewDruSellingPrice] = useState();
+  const [inputNewMedicineImportPrice, setInputNewDruImportPrice] = useState();
+  const [inputNewMedicineSellingPrice, setInputNewDruSellingPrice] = useState();
   const [inputUnit, setInputUnit] = useState("");
-  const [inputNewDrugQuantity, setInputNewDrugQuantity] = useState();
-  const [inputAvailableDrugQuantity, setInputAvailableDrugQuantity] =
+  const [inputNewMedicineQuantity, setInputNewMedicineQuantity] = useState();
+  const [inputAvailableMedicineQuantity, setInputAvailableMedicineQuantity] =
     useState();
-  const [inputNewDrugExpiryDate, setInputNewDrugExpiryDate] = useState("");
-  const [inputAvailableDrugExpiryDate, setInputAvailableDrugExpiryDate] =
+  const [inputNewMedicineExpiryDate, setInputNewMedicineExpiryDate] = useState("");
+  const [inputAvailableMedicineExpiryDate, setInputAvailableMedicineExpiryDate] =
     useState("");
   const [inputUsesage, setInputUsesage] = useState("");
   const [inputDosage, setInputDosage] = useState("");
   const [supplier, setSupplier] = useState([]);
-  const [drugs, setDrugs] = useState([]);
-  const [selectedDrug, setSelectedDrug] = useState("");
+  const [medicines, setMedicines] = useState([]);
+  const [selectedMedicine, setSelectedMedicine] = useState("");
 
   if (!selectedSupplier || !importDate) {
     return (
@@ -38,32 +38,32 @@ const AddDrugToGoodsReceiptNotePage = () => {
   }
 
   useEffect(() => {
-    const findSupplierAndDrugs = () => {
+    const findSupplierAndMedicines = () => {
       const currentSupplier = suppliersData.find(
         (sup) => sup.id === selectedSupplier
       );
 
       if (currentSupplier) {
         setSupplier(currentSupplier);
-        const supplierDrugs = drugsData.filter(
-          (drug) => drug.supplierId === currentSupplier.id
+        const supplierMedicines = medicinesData.filter(
+          (medicine) => medicine.supplierId === currentSupplier.id
         );
 
-        if (supplierDrugs.length > 0) {
-          setDrugs(supplierDrugs);
+        if (supplierMedicines.length > 0) {
+          setMedicines(supplierMedicines);
         }
       }
     };
 
-    findSupplierAndDrugs();
+    findSupplierAndMedicines();
   }, []);
 
   const toggleVisibility = () => {
-    setIsAddAvailableDrugFormVisible(!isAddAvailableDrugFormVisible);
+    setIsAddAvailableMedicineFormVisible(!isAddAvailableMedicineFormVisible);
   };
 
-  const handleDrugChange = (event) => {
-    setSelectedDrug(event.target.value);
+  const handleMedicineChange = (event) => {
+    setSelectedMedicine(event.target.value);
   };
 
   const isValidForm = () => {
@@ -72,51 +72,51 @@ const AddDrugToGoodsReceiptNotePage = () => {
       return false;
     }
 
-    if (isAddAvailableDrugFormVisible) {
+    if (isAddAvailableMedicineFormVisible) {
       if (
-        !inputAvailableDrugQuantity ||
-        isNaN(Number(inputAvailableDrugQuantity)) ||
-        !Number.isInteger(inputAvailableDrugQuantity) ||
-        Number(inputAvailableDrugQuantity) <= 0
+        !inputAvailableMedicineQuantity ||
+        isNaN(Number(inputAvailableMedicineQuantity)) ||
+        !Number.isInteger(inputAvailableMedicineQuantity) ||
+        Number(inputAvailableMedicineQuantity) <= 0
       ) {
         alert("Số lượng phải là số số nguyên và lớn hơn 0.");
         return false;
       }
 
-      if (new Date(importDate) >= new Date(inputAvailableDrugExpiryDate)) {
+      if (new Date(importDate) >= new Date(inputAvailableMedicineExpiryDate)) {
         alert("Hạn sử dụng phải sau ngày nhập.");
         return false;
       }
     } else {
       if (
-        !inputNewDrugImportPrice ||
-        isNaN(Number(inputNewDrugImportPrice)) ||
-        Number(inputNewDrugImportPrice) <= 0
+        !inputNewMedicineImportPrice ||
+        isNaN(Number(inputNewMedicineImportPrice)) ||
+        Number(inputNewMedicineImportPrice) <= 0
       ) {
         alert("Giá nhập phải là số hợp lệ và lớn hơn 0.");
         return false;
       }
 
       if (
-        !inputNewDrugSellingPrice ||
-        isNaN(Number(inputNewDrugSellingPrice)) ||
-        Number(inputNewDrugSellingPrice) <= 0
+        !inputNewMedicineSellingPrice ||
+        isNaN(Number(inputNewMedicineSellingPrice)) ||
+        Number(inputNewMedicineSellingPrice) <= 0
       ) {
         alert("Giá bán phải là số hợp lệ và lớn hơn 0.");
         return false;
       }
 
       if (
-        !inputNewDrugQuantity ||
-        isNaN(Number(inputNewDrugQuantity)) ||
-        !Number.isInteger(inputNewDrugQuantity) ||
-        Number(inputNewDrugQuantity) <= 0
+        !inputNewMedicineQuantity ||
+        isNaN(Number(inputNewMedicineQuantity)) ||
+        !Number.isInteger(inputNewMedicineQuantity) ||
+        Number(inputNewMedicineQuantity) <= 0
       ) {
         alert("Số lượng phải là số số nguyên và lớn hơn 0.");
         return false;
       }
 
-      if (new Date(importDate) >= new Date(inputNewDrugExpiryDate)) {
+      if (new Date(importDate) >= new Date(inputNewMedicineExpiryDate)) {
         alert("Hạn sử dụng phải sau ngày nhập.");
         return false;
       }
@@ -132,13 +132,13 @@ const AddDrugToGoodsReceiptNotePage = () => {
       return false;
     }
 
-    if (isAddAvailableDrugFormVisible) {
-      if (!inputAvailableDrugExpiryDate) {
+    if (isAddAvailableMedicineFormVisible) {
+      if (!inputAvailableMedicineExpiryDate) {
         alert("Vui lòng nhập hạn sử dụng.");
         return false;
       }
     } else {
-      if (!inputNewDrugExpiryDate) {
+      if (!inputNewMedicineExpiryDate) {
         alert("Vui lòng nhập hạn sử dụng.");
         return false;
       }
@@ -157,14 +157,14 @@ const AddDrugToGoodsReceiptNotePage = () => {
     return true;
   };
 
-  const handleCreateNewDrugAndAddToGoodsReceiptNote = (e) => {
+  const handleCreateNewMedicineAndAddToGoodsReceiptNote = (e) => {
     e.preventDefault();
     if (isValidForm()) {
-      if (isAddAvailableDrugFormVisible) {
+      if (isAddAvailableMedicineFormVisible) {
         // Add to Goods Receipt Note
         toast.success("Thêm vào phiếu nhập thành công");
       } else {
-        //Create new drug and to Goods Receipt Note
+        //Create new medicine and to Goods Receipt Note
         toast.success("Tạo thuốc mới và thêm vào phiếu nhập thành công");
       }
 
@@ -175,16 +175,16 @@ const AddDrugToGoodsReceiptNotePage = () => {
     }
   };
 
-  const handleAddAvailableDrugToGoodsReceiptNote = () => {};
+  const handleAddAvailableMedicineToGoodsReceiptNote = () => {};
 
   return (
     <div className="flex flex-row gap-5 mt-7 mr-16">
       <div className="w-1/6 ml-6">//Admin nav</div>
 
-      {/*  Add Available Drug To Goods Receipt Note */}
+      {/*  Add Available Medicine To Goods Receipt Note */}
       <div
         className={`w-3/4 -5/6 mr-6 transition-all duration-300 ${
-          isAddAvailableDrugFormVisible ? "block" : "hidden"
+          isAddAvailableMedicineFormVisible ? "block" : "hidden"
         }`}
       >
         <div className="display flex flex-row mb-7 gap-5">
@@ -200,7 +200,7 @@ const AddDrugToGoodsReceiptNotePage = () => {
         </div>
 
         <form
-          onSubmit={handleAddAvailableDrugToGoodsReceiptNote}
+          onSubmit={handleAddAvailableMedicineToGoodsReceiptNote}
           className="flex flex-col gap-8"
         >
           <div className="flex flex-row justify-between">
@@ -209,18 +209,18 @@ const AddDrugToGoodsReceiptNotePage = () => {
                 Tên thuốc:
               </span>
               <select
-                id="drug-select"
+                id="medicine-select"
                 type="text"
                 className="border-[#B4B4B4] rounded-lg h-8 border px-4"
-                value={selectedDrug}
-                onChange={handleDrugChange}
+                value={selectedMedicine}
+                onChange={handleMedicineChange}
               >
                 <option value="" disabled>
                   -- Chọn một loại thuốc --
                 </option>
-                {drugs.map((drug) => (
-                  <option key={drug.id} value={drug.id}>
-                    {drug.id} - {drug.drugName}
+                {medicines.map((medicine) => (
+                  <option key={medicine.id} value={medicine.id}>
+                    {medicine.id} - {medicine.medicineName}
                   </option>
                 ))}
               </select>
@@ -245,9 +245,9 @@ const AddDrugToGoodsReceiptNotePage = () => {
               <input
                 type="date"
                 className="border-[#B4B4B4] rounded-lg h-8 border pl-4 pr-2"
-                value={inputAvailableDrugExpiryDate}
+                value={inputAvailableMedicineExpiryDate}
                 onChange={(e) =>
-                  setInputAvailableDrugExpiryDate(e.target.value)
+                  setInputAvailableMedicineExpiryDate(e.target.value)
                 }
               />
             </div>
@@ -260,8 +260,8 @@ const AddDrugToGoodsReceiptNotePage = () => {
                 type="text"
                 className="border-[#B4B4B4] rounded-lg h-8 border pl-4"
                 placeholder="Nhập số lượng"
-                value={inputAvailableDrugQuantity}
-                onChange={(e) => setInputAvailableDrugQuantity(e.target.value)}
+                value={inputAvailableMedicineQuantity}
+                onChange={(e) => setInputAvailableMedicineQuantity(e.target.value)}
               />
             </div>
           </div>
@@ -275,10 +275,10 @@ const AddDrugToGoodsReceiptNotePage = () => {
         </form>
       </div>
 
-      {/* Create New Drug And Add To Goods Receipt Note */}
+      {/* Create New Medicine And Add To Goods Receipt Note */}
       <div
         className={`w-3/4 -5/6 mr-6 transition-all duration-300 ${
-          isAddAvailableDrugFormVisible ? "hidden" : "block"
+          isAddAvailableMedicineFormVisible ? "hidden" : "block"
         }`}
       >
         <div className="display flex flex-row mb-7 gap-5">
@@ -294,7 +294,7 @@ const AddDrugToGoodsReceiptNotePage = () => {
         </div>
 
         <form
-          onSubmit={handleCreateNewDrugAndAddToGoodsReceiptNote}
+          onSubmit={handleCreateNewMedicineAndAddToGoodsReceiptNote}
           className="flex flex-col gap-8"
         >
           <div className="flex flex-row justify-between">
@@ -339,7 +339,7 @@ const AddDrugToGoodsReceiptNotePage = () => {
                   type="text"
                   className="border-[#B4B4B4] rounded-lg h-8 border pl-4"
                   placeholder="Nhập giá nhập"
-                  value={inputNewDrugImportPrice}
+                  value={inputNewMedicineImportPrice}
                   onChange={(e) => setInputNewDruImportPrice(e.target.value)}
                 />
                 <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
@@ -372,8 +372,8 @@ const AddDrugToGoodsReceiptNotePage = () => {
                 type="text"
                 className="border-[#B4B4B4] rounded-lg h-8 border pl-4"
                 placeholder="Nhập số lượng"
-                value={inputNewDrugQuantity}
-                onChange={(e) => setInputNewDrugQuantity(e.target.value)}
+                value={inputNewMedicineQuantity}
+                onChange={(e) => setInputNewMedicineQuantity(e.target.value)}
               />
             </div>
             <div className="flex flex-col w-1/4">
@@ -407,8 +407,8 @@ const AddDrugToGoodsReceiptNotePage = () => {
               <input
                 type="date"
                 className="border-[#B4B4B4] rounded-lg h-8 border pl-4 pr-2"
-                value={inputNewDrugExpiryDate}
-                onChange={(e) => setInputNewDrugExpiryDate(e.target.value)}
+                value={inputNewMedicineExpiryDate}
+                onChange={(e) => setInputNewMedicineExpiryDate(e.target.value)}
               />
             </div>
           </div>
@@ -451,4 +451,4 @@ const AddDrugToGoodsReceiptNotePage = () => {
   );
 };
 
-export default AddDrugToGoodsReceiptNotePage;
+export default AddMedicineToGoodsReceiptNotePage;

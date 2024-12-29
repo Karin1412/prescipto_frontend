@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import LargeRoundedCornerButton from "../../components/layout/LargeRoundedCornerButton";
 import "../../styles/LargeRoundedCornerButton.css";
-import drugsData from "../../data/drugsData";
+import medicinesData from "../../data/medicinesData";
 import suppliersData from "../../data/suppliersData";
 
-const EditDrugPage = () => {
+const EditMedicinePage = () => {
   // Get the current supplier ID
   const { id } = useParams(); // Lấy id từ URL
   const [inputName, setInputName] = useState("");
@@ -22,35 +22,35 @@ const EditDrugPage = () => {
 
   useEffect(() => {
     const combineData = () => {
-      const currentDrug = drugsData.find((drug) => drug.id === id);
+      const currentMedicine = medicinesData.find((medicine) => medicine.id === id);
 
-      if (currentDrug) {
+      if (currentMedicine) {
         const supplier = suppliersData.find(
-          (sup) => sup.id === currentDrug.supplierId
+          (sup) => sup.id === currentMedicine.supplierId
         );
 
-        const updatedDrug = {
-          ...currentDrug,
+        const updatedMedicine = {
+          ...currentMedicine,
           supplier: supplier ? supplier : null,
         };
 
-      // Cập nhật các input values sau khi drug được set
-      setInputName(updatedDrug.drugName);  
-      setInputImportPrice(updatedDrug.importPrice);
-      setInputQuantity(updatedDrug.quantity);
-      setInputUnit(updatedDrug.unit);
-      setInputImportDate(updatedDrug.importDate);
-      setInputExpiryDate(updatedDrug.expiryDate);
-      setInputStatus(updatedDrug.status);
-      setInputUsesage(updatedDrug.usesage);
-      setInputDosage(updatedDrug.dosage);
+      // Cập nhật các input values sau khi medicine được set
+      setInputName(updatedMedicine.medicineName);  
+      setInputImportPrice(updatedMedicine.importPrice);
+      setInputQuantity(updatedMedicine.quantity);
+      setInputUnit(updatedMedicine.unit);
+      setInputImportDate(updatedMedicine.importDate);
+      setInputExpiryDate(updatedMedicine.expiryDate);
+      setInputStatus(updatedMedicine.status);
+      setInputUsesage(updatedMedicine.usesage);
+      setInputDosage(updatedMedicine.dosage);
 
-        if (updatedDrug.supplier) {
-          setSelectedSupplier(updatedDrug.supplier.supplierName);
+        if (updatedMedicine.supplier) {
+          setSelectedSupplier(updatedMedicine.supplier.supplierName);
         } else {
           setSelectedSupplier("");
         }
-        setInputStatus(updatedDrug.status);
+        setInputStatus(updatedMedicine.status);
       }
     };
 
@@ -128,7 +128,7 @@ const EditDrugPage = () => {
     return true;
   };
 
-  const handleUpdateDrug = (e) => {
+  const handleUpdateMedicine = (e) => {
     e.preventDefault();
     if (isValidForm()) {
       console.log("Form Submitted Successfully:", {
@@ -157,8 +157,8 @@ const EditDrugPage = () => {
           </span>
         </div>
 
-        {/* Add Drug Layout */}
-        <form onSubmit={handleUpdateDrug} className="flex flex-col gap-8">
+        {/* Add Medicine Layout */}
+        <form onSubmit={handleUpdateMedicine} className="flex flex-col gap-8">
           <div className="flex flex-row justify-between">
             <div className="flex flex-col justify-start">
               <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
@@ -173,7 +173,7 @@ const EditDrugPage = () => {
                 Tên thuốc:
               </span>
               <input
-                id="drugNameInput"
+                id="medicineNameInput"
                 type="text"
                 className="border-[#B4B4B4] rounded-lg h-8 border pl-4"
                 placeholder="Nhập tên thuốc"
@@ -211,7 +211,7 @@ const EditDrugPage = () => {
               </span>
               <div className="flex gap-2">
                 <input
-                  id="drugImportPriceInput"
+                  id="medicineImportPriceInput"
                   type="number"
                   className="border-[#B4B4B4] rounded-lg h-8 border pl-4"
                   placeholder="Nhập giá nhập"
@@ -228,7 +228,7 @@ const EditDrugPage = () => {
                 Số lượng:
               </span>
                 <input
-                  id="drugQuantityInput"
+                  id="medicineQuantityInput"
                   type="number"
                   step="1"
                   className="border-[#B4B4B4] rounded-lg h-8 border pl-4"
@@ -242,7 +242,7 @@ const EditDrugPage = () => {
                 Đơn vị tính:
               </span>
               <input
-                id="drugUnitInput"
+                id="medicineUnitInput"
                 type="text"
                 className="border-[#B4B4B4] rounded-lg h-8 border pl-4"
                 placeholder="Nhập đơn vị tính"
@@ -297,7 +297,7 @@ const EditDrugPage = () => {
               Công dụng:
             </span>
             <textarea
-              id="drugUsesageInput"
+              id="medicineUsesageInput"
               type="text"
               className="border-[#B4B4B4] rounded-lg h-8 border pl-4 pr-2 pt-1"
               value={inputUsesage}
@@ -311,7 +311,7 @@ const EditDrugPage = () => {
               Liều dùng:
             </span>
             <textarea
-              id="drugDosageInput"
+              id="medicineDosageInput"
               type="text"
               className="border-[#B4B4B4] rounded-lg h-8 border pl-4 pr-2 pt-1"
               value={inputDosage}
@@ -332,4 +332,4 @@ const EditDrugPage = () => {
   );
 };
 
-export default EditDrugPage;
+export default EditMedicinePage;
