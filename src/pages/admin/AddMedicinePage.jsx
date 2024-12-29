@@ -10,6 +10,7 @@ const AddMedicinePage = () => {
   const [inputName, setInputName] = useState("");
   const [inputImportPrice, setInputImportPrice] = useState();
   const [inputSellingPrice, setInputSellingPrice] = useState();
+  const [inputQuantity, setInputQuantity] = useState();
   const [inputUnit, setInputUnit] = useState("");
   const [inputImportDate, setInputImportDate] = useState("");
   const [inputExpiryDate, setInputExpiryDate] = useState("");
@@ -43,6 +44,15 @@ const AddMedicinePage = () => {
       Number(inputSellingPrice) <= 0
     ) {
       alert("Giá bán phải là số hợp lệ và lớn hơn 0.");
+      return false;
+    }
+
+    if (
+      !inputQuantity ||
+      isNaN(Number(inputQuantity)) ||
+      Number(inputQuantity) <= 0
+    ) {
+      alert("Số lượng phải là số hợp lệ và lớn hơn 0.");
       return false;
     }
 
@@ -87,6 +97,7 @@ const AddMedicinePage = () => {
         selectedSupplier,
         inputImportPrice,
         inputSellingPrice,
+        inputQuantity,
         inputUnit,
         inputImportDate,
         inputExpiryDate,
@@ -113,7 +124,10 @@ const AddMedicinePage = () => {
         </div>
 
         {/* Add Medicine Layout */}
-        <form onSubmit={handleCreateNewMedicine} className="flex flex-col gap-8">
+        <form
+          onSubmit={handleCreateNewMedicine}
+          className="flex flex-col gap-8"
+        >
           <div className="flex flex-row justify-between">
             <div className="flex flex-col justify-start">
               <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
@@ -159,14 +173,14 @@ const AddMedicinePage = () => {
           </div>
 
           <div className="flex flex-row justify-start gap-20">
-            <div className="flex flex-col justify-start w-1/4">
+            <div className="flex flex-col justify-start w-1/3">
               <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
                 Giá nhập:
               </span>
-              <div className="flex gap-2">
+              <div className="flex justify-between gap-2">
                 <input
                   type="number"
-                  className="border-[#B4B4B4] rounded-lg h-8 border pl-4"
+                  className="border-[#B4B4B4] rounded-lg h-8 w-full border pl-4"
                   placeholder="Nhập giá nhập"
                   value={inputImportPrice}
                   onChange={(e) => setInputImportPrice(e.target.value)}
@@ -176,14 +190,14 @@ const AddMedicinePage = () => {
                 </span>
               </div>
             </div>
-            <div className="flex flex-col justify-start w-1/4">
+            <div className="flex flex-col justify-start w-1/3">
               <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
                 Giá bán:
               </span>
-              <div className="flex gap-2">
+              <div className="flex justify-between gap-2">
                 <input
                   type="number"
-                  className="border-[#B4B4B4] rounded-lg h-8 border pl-4"
+                  className="border-[#B4B4B4] rounded-lg h-8 w-full border pl-4"
                   placeholder="Nhập giá bán"
                   value={inputSellingPrice}
                   onChange={(e) => setInputSellingPrice(e.target.value)}
@@ -193,7 +207,22 @@ const AddMedicinePage = () => {
                 </span>
               </div>
             </div>
-            <div className="flex flex-col w-1/4">
+          </div>
+
+          <div className="flex flex-row justify-start gap-20">
+            <div className="flex flex-col justify-start w-1/3">
+              <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
+                Số lượng:
+              </span>
+              <input
+                type="number"
+                className="border-[#B4B4B4] rounded-lg h-8 border pl-4"
+                placeholder="Nhập số lượng"
+                value={inputQuantity}
+                onChange={(e) => setInputQuantity(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col w-1/3">
               <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
                 Đơn vị tính:
               </span>
@@ -208,7 +237,7 @@ const AddMedicinePage = () => {
           </div>
 
           <div className="flex flex-row justify-start gap-20">
-            <div className="flex flex-col justify-start w-1/4">
+            <div className="flex flex-col justify-start w-1/3">
               <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
                 Ngày nhập:
               </span>
@@ -219,7 +248,7 @@ const AddMedicinePage = () => {
                 onChange={(e) => setInputImportDate(e.target.value)}
               />
             </div>
-            <div className="flex flex-col w-1/4">
+            <div className="flex flex-col w-1/3">
               <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
                 Hạn sử dụng:
               </span>
