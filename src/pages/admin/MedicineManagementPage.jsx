@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { AgGridReact } from "ag-grid-react";
 import { ModuleRegistry } from "ag-grid-community";
 import { ClientSideRowModelModule } from "ag-grid-community";
-import drugsData from "../../data/drugsData";
+import medicinesData from "../../data/medicinesData";
 import ItemActionButton from "../../components/layout/ItemActionButton";
 import "../../styles/ItemActionButton.css";
 import "../../styles/Popup.css";
@@ -14,39 +14,39 @@ import "../../styles/LargeRoundedCornerButton.css";
 // Đăng ký module ClientSideRowModelModule
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
-const DrugManagementPage = () => {
-  const [drugs, setDrugs] = useState([]);
+const MedicineManagementPage = () => {
+  const [medicines, setMedicines] = useState([]);
   const [quickFilterText, setQuickFilterText] = useState("");
   const [showDetelePopup, setShowDetelePopup] = useState(false); 
-  const [drugToDelete, setDrugToDelete] = useState(null); 
+  const [medicineToDelete, setMedicineToDelete] = useState(null); 
 
   useEffect(() => {
-    setDrugs(drugsData);
+    setMedicines(medicinesData);
   }, []);
 
-  const deleteDrugHandle = (id) => {
-    setDrugToDelete(id); 
+  const deleteMedicineHandle = (id) => {
+    setMedicineToDelete(id); 
     setShowDetelePopup(true); 
   };
 
   const handleDeletionConfirmation = () => {
-    const updatedDrugs = drugsData.map((drug) => {
-      if (drug.id === drugToDelete) {
-        return { ...drug, status: "Ngừng sử dụng" };
+    const updatedMedicines = medicinesData.map((medicine) => {
+      if (medicine.id === medicineToDelete) {
+        return { ...medicine, status: "Ngừng sử dụng" };
       }
-      return drug;
+      return medicine;
     });
-    setDrugs(updatedDrugs); // Update drug list
+    setMedicines(updatedMedicines); // Update medicine list
     console.log("Thuốc đã được xóa");
     toast.success("Thuốc đã được xóa");
 
     setShowDetelePopup(false);
-    setDrugToDelete(null);
+    setMedicineToDelete(null);
   };
 
   const handleDeletionCancel = () => {
     setShowDetelePopup(false);
-    setDrugToDelete(null);
+    setMedicineToDelete(null);
     console.log("Xóa thuốc đã bị hủy");
   };
 
@@ -61,7 +61,7 @@ const DrugManagementPage = () => {
     },
     {
       headerName: "Tên thuốc",
-      field: "drugName",
+      field: "medicineName",
       sortable: true,
       filter: true,
       resizable: true,
@@ -111,14 +111,14 @@ const DrugManagementPage = () => {
       field: "actions",
       cellRenderer: (params) => (
         <div className="flex">
-          <Link to={`/admin/drug/${params.data.id}`}>
+          <Link to={`/admin/medicine/${params.data.id}`}>
             <ItemActionButton
               img="/src/assets/Information Circle Contained.svg"
               variant="primary"
               className="item-action-button h-6 w-6 m-2 p-1"
             />
           </Link>
-          <Link to={`/admin/drug/edit/${params.data.id}`}>
+          <Link to={`/admin/medicine/edit/${params.data.id}`}>
             <ItemActionButton
               img="/src/assets/Edit.svg"
               variant="secondary"
@@ -129,7 +129,7 @@ const DrugManagementPage = () => {
             img="/src/assets/Trash.svg"
             variant="danger"
             className="item-action-button h-6 w-6 m-2 p-1"
-            onClick={() => deleteDrugHandle(params.data.id)}
+            onClick={() => deleteMedicineHandle(params.data.id)}
           />
         </div>
       ),
@@ -137,12 +137,12 @@ const DrugManagementPage = () => {
     },
   ];
 
-  const rowData = drugs.map((drug) => ({
-    id: drug.id,
-    drugName: drug.drugName,
-    expiryDate: drug.expiryDate,
-    quantity: drug.quantity,
-    status: drug.status,
+  const rowData = medicines.map((medicine) => ({
+    id: medicine.id,
+    medicineName: medicine.medicineName,
+    expiryDate: medicine.expiryDate,
+    quantity: medicine.quantity,
+    status: medicine.status,
   }));
 
   return (
@@ -155,14 +155,14 @@ const DrugManagementPage = () => {
           </span>
         </div>
 
-        {/* Drug List */}
+        {/* Medicine List */}
         <div className="container">
           <div className="flex justify-between mb-4 items-center">
             <div className="flex justify-between items-center">
               <h1 className="size-6 w-auto uppercase text-[#2A2A2A]">
-                {drugs.length} Thuốc
+                {medicines.length} Thuốc
               </h1>
-              <Link to="/admin/drug/add">
+              <Link to="/admin/medicine/add">
                 <LargeRoundedCornerButton
                   className="large-rounded-corner-button py-1 px-5 mx-5"
                   text="Tạo thuốc mới"
@@ -194,7 +194,7 @@ const DrugManagementPage = () => {
               <p>Không có thuốc nào để hiển thị.</p>
             )}
           </div>
-          {/* Delete Drug Popup */}
+          {/* Delete Medicine Popup */}
           {showDetelePopup && (
             <div className="popup-overlay">
               <div className="popup">
@@ -228,4 +228,4 @@ const DrugManagementPage = () => {
   );
 };
 
-export default DrugManagementPage;
+export default MedicineManagementPage;
