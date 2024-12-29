@@ -37,7 +37,7 @@ const AddGoodsReceiptNotePage = () => {
       medicinesAdded.forEach((medicine) => {
         newTotalCost += medicine.importPrice * medicine.quantity;
       });
-      
+
       setTotalCost(newTotalCost);
     };
 
@@ -175,7 +175,7 @@ const AddGoodsReceiptNotePage = () => {
         medicines,
       });
       toast.success("Tạo phiếu nhập mới thành công");
-      navigate("/admin/goods-receipt-notes");
+      navigate("/admin/goods-receipt-note/add/add-medicine");
     }
   };
 
@@ -207,12 +207,9 @@ const AddGoodsReceiptNotePage = () => {
       return;
     }
 
-    sessionStorage.setItem("selectedSupplier", supplierName);
-    sessionStorage.setItem("importDate", importDate);
-
-    navigate("/admin/goods-receipt-note/add/add-medicine", {
-      state: { selectedSupplier, importDate },
-    });
+    sessionStorage.setItem("selectedSupplier", selectedSupplier);
+    sessionStorage.setItem("importDate", inputImportDate);
+    navigate("/admin/goods-receipt-note/add/add-medicine");
   };
 
   return (
@@ -283,6 +280,7 @@ const AddGoodsReceiptNotePage = () => {
                 className="large-rounded-corner-button px-5 py-1 self-end"
                 text="Thêm thuốc vào phiếu"
                 variant="primary"
+                type="add-medicine-to-goods-receipt-note"
                 onClick={handleAddMedicine}
               />
             </div>

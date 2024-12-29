@@ -8,21 +8,26 @@ import medicinesData from "../../data/medicinesData";
 import { useNavigate } from "react-router-dom";
 
 const AddMedicineToGoodsReceiptNotePage = () => {
-  const location = useLocation();
   const navigate = useNavigate();
-  const { selectedSupplier, importDate } = location.state || {};
-  const [isAddAvailableMedicineFormVisible, setIsAddAvailableMedicineFormVisible] =
-    useState(true);
+  const importDate = sessionStorage.getItem("importDate") || "";
+  const selectedSupplier = sessionStorage.getItem("selectedSupplier") || "";
+  const [
+    isAddAvailableMedicineFormVisible,
+    setIsAddAvailableMedicineFormVisible,
+  ] = useState(true);
   const [inputName, setInputName] = useState("");
   const [inputNewMedicineImportPrice, setInputNewDruImportPrice] = useState();
-  const [inputNewMedicineSellingPrice, setInputNewDruSellingPrice] = useState();
+  const [inputNewMedicineSellingPrice, setInputNewMedicineSellingPrice] = useState();
   const [inputUnit, setInputUnit] = useState("");
   const [inputNewMedicineQuantity, setInputNewMedicineQuantity] = useState();
   const [inputAvailableMedicineQuantity, setInputAvailableMedicineQuantity] =
     useState();
-  const [inputNewMedicineExpiryDate, setInputNewMedicineExpiryDate] = useState("");
-  const [inputAvailableMedicineExpiryDate, setInputAvailableMedicineExpiryDate] =
+  const [inputNewMedicineExpiryDate, setInputNewMedicineExpiryDate] =
     useState("");
+  const [
+    inputAvailableMedicineExpiryDate,
+    setInputAvailableMedicineExpiryDate,
+  ] = useState("");
   const [inputUsesage, setInputUsesage] = useState("");
   const [inputDosage, setInputDosage] = useState("");
   const [supplier, setSupplier] = useState([]);
@@ -32,7 +37,7 @@ const AddMedicineToGoodsReceiptNotePage = () => {
   if (!selectedSupplier || !importDate) {
     return (
       <p className="mt-6 mx-6">
-        Dữ liệu không hợp lệ. Vui lòng quay lại và nhập đầy đủ thông tin.
+        Dữ liệu không hợp lệ {importDate}, {selectedSupplier}. Vui lòng quay lại và nhập đầy đủ thông tin.
       </p>
     );
   }
@@ -170,7 +175,6 @@ const AddMedicineToGoodsReceiptNotePage = () => {
 
       //cộng vào tổng tiền
 
-      
       navigate("/admin/goods-receipt-note/add", {});
     }
   };
@@ -261,7 +265,9 @@ const AddMedicineToGoodsReceiptNotePage = () => {
                 className="border-[#B4B4B4] rounded-lg h-8 border pl-4"
                 placeholder="Nhập số lượng"
                 value={inputAvailableMedicineQuantity}
-                onChange={(e) => setInputAvailableMedicineQuantity(e.target.value)}
+                onChange={(e) =>
+                  setInputAvailableMedicineQuantity(e.target.value)
+                }
               />
             </div>
           </div>
@@ -330,14 +336,14 @@ const AddMedicineToGoodsReceiptNotePage = () => {
           </div>
 
           <div className="flex flex-row justify-start gap-20">
-            <div className="flex flex-col justify-start w-1/4">
+            <div className="flex flex-col justify-start w-1/3">
               <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
                 Giá nhập:
               </span>
-              <div className="flex gap-2">
+              <div className="flex justify-between gap-2">
                 <input
                   type="text"
-                  className="border-[#B4B4B4] rounded-lg h-8 border pl-4"
+                  className="border-[#B4B4B4] rounded-lg h-8 w-full border pl-4"
                   placeholder="Nhập giá nhập"
                   value={inputNewMedicineImportPrice}
                   onChange={(e) => setInputNewDruImportPrice(e.target.value)}
@@ -347,24 +353,27 @@ const AddMedicineToGoodsReceiptNotePage = () => {
                 </span>
               </div>
             </div>
-            <div className="flex flex-col justify-start w-1/4">
+            <div className="flex flex-col justify-start w-1/3">
               <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
                 Giá bán:
               </span>
-              <div className="flex gap-2">
+              <div className="flex justify-between gap-2">
                 <input
                   type="text"
-                  className="border-[#B4B4B4] rounded-lg h-8 border pl-4"
+                  className="border-[#B4B4B4] rounded-lg h-8 w-full border pl-4"
                   placeholder="Nhập giá bán"
-                  value={setInputNewDruSellingPrice}
-                  onChange={(e) => setInputNewDruSellingPrice(e.target.value)}
+                  value={inputNewMedicineSellingPrice}
+                  onChange={(e) => setInputNewMedicineSellingPrice(e.target.value)}
                 />
                 <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
                   VND
                 </span>
               </div>
             </div>
-            <div className="flex flex-col w-1/4">
+          </div>
+
+          <div className="flex flex-row justify-start gap-20">
+            <div className="flex flex-col w-1/3">
               <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
                 Số lượng:
               </span>
@@ -376,7 +385,7 @@ const AddMedicineToGoodsReceiptNotePage = () => {
                 onChange={(e) => setInputNewMedicineQuantity(e.target.value)}
               />
             </div>
-            <div className="flex flex-col w-1/4">
+            <div className="flex flex-col w-1/3">
               <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
                 Đơn vị tính:
               </span>
@@ -391,7 +400,7 @@ const AddMedicineToGoodsReceiptNotePage = () => {
           </div>
 
           <div className="flex flex-row justify-start gap-20">
-            <div className="flex flex-col justify-start w-1/4">
+            <div className="flex flex-col justify-start w-1/3">
               <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
                 Ngày nhập:
               </span>
@@ -400,7 +409,7 @@ const AddMedicineToGoodsReceiptNotePage = () => {
                 19/11/2023{" "}
               </p>
             </div>
-            <div className="flex flex-col w-1/4">
+            <div className="flex flex-col w-1/3">
               <span className="font-normal text-xl h-auto text-[#2A2A2A] font-work-sans mb-2">
                 Hạn sử dụng:
               </span>
