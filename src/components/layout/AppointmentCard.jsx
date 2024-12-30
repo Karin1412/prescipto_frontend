@@ -11,7 +11,6 @@ const AppointmentCard = ({appointment}) => {
 
     const { doctor, appointmentTime, status } = appointment;
 
-     // Chuyển trạng thái thành class tương ứng
      const getStatusClass = (status) => {
         switch (status) {
             case "Chờ duyệt":
@@ -54,6 +53,7 @@ const AppointmentCard = ({appointment}) => {
                 <div className={`status ${getStatusClass(status)}`}>{status}</div>
                 <SharpCornerBlackBorderBtn className='sharp-corner-black-border-btn' 
                     text="Hủy lịch hẹn" 
+                    disabled={status === "Được duyệt" || "Chờ duyệt"} 
                     variant="primary"/>
             </div>
     </div>

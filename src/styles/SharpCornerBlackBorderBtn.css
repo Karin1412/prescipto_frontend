@@ -38,4 +38,10 @@
     background-color: #cccccc;
     cursor: not-allowed;
   }
+
+  .sharp-corner-black-border-btn:disabled:hover {
+    background-color: #cccccc;
+    cursor: not-allowed; 
+    transition: none; 
+  }
   
