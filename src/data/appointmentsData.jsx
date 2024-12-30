@@ -8,7 +8,7 @@ const appointmentsData = [
       },
       {
         id: "LK002",
-        patientId: "BN00002",
+        patientId: "BN00001",
         doctorId: "BS002",
         appointmentTime: "2024-12-20T10:30:00",
         status: "Đã khám"

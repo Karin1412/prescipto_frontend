@@ -39,10 +39,13 @@ const MyAppointmentsPage = () => {
     <div className="appointment-page">
       <div className="appointment-page-title">Danh sách lịch khám</div>
       <div className="appointment-list">
-        {appointments.map((appointment) => (
-          <AppointmentCard key={appointment.id} appointment={appointment} />
-        ))}
-        <AppointmentCard />
+      {appointments && appointments.length > 0 ? (
+                appointments.map((appointment) => (
+                    <AppointmentCard key={appointment.id} appointment={appointment} />
+                ))
+            ) : (
+                <div className="no-appointments mx-[25px]">Không có lịch khám nào</div>
+            )}
       </div>
     </div>
   );

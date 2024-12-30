@@ -53,7 +53,7 @@ const AppointmentCard = ({appointment}) => {
                 <div className={`status ${getStatusClass(status)}`}>{status}</div>
                 <SharpCornerBlackBorderBtn className='sharp-corner-black-border-btn' 
                     text="Hủy lịch hẹn" 
-                    disabled={status === "Được duyệt" || "Chờ duyệt"} 
+                    disabled={status !== "Được duyệt" && status !== "Chờ duyệt"}
                     variant="primary"/>
             </div>
     </div>
