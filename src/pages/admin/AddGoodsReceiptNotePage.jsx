@@ -274,7 +274,7 @@ const AddGoodsReceiptNotePage = () => {
           <div className="container">
             <div className="flex justify-start gap-8 mb-4 items-center">
               <h1 className="size-6 w-auto uppercase text-[#2A2A2A]">
-                {medicines.length} Thuốc - Tổng tiền: {totalCost} VND
+                {medicines.length} Loại thuốc - Tổng tiền: {totalCost} VND
               </h1>
               <LargeRoundedCornerButton
                 className="large-rounded-corner-button px-5 py-1 self-end"
