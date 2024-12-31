@@ -20,11 +20,11 @@ const useMenuOptionHandler = (setActiveOption) => {
         case 'appointments':
           navigate('/admin/appointments');
           break;
-        case 'medicines':
-          navigate('/admin/medicines');
+        case 'drugs':
+          navigate('/admin/drugs');
           break;
-        case 'warehouse':
-          navigate('/admin/warehouse');
+        case 'goods-receipt-notes':
+          navigate('/admin/goods-receipt-notes');
           break;
         case 'invoices':
           navigate('/admin/invoice');

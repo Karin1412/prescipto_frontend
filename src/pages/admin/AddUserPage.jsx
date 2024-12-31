@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import MenuOptions from '../../components/layout/MenuOptions';
 import { menuOptions } from '../../data/menuOptionsData';
 import useMenuOptionHandler from '../../components/layout/menuOptionHandlers';
-import userData from '../../data/userData';
 import LargeRoundedCornerButton from "../../components/layout/LargeRoundedCornerButton";
 
 const AddUserPage = () => {

@@ -21,7 +21,6 @@ import InventoryReportPage from './pages/admin/InventoryReportPage';
 import PatientProfilePage from './pages/patient/PatientProfilePage';
 import { patientData, testResultsData } from './data/PatientProfileData';
 
-
 const App = () => {
     return (
         <div>

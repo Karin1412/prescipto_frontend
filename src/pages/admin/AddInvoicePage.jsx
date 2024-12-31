@@ -9,24 +9,24 @@ import LargeRoundedCornerButton from "../../components/layout/LargeRoundedCorner
 const AddInvoicePage = () => {
   const [patientName, setPatientName] = useState("");
   const [serviceDetails, setServiceDetails] = useState(""); // Added setter for serviceDetails
-  const [subtotal, setSubtotal] = useState(0);
-  const [discount, setDiscount] = useState(0);
+  const [subtotal, setSubtotal] = useState(""); // Removed default 0
+  const [discount, setDiscount] = useState(""); // Removed default 0
   const [activeOption, setActiveOption] = useState("invoices");
   const uniquePatientNames = [...new Set(invoiceData.map((invoice) => invoice.patientName))];
 
-  const VAT = 100000;
+  const VAT_PERCENTAGE = 10; // Set VAT to 10%
 
   const { handleOptionClick } = useMenuOptionHandler(setActiveOption);
   const navigate = useNavigate();
 
   const handleCreateInvoice = () => {
-    // Optional: Store the success message in session storage or navigate to the list of invoices
     sessionStorage.setItem("invoiceSuccessMessage", "Hóa đơn đã được tạo thành công!");
-    navigate('/admin/invoice'); // Navigating to invoice list page
+    navigate('/admin/invoice');
   };
 
   const calculateTotal = () => {
     const discountAmount = (discount / 100) * subtotal;
+    const VAT = (subtotal - discountAmount) * (VAT_PERCENTAGE / 100);
     const totalBeforeVAT = subtotal - discountAmount + VAT;
     return totalBeforeVAT;
   };
@@ -118,13 +118,13 @@ const AddInvoicePage = () => {
             {/* VAT */}
             <div className="flex items-center w-full">
               <label className="flex-none w-1/4 font-semibold text-left mr-2">VAT:</label>
-              <span className="flex-1 text-right">{VAT.toLocaleString()} VNĐ</span>
+              <span className="flex-1 text-right">{((subtotal - (discount / 100) * subtotal) * (VAT_PERCENTAGE / 100)).toLocaleString()} VNĐ</span>
             </div>
 
             {/* Tổng */}
-            <div className="flex items-center w-full">
-              <label className="flex-none w-1/4 font-semibold text-left mr-2">Tổng:</label>
-              <span className="flex-1 text-right font-bold">
+            <div className="flex items-center w-full font-semibold text-xl" style={{ color: "#5F6FFF" }}>
+            <label className="flex-none w-1/4 text-left mr-2">Tổng:</label>
+            <span className="flex-1 text-right">
                 {calculateTotal().toLocaleString()} VNĐ
               </span>
             </div>

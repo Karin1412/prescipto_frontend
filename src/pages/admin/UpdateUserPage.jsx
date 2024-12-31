@@ -13,7 +13,6 @@ const UpdateUserPage = () => {
   const [status, setStatus] = useState("");
   const [activeOption, setActiveOption] = useState("users");
   
-  // Lấy userID từ URL
   const { userId } = useParams();
   const navigate = useNavigate();
   
@@ -30,18 +29,13 @@ const UpdateUserPage = () => {
 
   const { handleOptionClick } = useMenuOptionHandler(setActiveOption);
 
-  // Xử lý khi lưu thông tin người dùng
   const handleSave = (e) => {
     e.preventDefault();
-    // Cập nhật người dùng ở đây (lưu vào database hoặc local storage)
+   
     console.log("Cập nhật thông tin người dùng", { userID, userName, userRole, status });
     sessionStorage.setItem("userSuccessMessage", "Người dùng đã được cập nhật thành công!");
     navigate("/admin/user");
   };
-
-  if (!userID) {
-    return <div>Đang tải thông tin người dùng...</div>;
-  }
 
   return (
     <div className="flex flex-row gap-5 mt-7 font-sans">

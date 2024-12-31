@@ -5,16 +5,20 @@ import { menuOptions } from '../../data/menuOptionsData.jsx';
 import useMenuOptionHandler from '../../components/layout/menuOptionHandlers.jsx';
 import invoiceData from '../../data/invoiceData.jsx';
 import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
 import ItemActionButton from "../../components/layout/ItemActionButton.jsx";
 import "../../styles/ItemActionButton.css";
 import LargeRoundedCornerButton from "../../components/layout/LargeRoundedCornerButton.jsx";
 import "../../styles/LargeRoundedCornerButton.css";
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
+import { ModuleRegistry } from "ag-grid-community";
+import { ClientSideRowModelModule } from "ag-grid-community";
+import { ColumnAutoSizeModule } from 'ag-grid-community'; 
+import { themeQuartz } from 'ag-grid-community';
 
+ModuleRegistry.registerModules([ ColumnAutoSizeModule ]); 
+
+ModuleRegistry.registerModules([ClientSideRowModelModule]);
 const InvoiceManagementPage = () => {
   const [invoices] = useState(invoiceData); 
   const [searchQuery, setSearchQuery] = useState('');
@@ -139,9 +143,10 @@ const InvoiceManagementPage = () => {
         </div>
 
         <div className="container">
-          <div className="ag-theme-alpine bg-white rounded-lg shadow-md h-[500px]">
+          <div className="h-[500px]">
             {filteredInvoices && filteredInvoices.length > 0 ? (
               <AgGridReact
+              theme={themeQuartz}
               columnDefs={columnDefs}
               defaultColDef={defaultColDef}
               rowData={filteredInvoices}

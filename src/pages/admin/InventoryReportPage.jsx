@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AgGridReact } from "ag-grid-react";
 import { ModuleRegistry } from "ag-grid-community";
 import { ClientSideRowModelModule } from "ag-grid-community";
+import { themeQuartz } from 'ag-grid-community';
 import MenuOptions from '../../components/layout/MenuOptions.jsx';
 import { menuOptions } from '../../data/menuOptionsData.jsx';
 import useMenuOptionHandler from '../../components/layout/menuOptionHandlers.jsx';
@@ -18,7 +19,6 @@ const InventoryReportPage = () => {
   const { handleOptionClick } = useMenuOptionHandler(setActiveOption);
   const [selectedMonth, setSelectedMonth] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
-  const [selectedReport, setSelectedReport] = useState('inventory'); // State để quản lý lựa chọn báo cáo
 
   const columnDefs = [
     { headerName: "Tháng", field: "month", flex: 1, headerClass: "font-bold" },
@@ -98,15 +98,11 @@ const InventoryReportPage = () => {
         </div>
 
         {/* Bảng dữ liệu */}
-        <div className="container h-full">
-          <div
-            className="ag-theme-quartz"
-            style={{
-              height: 'calc(100vh - 150px)',
-            }}
-          >
+        <div className="container">
+          <div className="h-[500px]">
             {filteredData && filteredData.length > 0 ? (
               <AgGridReact
+                theme={themeQuartz}
                 columnDefs={columnDefs}
                 rowData={filteredData}
                 defaultColDef={{

@@ -5,6 +5,7 @@ import userData from '../../data/userData.jsx';
 import { AgGridReact } from 'ag-grid-react';
 import { ModuleRegistry } from "ag-grid-community";
 import { ClientSideRowModelModule } from "ag-grid-community";
+import { themeQuartz } from 'ag-grid-community';
 import ItemActionButton from "../../components/layout/ItemActionButton.jsx";
 import "../../styles/ItemActionButton.css";
 import "../../styles/Popup.css";
@@ -203,9 +204,10 @@ const UserManagementPage = () => {
         </div>
 
         <div className="container">
-          <div className="ag-theme-alpine bg-white rounded-lg shadow-md h-[500px]">
+          <div className="h-[500px]">
             {filteredUsers && filteredUsers.length > 0 ? (
               <AgGridReact
+                theme={themeQuartz}
                 columnDefs={columnDefs}
                 rowData={filteredUsers}
                 pagination={true}
