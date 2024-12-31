@@ -55,7 +55,7 @@ const AddInvoicePage = () => {
               <label className="block font-semibold mb-1">Mã hóa đơn:</label>
               <input
                 type="text"
-                value="HD001" // Static ID for now, can be generated dynamically later
+                value="HD001"
                 disabled
                 className="w-full p-2 border rounded-md bg-gray-100"
               />

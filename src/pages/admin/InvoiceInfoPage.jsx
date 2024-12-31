@@ -66,6 +66,34 @@ const InvoiceInfoPage = () => {
           </div>
 
           <div className="col-span-1 p-4 border border-[#B4B4B4]">
+            <p>Chi tiết dịch vụ:</p>
+          </div>
+          <div className="col-span-3 p-4 border border-[#B4B4B4]">
+            <p>{invoice.serviceDetails}</p>
+          </div>
+
+          <div className="col-span-1 p-4 border border-[#B4B4B4]">
+            <p>Tạm tính:</p>
+          </div>
+          <div className="col-span-3 p-4 border border-[#B4B4B4]">
+            <p>{invoice.subtotal}</p>
+          </div>
+
+          <div className="col-span-1 p-4 border border-[#B4B4B4]">
+            <p>Giảm giá:</p>
+          </div>
+          <div className="col-span-3 p-4 border border-[#B4B4B4]">
+            <p>{invoice.discount}</p>
+          </div>
+
+          <div className="col-span-1 p-4 border border-[#B4B4B4]">
+            <p>Tổng:</p>
+          </div>
+          <div className="col-span-3 p-4 border border-[#B4B4B4]">
+            <p>{invoice.total}</p>
+          </div>
+
+          <div className="col-span-1 p-4 border border-[#B4B4B4]">
             <p>Trạng thái:</p>
           </div>
           <div className="col-span-3 p-4 border border-[#B4B4B4]">
