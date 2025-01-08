@@ -1,11 +1,12 @@
 .home-page {
-    padding: 20px 20px;
     font-family: "Work Sans", sans-serif;
     text-align: center;
+    padding: 20px;
 }
 
 .home-page .image {
     width: 95vw;
+    height: auto;
     margin: 26px;
 }
 
