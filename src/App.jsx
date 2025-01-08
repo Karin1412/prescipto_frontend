@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
 import Contact_Page from './pages/patient/ContactPage';
@@ -22,6 +22,7 @@ import PatientProfilePage from './pages/patient/PatientProfilePage';
 import { patientData, testResultsData } from './data/PatientProfileData';
 
 const App = () => {
+    const isAuthenticated = localStorage.getItem('token');
     return (
         <div>
             <BrowserRouter>
@@ -45,8 +46,8 @@ const App = () => {
                         <Route path="/admin/invoice/:invoiceID" exact element={<InvoiceInfoPage />} />
                         <Route path="/admin/report" exact element={<InventoryReportPage />} />
                     </Route>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
+                    <Route path="/login" element={isAuthenticated ? <Home_Page /> : <Login />} />
+                    <Route path="/register" element={isAuthenticated ? <Home_Page /> : <Register />} />
                     
                 </Routes>
             </BrowserRouter>
