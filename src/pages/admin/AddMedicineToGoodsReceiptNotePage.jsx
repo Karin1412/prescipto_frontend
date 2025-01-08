@@ -4,6 +4,9 @@ import { useLocation } from "react-router-dom";
 import LargeRoundedCornerButton from "../../components/layout/LargeRoundedCornerButton";
 import "../../styles/LargeRoundedCornerButton.css";
 import suppliersData from "../../data/suppliersData";
+import MenuOptions from '../../components/layout/MenuOptions';
+import { menuOptions } from '../../data/menuOptionsData';
+import useMenuOptionHandler from '../../components/layout/menuOptionHandlers';
 import medicinesData from "../../data/medicinesData";
 import { useNavigate } from "react-router-dom";
 
@@ -33,6 +36,8 @@ const AddMedicineToGoodsReceiptNotePage = () => {
   const [supplier, setSupplier] = useState([]);
   const [medicines, setMedicines] = useState([]);
   const [selectedMedicine, setSelectedMedicine] = useState("");
+  const [activeOption, setActiveOption] = useState("drugs");
+  const { handleOptionClick } = useMenuOptionHandler(setActiveOption);
 
   if (!selectedSupplier || !importDate) {
     return (
@@ -183,7 +188,11 @@ const AddMedicineToGoodsReceiptNotePage = () => {
 
   return (
     <div className="flex flex-row gap-5 mt-7 mr-16">
-      <div className="w-1/6 ml-6">//Admin nav</div>
+      <div className="w-1/6 ml-6"><MenuOptions
+          options={menuOptions}
+          activeOption={activeOption}
+          onOptionClick={handleOptionClick}
+        /></div>
 
       {/*  Add Available Medicine To Goods Receipt Note */}
       <div

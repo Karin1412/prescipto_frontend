@@ -1,5 +1,8 @@
 import { React, useState } from "react";
 import { toast } from "react-toastify";
+import MenuOptions from '../../components/layout/MenuOptions';
+import { menuOptions } from '../../data/menuOptionsData';
+import useMenuOptionHandler from '../../components/layout/menuOptionHandlers';
 import LargeRoundedCornerButton from "../../components/layout/LargeRoundedCornerButton";
 import "../../styles/LargeRoundedCornerButton.css";
 import suppliersData from "../../data/suppliersData";
@@ -17,6 +20,8 @@ const AddMedicinePage = () => {
   const [inputUsesage, setInputUsesage] = useState("");
   const [inputDosage, setInputDosage] = useState("");
   const [selectedSupplier, setSelectedSupplier] = useState("");
+  const [activeOption, setActiveOption] = useState("drugs");
+  const { handleOptionClick } = useMenuOptionHandler(setActiveOption);
 
   const isValidForm = () => {
     if (!inputName.trim()) {
@@ -115,7 +120,11 @@ const AddMedicinePage = () => {
 
   return (
     <div className="flex flex-row gap-5 mt-7 mr-16">
-      <div className="w-1/6 ml-6">//Admin nav</div>
+      <div className="w-1/6 ml-6"><MenuOptions
+          options={menuOptions}
+          activeOption={activeOption}
+          onOptionClick={handleOptionClick}
+        /></div>
       <div className="w-5/6 mr-6">
         <div className="display flex flex-row justify-between mb-7 ">
           <span className="uppercase font-medium text-2xl h-auto w-auto text-[#2A2A2A] font-raleway">

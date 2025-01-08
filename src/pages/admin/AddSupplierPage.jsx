@@ -1,6 +1,9 @@
 import { React, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import MenuOptions from '../../components/layout/MenuOptions';
+import { menuOptions } from '../../data/menuOptionsData';
+import useMenuOptionHandler from '../../components/layout/menuOptionHandlers';
 import LargeRoundedCornerButton from "../../components/layout/LargeRoundedCornerButton";
 import "../../styles/LargeRoundedCornerButton.css";
 
@@ -8,6 +11,8 @@ const AddSupplierPage = () => {
     const navigate = useNavigate();
   
   const [inputName, setInputName] = useState("");
+  const [activeOption, setActiveOption] = useState("suppliers");
+  const { handleOptionClick } = useMenuOptionHandler(setActiveOption);
 
   const handleCreateNewSupplier = (e) => {
     e.preventDefault(); 
@@ -22,7 +27,11 @@ const AddSupplierPage = () => {
 
   return (
     <div className="flex flex-row gap-5 mt-7 mr-16">
-      <div className="w-1/6 ml-6">//Admin nav</div>
+      <div className="w-1/6 ml-6"><MenuOptions
+          options={menuOptions}
+          activeOption={activeOption}
+          onOptionClick={handleOptionClick}
+        /></div>
       <div className="w-5/6 mr-6">
         <div className="display flex flex-row justify-between mb-7 ">
           <span className="uppercase font-medium text-2xl h-auto w-auto text-[#2A2A2A] font-raleway">

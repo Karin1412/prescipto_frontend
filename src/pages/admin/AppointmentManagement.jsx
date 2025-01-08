@@ -4,6 +4,9 @@ import { AgGridReact } from "ag-grid-react";
 import { ModuleRegistry } from "ag-grid-community";
 import { ClientSideRowModelModule } from "ag-grid-community";
 import appointmentsData from "../../data/appointmentsData";
+import MenuOptions from '../../components/layout/MenuOptions';
+import { menuOptions } from '../../data/menuOptionsData';
+import useMenuOptionHandler from '../../components/layout/menuOptionHandlers';
 import doctorsData from "../../data/doctorsData";
 import patientsData from "../../data/patientsData";
 import ItemActionButton from "../../components/layout/ItemActionButton";
@@ -20,7 +23,8 @@ const AppointmentManagement = () => {
   const [showRejectopup, setShowRejectPopup] = useState(false);
   const [appointmentToApprove, setAppointmentToApprove] = useState(null);
   const [appointmentToReject, setAppointmentToReject] = useState(null);
-
+  const [activeOption, setActiveOption] = useState("appointments");
+  const { handleOptionClick } = useMenuOptionHandler(setActiveOption);
   useEffect(() => {
     const combineData = () => {
       const combined = appointmentsData.map((appointment) => ({
@@ -191,7 +195,11 @@ const AppointmentManagement = () => {
 
   return (
     <div className="flex flex-row gap-5 mt-7">
-      <div className="w-1/6 ml-6">//Admin nav</div>
+      <div className="w-1/6 ml-6"><MenuOptions
+          options={menuOptions}
+          activeOption={activeOption}
+          onOptionClick={handleOptionClick}
+        /></div>
       <div className="w-5/6 mr-6">
         <div className="display flex flex-row justify-between">
           <span className="uppercase font-medium text-2xl h-auto w-auto text-[#2A2A2A] mb-7 font-raleway">

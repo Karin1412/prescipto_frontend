@@ -12,7 +12,8 @@ const UpdateUserPage = () => {
   const [userRole, setUserRole] = useState("");
   const [status, setStatus] = useState("");
   const [activeOption, setActiveOption] = useState("users");
-  
+  const { handleOptionClick } = useMenuOptionHandler(setActiveOption);
+
   const { userId } = useParams();
   const navigate = useNavigate();
   
@@ -27,7 +28,6 @@ const UpdateUserPage = () => {
     }
   }, [userId]);
 
-  const { handleOptionClick } = useMenuOptionHandler(setActiveOption);
 
   const handleSave = (e) => {
     e.preventDefault();

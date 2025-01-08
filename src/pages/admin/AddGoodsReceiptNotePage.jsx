@@ -7,6 +7,9 @@ import goodsReceiptNotesData from "../../data/goodsReceiptNotesData";
 import goodsReceiptNoteDetailsData from "../../data/goodsReceiptNoteDetailsData";
 import suppliersData from "../../data/suppliersData";
 import medicinesData from "../../data/medicinesData";
+import MenuOptions from '../../components/layout/MenuOptions';
+import { menuOptions } from '../../data/menuOptionsData';
+import useMenuOptionHandler from '../../components/layout/menuOptionHandlers';
 import { AgGridReact } from "ag-grid-react";
 import { ModuleRegistry } from "ag-grid-community";
 import { ClientSideRowModelModule } from "ag-grid-community";
@@ -25,6 +28,8 @@ const AddGoodsReceiptNotePage = () => {
   const [totalCost, setTotalCost] = useState(0);
   const navigate = useNavigate();
   const [medicines, setMedicines] = useState([]);
+  const [activeOption, setActiveOption] = useState("goods-receipt-notes");
+  const { handleOptionClick } = useMenuOptionHandler(setActiveOption);
 
   useEffect(() => {
     const setAddedMedicines = () => {
@@ -214,7 +219,12 @@ const AddGoodsReceiptNotePage = () => {
 
   return (
     <div className="flex flex-row gap-5 mt-7 mr-16">
-      <div className="w-1/6 ml-6">//Admin nav</div>
+      <div className="w-1/6 ml-6">
+      <MenuOptions
+          options={menuOptions}
+          activeOption={activeOption}
+          onOptionClick={handleOptionClick}
+        /></div>
       <div className="w-5/6 mr-6">
         <div className="display flex flex-row justify-between mb-7 ">
           <span className="uppercase font-medium text-2xl h-auto w-auto text-[#2A2A2A] font-raleway">

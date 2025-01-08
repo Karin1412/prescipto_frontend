@@ -4,11 +4,16 @@ import { useState, useEffect } from "react";
 import suppliersData from "../../data/suppliersData";
 import ItemActionButton from "../../components/layout/ItemActionButton";
 import "../../styles/ItemActionButton.css";
+import MenuOptions from '../../components/layout/MenuOptions';
+import { menuOptions } from '../../data/menuOptionsData';
+import useMenuOptionHandler from '../../components/layout/menuOptionHandlers';
 
 const SuppilerInfomationPage = () => {
   // Get the current supplier ID
   const { id } = useParams();
   const [supplier, setSupplier] = useState([]);
+  const [activeOption, setActiveOption] = useState("suppliers");
+  const { handleOptionClick } = useMenuOptionHandler(setActiveOption);
 
   useEffect(() => {
     const currentSupplier = suppliersData.find(
@@ -27,7 +32,11 @@ const SuppilerInfomationPage = () => {
 
   return (
     <div className="flex flex-row gap-5 mt-7 mr-16">
-      <div className="w-1/6 ml-6">//Admin nav</div>
+      <div className="w-1/6 ml-6"><MenuOptions
+          options={menuOptions}
+          activeOption={activeOption}
+          onOptionClick={handleOptionClick}
+        /></div>
       <div className="w-5/6 mr-6">
         <div className="display flex flex-row gap-5 mb-7 items-center">
           <span className="uppercase font-medium text-2xl h-auto w-auto text-[#2A2A2A] font-raleway">

@@ -2,6 +2,9 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import medicinesData from "../../data/medicinesData";
+import MenuOptions from '../../components/layout/MenuOptions';
+import { menuOptions } from '../../data/menuOptionsData';
+import useMenuOptionHandler from '../../components/layout/menuOptionHandlers';
 import suppliersData from "../../data/suppliersData";
 import ItemActionButton from "../../components/layout/ItemActionButton";
 import "../../styles/ItemActionButton.css";
@@ -10,6 +13,8 @@ const MedicineInformationPage = () => {
   const { id } = useParams();
   const [medicine, setMedicine] = useState([]);
   const [showDetelePopup, setShowDetelePopup] = useState(false);
+  const [activeOption, setActiveOption] = useState("drugs");
+  const { handleOptionClick } = useMenuOptionHandler(setActiveOption);
 
   useEffect(() => {
     const combineData = () => {
@@ -56,7 +61,11 @@ const MedicineInformationPage = () => {
 
   return (
     <div className="flex flex-row gap-5 mt-7 mr-16">
-      <div className="w-1/6 ml-6">//Admin nav</div>
+      <div className="w-1/6 ml-6"><MenuOptions
+          options={menuOptions}
+          activeOption={activeOption}
+          onOptionClick={handleOptionClick}
+        /></div>
       <div className="w-5/6 mr-6">
         <div className="display flex flex-row gap-5 mb-7 items-center">
           <span className="uppercase font-medium text-2xl h-auto w-auto text-[#2A2A2A] font-raleway">

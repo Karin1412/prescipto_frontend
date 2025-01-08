@@ -9,6 +9,9 @@ import ItemActionButton from "../../components/layout/ItemActionButton";
 import "../../styles/ItemActionButton.css";
 import "../../styles/Popup.css";
 import { Link } from "react-router-dom";
+import MenuOptions from '../../components/layout/MenuOptions';
+import { menuOptions } from '../../data/menuOptionsData';
+import useMenuOptionHandler from '../../components/layout/menuOptionHandlers';
 import LargeRoundedCornerButton from "../../components/layout/LargeRoundedCornerButton";
 import "../../styles/LargeRoundedCornerButton.css";
 
@@ -18,6 +21,8 @@ ModuleRegistry.registerModules([ClientSideRowModelModule]);
 const GoodsReceiptNoteManagementPage = () => {
   const [goodsReceiptNotes, setGoodsReceiptNotes] = useState([]);
   const [quickFilterText, setQuickFilterText] = useState("");
+  const [activeOption, setActiveOption] = useState("goods-receipt-notes");
+  const { handleOptionClick } = useMenuOptionHandler(setActiveOption);
 
   const handleImportGoodsReceiptNoteByExcel = () => {
     //Import Goods Receipt Note By Excel
@@ -99,7 +104,11 @@ const GoodsReceiptNoteManagementPage = () => {
 
   return (
     <div className="flex flex-row gap-5 mt-7">
-      <div className="w-1/6 ml-6">//Admin nav</div>
+      <div className="w-1/6 ml-6"><MenuOptions
+          options={menuOptions}
+          activeOption={activeOption}
+          onOptionClick={handleOptionClick}
+        /></div>
       <div className="w-5/6 mr-6">
         <div className="display flex flex-row justify-between">
           <span className="uppercase font-medium text-2xl h-auto w-auto text-[#2A2A2A] mb-7 font-raleway">

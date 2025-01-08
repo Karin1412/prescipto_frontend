@@ -7,6 +7,9 @@ import suppliersData from "../../data/suppliersData";
 import medicinesData from "../../data/medicinesData";
 import "../../styles/ItemActionButton.css";
 import { AgGridReact } from "ag-grid-react";
+import MenuOptions from '../../components/layout/MenuOptions';
+import { menuOptions } from '../../data/menuOptionsData';
+import useMenuOptionHandler from '../../components/layout/menuOptionHandlers';
 import { ModuleRegistry } from "ag-grid-community";
 import { ClientSideRowModelModule } from "ag-grid-community";
 
@@ -19,6 +22,8 @@ const GoodsReceiptNoteInformationPage = () => {
   const [goodsReceiptNotes, setGoodsReceiptNotes] = useState([]);
   const [medicines, setMedicines] = useState([]);
   const [quickFilterText, setQuickFilterText] = useState("");
+    const [activeOption, setActiveOption] = useState("goods-receipt-notes");
+  const { handleOptionClick } = useMenuOptionHandler(setActiveOption);
 
   useEffect(() => {
     const combineData = () => {
@@ -121,7 +126,11 @@ const GoodsReceiptNoteInformationPage = () => {
 
   return (
     <div className="flex flex-row gap-5 mt-7 mr-16">
-      <div className="w-1/6 ml-6">//Admin nav</div>
+      <div className="w-1/6 ml-6"><MenuOptions
+          options={menuOptions}
+          activeOption={activeOption}
+          onOptionClick={handleOptionClick}
+        /></div>
       <div className="w-5/6 mr-6">
         <div className="display flex flex-row gap-5 mb-7 items-center">
           <span className="uppercase font-medium text-2xl h-auto w-auto text-[#2A2A2A] font-raleway">

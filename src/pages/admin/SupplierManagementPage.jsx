@@ -5,6 +5,9 @@ import { ModuleRegistry } from "ag-grid-community";
 import { ClientSideRowModelModule } from "ag-grid-community";
 import suppliersData from "../../data/suppliersData";
 import ItemActionButton from "../../components/layout/ItemActionButton";
+import MenuOptions from '../../components/layout/MenuOptions';
+import { menuOptions } from '../../data/menuOptionsData';
+import useMenuOptionHandler from '../../components/layout/menuOptionHandlers';
 import "../../styles/ItemActionButton.css";
 import "../../styles/Popup.css";
 import { Link } from "react-router-dom";
@@ -19,6 +22,8 @@ const SupplierManagementPage = () => {
   const [quickFilterText, setQuickFilterText] = useState("");
   const [showDetelePopup, setShowDetelePopup] = useState(false); // State for detele popup visibility
   const [suppilerToDelete, setSuppilerToDelete] = useState(null); // Store the suppiler to delete
+  const [activeOption, setActiveOption] = useState("suppliers");
+  const { handleOptionClick } = useMenuOptionHandler(setActiveOption);
 
   useEffect(() => {
     setSuppilers(suppliersData);
@@ -133,7 +138,11 @@ const SupplierManagementPage = () => {
 
   return (
     <div className="flex flex-row gap-5 mt-7">
-      <div className="w-1/6 ml-6">//Admin nav</div>
+      <div className="w-1/6 ml-6"><MenuOptions
+          options={menuOptions}
+          activeOption={activeOption}
+          onOptionClick={handleOptionClick}
+        /></div>
       <div className="w-5/6 mr-6">
         <div className="display flex flex-row justify-between">
           <span className="uppercase font-medium text-2xl h-auto w-auto text-[#2A2A2A] mb-7 font-raleway">
