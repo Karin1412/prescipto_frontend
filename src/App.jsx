@@ -20,6 +20,21 @@ import InvoiceInfoPage from './pages/admin/InvoiceInfoPage';
 import InventoryReportPage from './pages/admin/InventoryReportPage';
 import PatientProfilePage from './pages/patient/PatientProfilePage';
 import { patientData, testResultsData } from './data/PatientProfileData';
+import SupplierManagementPage from './pages/admin/SupplierManagementPage';
+import AddSupplierPage from './pages/admin/AddSupplierPage';
+import EditSupplierPage from './pages/admin/EditSupplierPage';
+import SuppilerInfomationPage from './pages/admin/SuppilerInfomationPage';
+import AppointmentManagement from './pages/admin/AppointmentManagement';
+import MedicineManagementPage from './pages/admin/MedicineManagementPage';
+import AddMedicinePage from './pages/admin/AddMedicinePage';
+import EditMedicinePage from './pages/admin/EditMedicinePage';
+import MedicineInformationPage from './pages/admin/MedicineInformationPage';
+
+import GoodsReceiptNoteManagementPage from './pages/admin/GoodsReceiptNoteManagementPage';
+import GoodsReceiptNoteInformationPage from './pages/admin/GoodsReceiptNoteInformationPage';
+import AddMedicineToGoodsReceiptNotePage from './pages/admin/AddMedicineToGoodsReceiptNotePage';
+import AddGoodsReceiptNotePage from './pages/admin/AddGoodsReceiptNotePage';
+
 
 const App = () => {
     const isAuthenticated = localStorage.getItem('token');
@@ -45,6 +60,19 @@ const App = () => {
                         <Route path="/admin/user/:userID" exact element={<UserInfoPage />} />
                         <Route path="/admin/invoice/:invoiceID" exact element={<InvoiceInfoPage />} />
                         <Route path="/admin/report" exact element={<InventoryReportPage />} />
+                        <Route path="/admin/appointments" element={<AppointmentManagement />} />
+                        <Route path="/admin/suppliers" exact element={<SupplierManagementPage />} />
+                        <Route path="/admin/supplier/add" element={<AddSupplierPage />} />
+                        <Route path="/admin/supplier/edit/:id" element={<EditSupplierPage />} />
+                        <Route path="/admin/supplier/:id" element={<SuppilerInfomationPage />} />
+                        <Route path="/admin/medicines/" exact element={<MedicineManagementPage />} />
+                        <Route path="/admin/medicine/add" element={<AddMedicinePage />} />
+                        <Route path="/admin/medicine/edit/:id" element={<EditMedicinePage />} />
+                        <Route path="/admin/medicine/:id" element={<MedicineInformationPage />} />
+                        <Route path="/admin/goods-receipt-notes" exact element={<GoodsReceiptNoteManagementPage />} />
+                        <Route path="/admin/goods-receipt-note/:id" element={<GoodsReceiptNoteInformationPage />} />
+                        <Route path="/admin/goods-receipt-note/add" element={<AddGoodsReceiptNotePage />} />
+                        <Route path="/admin/goods-receipt-note/add/add-medicine" element={<AddMedicineToGoodsReceiptNotePage />} />
                     </Route>
                     <Route path="/login" element={isAuthenticated ? <Home_Page /> : <Login />} />
                     <Route path="/register" element={isAuthenticated ? <Home_Page /> : <Register />} />
