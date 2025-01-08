@@ -3,11 +3,17 @@
 import { useNavigate } from 'react-router-dom';
 
 const useMenuOptionHandler = (setActiveOption) => {
+
   const navigate = useNavigate();
+  const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+      
+    };
 
   const handleOptionClick = (option) => {
     if (option === 'logout') {
-      alert('Bạn đã đăng xuất!');
+      handleLogout();
       navigate('/');
     } else {
       setActiveOption(option); // Cập nhật option hiện tại

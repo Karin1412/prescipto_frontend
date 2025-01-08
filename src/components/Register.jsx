@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { NavLink, useNavigate } from 'react-router-dom';
+
 
 const Register = () => {
     const [formData, setFormData] = useState({ name: '', email: '', password: '' });
     const [message, setMessage] = useState('');
+    const navigate = useNavigate(); // Khai báo useNavigate
+
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,6 +18,8 @@ const Register = () => {
         try {
             const res = await axios.post('http://localhost:5000/api/users/register', formData);
             setMessage(res.data.message);
+            alert('Đăng ký thành công');
+            navigate('/login');
         } catch (err) {
             setMessage(err.response.data.message);
         }

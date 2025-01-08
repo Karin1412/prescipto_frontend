@@ -29,8 +29,12 @@ const Login = () => {
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('user', JSON.stringify(res.data.user));
         }
+         if (res.data.user.role === 'admin') {
+                navigate('/admin/report');
+            } else {
+                navigate('/');
+            }
 
-        navigate('/');
     } catch (err) {
         setMessage(err.response?.data?.message || 'Đăng nhập thất bại');
     }

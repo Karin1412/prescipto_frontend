@@ -39,13 +39,23 @@ const AppointmentPage = () => {
   const timeSlots = ['8.00 am', '8.30 am', '9.00 am', '9.30 am', '10.00 am', '10.30 am', '11.00 am', '11.30 am'];
 
   const handleBookAppointment = () => {
-    if (selectedTime) {
-      alert(`Đã đặt lịch hẹn với ${doctor.name} vào ${days[selectedDay].dayOfWeek}, ngày ${days[selectedDay].day}/${days[selectedDay].month} lúc ${selectedTime}`);
-      navigate('/');
-    } else {
-      alert('Vui lòng chọn thời gian đặt lịch!');
-    }
-  };
+  const token = localStorage.getItem('token'); 
+
+  if (!token) {
+    alert('Bạn cần đăng nhập để đặt lịch hẹn!');
+    navigate('/login');
+    return;
+  }
+  if (selectedTime) {
+    alert(
+      `Đã đặt lịch hẹn với ${doctor.name} vào ${days[selectedDay].dayOfWeek}, ngày ${days[selectedDay].day}/${days[selectedDay].month} lúc ${selectedTime}`
+    );
+    navigate('/');
+  } else {
+    alert('Vui lòng chọn thời gian đặt lịch!');
+  }
+};
+
   
 
   const similarDoctors = doctorsData.filter(
