@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
-import Header from './components/layout/Header';
 import ContactPage from './pages/patient/ContactPage';
 import MyAppointmentsPage from './pages/patient/MyAppointmentsPage';
 import HomePage from './pages/patient/HomePage';
@@ -26,11 +25,24 @@ import GoodsReceiptNoteManagementPage from './pages/admin/GoodsReceiptNoteManage
 import GoodsReceiptNoteInformationPage from './pages/admin/GoodsReceiptNoteInformationPage';
 import AddMedicineToGoodsReceiptNotePage from './pages/admin/AddMedicineToGoodsReceiptNotePage';
 import AddGoodsReceiptNotePage from './pages/admin/AddGoodsReceiptNotePage';
+import AppointmentPage from './pages/patient/AppointmentPage';
+import AddInvoicePage from './pages/admin/AddInvoicePage';
+import InvoiceManagementPage from './pages/admin/InvoiceManagementPage';
+import { ToastContainer } from 'react-toastify';
+import UserManagementPage from './pages/admin/UserManagementPage';
+import AddUserPage from './pages/admin/AddUserPage';
+import UpdateUserPage from './pages/admin/UpdateUserPage';
+import UserInfoPage from './pages/admin/UserInfoPage';
+import InvoiceInfoPage from './pages/admin/InvoiceInfoPage';
+import InventoryReportPage from './pages/admin/InventoryReportPage';
+import PatientProfilePage from './pages/patient/PatientProfilePage';
+import { patientData, testResultsData } from './data/PatientProfileData';
 
 const App = () => {
     return (
         <div>
             <BrowserRouter>
+            <ToastContainer />
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<HomePage />} />
@@ -51,9 +63,20 @@ const App = () => {
                         <Route path="/admin/goods-receipt-note/:id" element={<GoodsReceiptNoteInformationPage />} />
                         <Route path="/admin/goods-receipt-note/add" element={<AddGoodsReceiptNotePage />} />
                         <Route path="/admin/goods-receipt-note/add/add-medicine" element={<AddMedicineToGoodsReceiptNotePage />} />
+                        <Route path="/appointment/:id" element={<AppointmentPage />} />
+                        <Route path="/me/profile" element={<PatientProfilePage patient={patientData} testResults={testResultsData}/>} />
+                        <Route path="/admin/invoice/add" element={<AddInvoicePage />} />
+                        <Route path="/admin/invoice" exact element={<InvoiceManagementPage />} />
+                        <Route path="/admin/user" exact element={<UserManagementPage />} />
+                        <Route path="/admin/user/add" exact element={<AddUserPage />} />
+                        <Route path="/admin/user/edit/:userId" exact element={<UpdateUserPage />} />
+                        <Route path="/admin/user/:userID" exact element={<UserInfoPage />} />
+                        <Route path="/admin/invoice/:invoiceID" exact element={<InvoiceInfoPage />} />
+                        <Route path="/admin/report" exact element={<InventoryReportPage />} />
                     </Route>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    
                 </Routes>
             </BrowserRouter>
             

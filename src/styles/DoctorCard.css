@@ -1,11 +1,12 @@
 .doctor-card {
+  cursor: pointer;
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 15px;
   text-align: left;
-  width: 274px;
-  height: 385px;
+  width: 200px;
+  height: 300px;
   transition: transform 0.3s ease;
 }
 
@@ -15,12 +16,14 @@
 
 .doctor-card .doctor-image {
   object-fit: cover;
+  height: 200px;
   width: 100%;
+  background-color: #EAEFFF;
 }
 
 .doctor-card .doctor-info h3 {
   font-size: 16px;
-  margin: 5px 0;
+  margin-top: -5px;
   color: #262626;
 }
 
@@ -33,7 +36,6 @@
   display: flex;
   align-items: center;
   font-size: 12px;
-  margin-top: 10px;
 }
 
 .doctor-card .dot {

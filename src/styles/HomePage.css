@@ -1,6 +1,7 @@
 .home-page {
+    padding: 20px 20px;
     font-family: "Work Sans", sans-serif;
-    text-align: center; /* Căn giữa theo chiều ngang */
+    text-align: center;
 }
 
 .home-page .image {
@@ -8,11 +9,10 @@
     margin: 26px;
 }
 
-.home-page .title {
+.home-page .home-page-title {
     text-transform: none;
     font-size: 40px;
     font-weight: 500;
-    margin-top: 115px;
 }
 
 .home-page .section-description {
@@ -25,13 +25,14 @@
     display: grid;
     grid-auto-flow: column;
     gap: 30px;
-    justify-self: center;
-    margin-top: 62px;
+    justify-self:flex-start;
+    padding: 100px 150px;
 }
 
 .home-page .specialty {
+    cursor: pointer;
     display: flex;
-    flex-direction: column; /* Sắp xếp theo chiều dọc */
+    flex-direction:column;
     align-items: center;
     text-decoration: none;
 }
@@ -39,20 +40,21 @@
 .home-page .specialty-name {
     font-size: 18px;
     color: #4B5563;
-    margin-top: 15px;
+    margin-top: 10px;
+    white-space: nowrap;
 }
 
-.home-page .specialty-image{
+.home-page .specialty-image {
     width: 100px;
+    height: 100px;
+    object-fit: cover;
 }
 
-.home-page .top-doctors-list {
-    justify-self: center;
-    justify-items: center;
+.top-doctor-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 5 cột có chiều rộng bằng nhau */
-    margin: 40px 0px;
-    width: 95vw;
-    gap: 25px; /* Khoảng cách giữa các phần tử */
-    max-height: calc(2 * 410px); /*385px chiều cao mỗi item + 25px gap */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    max-height: 800px;
+    overflow: hidden;
+    padding: 10px;
 }

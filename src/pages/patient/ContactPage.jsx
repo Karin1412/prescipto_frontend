@@ -16,7 +16,7 @@ const ContactPage = () => {
                 </div>
                 <div className="multiline-text">
                     Tel: (415) 555‑0132 <br/>
-                    Email: greatstackdev@gmail.com
+                    Email: info@gmail.com
                 </div>
 
                 <div className='contact-page-title'>việc làm tại bệnh viện</div>

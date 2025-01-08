@@ -1,64 +1,76 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../../styles/DoctorsPage.css';
 import '../../styles/SelectionList.css';
 import DoctorCard from '../../components/layout/DoctorCard.jsx';
-
-const doctorsData = [
-  { id: 1, name: 'Dr. Richard James', specialty: 'Bác sĩ đa khoa', status: 'Có sẵn' },
-  { id: 2, name: 'Dr. Richard James', specialty: 'Bác sĩ phụ khoa', status: 'Có sẵn' },
-  { id: 3, name: 'Dr. Richard James', specialty: 'Bác sĩ da liễu', status: 'Có sẵn' },
-  { id: 4, name: 'Dr. Richard James', specialty: 'Bác sĩ nhi khoa', status: 'Có sẵn' },
-  { id: 5, name: 'Dr. Richard James', specialty: 'Bác sĩ thần kinh', status: 'Có sẵn' },
-  { id: 6, name: 'Dr. Richard James', specialty: 'Bác sĩ tiêu hóa', status: 'Bận' },
-  { id: 7, name: 'Dr. Richard James', specialty: 'Bác sĩ đa khoa', status: 'Có sẵn' },
-  { id: 8, name: 'Dr. Richard James', specialty: 'Bác sĩ đa khoa', status: 'Có sẵn' },
-  { id: 9, name: 'Dr. Richard James', specialty: 'Bác sĩ đa khoa', status: 'Có sẵn' },
-  { id: 10, name: 'Dr. Richard James', specialty: 'Bác sĩ đa khoa', status: 'Có sẵn' },
-  { id: 11, name: 'Dr. Richard James', specialty: 'Bác sĩ đa khoa', status: 'Có sẵn' },
-  { id: 12, name: 'Dr. Richard James', specialty: 'Bác sĩ đa khoa', status: 'Có sẵn' },
-  { id: 13, name: 'Dr. Richard James', specialty: 'Bác sĩ đa khoa', status: 'Có sẵn' },
-  { id: 14, name: 'Dr. Richard James', specialty: 'Bác sĩ đa khoa', status: 'Có sẵn' },
-];
+import doctorsData from '../../data/doctorsData.jsx';
 
 const specialties = [
-  'Bác sĩ đa khoa',
-  'Bác sĩ phụ khoa',
-  'Bác sĩ da liễu',
-  'Bác sĩ nhi khoa',
-  'Bác sĩ thần kinh',
-  'Bác sĩ tiêu hóa',
+  { label: 'Tất cả bác sĩ', value: null },
+  { label: 'Bác sĩ đa khoa', value: 'Bác sĩ đa khoa' },
+  { label: 'Bác sĩ phụ khoa', value: 'Bác sĩ phụ khoa' },
+  { label: 'Bác sĩ da liễu', value: 'Bác sĩ da liễu' },
+  { label: 'Bác sĩ nhi khoa', value: 'Bác sĩ nhi khoa' },
+  { label: 'Bác sĩ thần kinh', value: 'Bác sĩ thần kinh' },
+  { label: 'Bác sĩ tiêu hóa', value: 'Bác sĩ tiêu hóa' },
 ];
 
 const DoctorsPage = () => {
-  const [selectedSpecialty, setSelectedSpecialty] = useState('Bác sĩ đa khoa');
+  const location = useLocation();
+  const [selected, setSelected] = useState(null);
+  const navigate = useNavigate();
 
-  const filteredDoctors = doctorsData.filter(
-    (doctor) => doctor.specialty === selectedSpecialty
-  );
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (location.state?.specialty) {
+      setSelected(location.state.specialty);
+    }
+  }, [location.state]);
+
+  console.log(selected); 
+  
+  const filteredDoctors = selected
+    ? doctorsData.filter((doctor) => doctor.specialty === selected)
+    : doctorsData;
+
+  const handleDoctorSelect = (doctor) => {
+    navigate(`/appointment/${doctor.id}`, { state: { doctor } });
+  };
 
   return (
     <div className="doctors-page">
       <div className="layout">
         {/* Danh sách chọn chuyên khoa */}
-        <div className="specialty-list">
+        <div className="selection-list">
           {specialties.map((specialty) => (
             <button
-              key={specialty}
-              className={`specialty-button ${
-                selectedSpecialty === specialty ? 'active' : ''
+              key={specialty.value}
+              className={`selection-button ${
+                selected === specialty.value ? 'active' : ''
               }`}
-              onClick={() => setSelectedSpecialty(specialty)}
+              onClick={() => setSelected(specialty.value)}
             >
-              {specialty}
+              {specialty.label}
             </button>
           ))}
         </div>
 
         {/* Hiển thị danh sách bác sĩ */}
         <div className="doctors-grid">
-          {filteredDoctors.map((doctor) => (
-            <DoctorCard key={doctor.id} doctor={doctor} />
-          ))}
+          {filteredDoctors.length > 0 ? (
+            filteredDoctors.map((doctor) => (
+              <DoctorCard
+                key={doctor.id}
+                doctor={doctor}
+                onClick={() => handleDoctorSelect(doctor)}
+              />
+            ))
+          ) : (
+            <p className="no-doctors-message">Không có bác sĩ nào phù hợp.</p>
+          )}
         </div>
       </div>
     </div>
