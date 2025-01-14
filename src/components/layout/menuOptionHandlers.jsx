@@ -41,6 +41,9 @@ const useMenuOptionHandler = (setActiveOption) => {
         case 'users':
           navigate('/admin/user');
           break;
+         case 'doctors':
+          navigate('/admin/doctor');
+          break;
         default:
           break;
       }

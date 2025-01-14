@@ -8,5 +8,6 @@ export const menuOptions = [
   { label: 'Quản lý hóa đơn', value: 'invoices' },
   { label: 'Quản lý nhà cung cấp', value: 'suppliers' },
   { label: 'Quản lý người dùng', value: 'users' },
+  { label: 'Quản lý bác sĩ', value: 'doctors' },
   { label: 'Đăng xuất', value: 'logout', logout: true },
 ];

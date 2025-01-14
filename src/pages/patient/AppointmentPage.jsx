@@ -2,21 +2,58 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../../styles/AppointmentPage.css';
 import DoctorCard from '../../components/layout/DoctorCard.jsx';
-import doctorsData from '../../data/doctorsData.jsx';
+
 
 const AppointmentPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { doctor } = location.state || {};
+  const { doctorId } = location.state || {}; // Lấy ID bác sĩ từ state
 
-  useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
-
+  const [doctor, setDoctor] = useState(null);
+  const [similarDoctors, setSimilarDoctors] = useState([]);
   const [selectedDay, setSelectedDay] = useState(0);
   const [selectedTime, setSelectedTime] = useState(null);
 
-  // Ngày trong tuần
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+  if (doctorId) {
+    const fetchDoctor = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/doctors/${doctorId}`);
+        if (response.ok) {
+          const data = await response.json();
+          setDoctor(data);
+        } else {
+          console.error('Không tìm thấy bác sĩ');
+        }
+      } catch (error) {
+        console.error('Lỗi khi fetch thông tin bác sĩ:', error);
+      }
+    };
+
+    const fetchOtherDoctors = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/doctors`);
+        if (response.ok) {
+          const data = await response.json();
+          const filteredDoctors = data.filter((doc) => doc._id !== doctorId).slice(0, 5);
+          setSimilarDoctors(filteredDoctors); 
+        } else {
+          console.error('Không tìm thấy bác sĩ');
+        }
+      } catch (error) {
+        console.error('Lỗi khi fetch bác sĩ khác:', error);
+      }
+    };
+
+    fetchDoctor();
+    fetchOtherDoctors();
+  }
+}, [doctorId, doctor]); 
+
   const daysOfWeek = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
 
   // Tính toán danh sách ngày tháng thực
@@ -35,32 +72,57 @@ const AppointmentPage = () => {
   };
 
   const days = calculateDays();
-
   const timeSlots = ['8.00 am', '8.30 am', '9.00 am', '9.30 am', '10.00 am', '10.30 am', '11.00 am', '11.30 am'];
 
-  const handleBookAppointment = () => {
-  const token = localStorage.getItem('token'); 
+  const handleBookAppointment = async () => {
+    const token = localStorage.getItem('token'); 
+    const user = JSON.parse(localStorage.getItem('user')) || {}; 
+    const patientId = user.id || ''; 
 
-  if (!token) {
-    alert('Bạn cần đăng nhập để đặt lịch hẹn!');
-    navigate('/login');
-    return;
-  }
+      if (!patientId) {
+        alert('Không tìm thấy thông tin người dùng');
+        return;
+      }
+
+    if (!token) {
+      alert('Bạn cần đăng nhập để đặt lịch hẹn!');
+      navigate('/login');
+      return;
+    }
+
   if (selectedTime) {
-    alert(
-      `Đã đặt lịch hẹn với ${doctor.name} vào ${days[selectedDay].dayOfWeek}, ngày ${days[selectedDay].day}/${days[selectedDay].month} lúc ${selectedTime}`
-    );
-    navigate('/');
+    const appointmentData = {
+      patientId: patientId, 
+      doctorId: doctor._id,
+      appointmentTime: `${days[selectedDay].dayOfWeek}, ngày ${days[selectedDay].day}/${days[selectedDay].month} lúc ${selectedTime}`,
+    };
+
+    try {
+      const response = await fetch('http://localhost:5000/api/appointments/book', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(appointmentData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert(`Đặt lịch hẹn thành công với bác sĩ ${doctor.name}!\nTrạng thái: ${data.appointment.status}`);
+        navigate('/');
+      } else {
+        const errorData = await response.json();
+        alert(`Lỗi: ${errorData.message}`);
+      }
+    } catch (error) {
+      console.error('Lỗi khi gọi API:', error);
+      alert('Lỗi kết nối! Vui lòng thử lại.');
+    }
   } else {
     alert('Vui lòng chọn thời gian đặt lịch!');
   }
 };
-
-  
-
-  const similarDoctors = doctorsData.filter(
-    (d) => d.specialty === doctor?.specialty && d.id !== doctor?.id
-  );
 
   return (
     <div className="appointment-page">
@@ -74,7 +136,7 @@ const AppointmentPage = () => {
               <div className="doctor-details-row">
                 <p className="specialty">{doctor.specialty}</p>
                 <p className="experience">{doctor.experience}</p>
-             </div>
+              </div>
               <p className="description">{doctor.description}</p>
               <p className="fee">Phí đặt lịch: {doctor.fee}</p>
             </div>
@@ -112,23 +174,24 @@ const AppointmentPage = () => {
 
           {/* Danh sách bác sĩ tương tự */}
           <div className="similar-doctors">
-            <h2>Các bác sĩ tương tự</h2>
+            <h2>Các bác sĩ khác</h2>
             <div className="doctors-grid">
               {similarDoctors.map((doc) => (
                 <DoctorCard
-                  key={doc.id}
+                  key={doc._id} // Sử dụng _id từ MongoDB nếu bạn sử dụng MongoDB
                   doctor={doc}
                   onClick={() => {
                     window.scrollTo(0, 0);
-                    navigate(`/appointment/${doc.id}`, { state: { doctor: doc } })}
-                  }
+                    navigate(`/appointment/${doc._id}`, { state: { doctorId: doc._id } });
+                  }}
                 />
               ))}
             </div>
           </div>
         </div>
       ) : (
-        <p>Không tìm thấy thông tin bác sĩ.</p>
+        doctorId
+      
       )}
     </div>
   );

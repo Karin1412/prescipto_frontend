@@ -33,6 +33,7 @@ import GoodsReceiptNoteManagementPage from './pages/admin/GoodsReceiptNoteManage
 import GoodsReceiptNoteInformationPage from './pages/admin/GoodsReceiptNoteInformationPage';
 import AddMedicineToGoodsReceiptNotePage from './pages/admin/AddMedicineToGoodsReceiptNotePage';
 import AddGoodsReceiptNotePage from './pages/admin/AddGoodsReceiptNotePage';
+import DoctorManagementPage from './pages/admin/DoctorManagement';
 
 const App = () => {
     const isAuthenticated = !!localStorage.getItem('token');
@@ -75,6 +76,8 @@ const App = () => {
                     <Route path="/admin/goods-receipt-note/:id" element={<GoodsReceiptNoteInformationPage />} />
                     <Route path="/admin/goods-receipt-note/add" element={<AddGoodsReceiptNotePage />} />
                     <Route path="/admin/goods-receipt-note/add/add-medicine" element={<AddMedicineToGoodsReceiptNotePage />} />
+                    <Route path="/admin/doctor" exact element={<DoctorManagementPage />} />
+
                 </Routes>
 
             </BrowserRouter>
