@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import '../../styles/DoctorsPage.css';
 import '../../styles/SelectionList.css';
 import DoctorCard from '../../components/layout/DoctorCard.jsx';
-import doctorsData from '../../data/doctorsData.jsx';
 
 const specialties = [
   { label: 'Tất cả bác sĩ', value: null },
@@ -18,6 +17,9 @@ const specialties = [
 const DoctorsPage = () => {
   const location = useLocation();
   const [selected, setSelected] = useState(null);
+  const [doctors, setDoctors] = useState([]); // State để lưu danh sách bác sĩ
+  const [similarDoctors, setSimilarDoctors] = useState([]); // Thêm state để lưu bác sĩ tương tự
+  const [selectedDoctor, setSelectedDoctor] = useState(null); // Bác sĩ được chọn
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,14 +32,57 @@ const DoctorsPage = () => {
     }
   }, [location.state]);
 
-  console.log(selected); 
-  
-  const filteredDoctors = selected
-    ? doctorsData.filter((doctor) => doctor.specialty === selected)
-    : doctorsData;
+  // Fetch data bác sĩ từ API
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        let url = 'http://localhost:5000/api/doctors'; // Địa chỉ API của bạn
+        if (selected) {
+          url += `?specialty=${selected}`; // Thêm query parameter nếu có chuyên khoa đã chọn
+        }
+        const response = await fetch(url);
+        if (response.ok) {
+          const data = await response.json();
+          setDoctors(data); // Cập nhật danh sách bác sĩ
+        } else {
+          console.error('Failed to fetch doctors');
+        }
+      } catch (error) {
+        console.error('Error fetching doctors:', error);
+      }
+    };
+
+    fetchDoctors();
+  }, [selected]); // Gọi lại khi chuyên khoa thay đổi
+
+  // Fetch các bác sĩ tương tự nếu đã chọn bác sĩ
+  useEffect(() => {
+    if (selectedDoctor) {
+      const fetchSimilarDoctors = async () => {
+        try {
+          const response = await fetch(`http://localhost:5000/api/similar-doctors?specialty=${selectedDoctor.specialty}&doctorId=${selectedDoctor._id}`);
+          if (response.ok) {
+            const data = await response.json();
+            setSimilarDoctors(data);
+          } else {
+            console.error('Failed to fetch similar doctors');
+          }
+        } catch (error) {
+          console.error('Error fetching similar doctors:', error);
+        }
+      };
+
+      fetchSimilarDoctors();
+    }
+  }, [selectedDoctor]);
 
   const handleDoctorSelect = (doctor) => {
-    navigate(`/appointment/${doctor.id}`, { state: { doctor } });
+    if (doctor._id) {
+      setSelectedDoctor(doctor); // Cập nhật bác sĩ đã chọn
+      navigate(`/appointment/${doctor._id}`, { state: { doctorId: doctor._id } });
+    } else {
+      console.error("Doctor ID is missing!");
+    }
   };
 
   return (
@@ -48,9 +93,7 @@ const DoctorsPage = () => {
           {specialties.map((specialty) => (
             <button
               key={specialty.value}
-              className={`selection-button ${
-                selected === specialty.value ? 'active' : ''
-              }`}
+              className={`selection-button ${selected === specialty.value ? 'active' : ''}`}
               onClick={() => setSelected(specialty.value)}
             >
               {specialty.label}
@@ -60,10 +103,10 @@ const DoctorsPage = () => {
 
         {/* Hiển thị danh sách bác sĩ */}
         <div className="doctors-grid">
-          {filteredDoctors.length > 0 ? (
-            filteredDoctors.map((doctor) => (
+          {doctors.length > 0 ? (
+            doctors.map((doctor) => (
               <DoctorCard
-                key={doctor.id}
+                key={doctor._id} // Sử dụng _id từ MongoDB nếu bạn sử dụng MongoDB
                 doctor={doctor}
                 onClick={() => handleDoctorSelect(doctor)}
               />
@@ -72,6 +115,22 @@ const DoctorsPage = () => {
             <p className="no-doctors-message">Không có bác sĩ nào phù hợp.</p>
           )}
         </div>
+
+        {/* Hiển thị các bác sĩ tương tự */}
+        {selectedDoctor && similarDoctors.length > 0 && (
+          <div className="similar-doctors-section">
+            <h2>Các bác sĩ tương tự</h2>
+            <div className="doctors-grid">
+              {similarDoctors.map((doctor) => (
+                <DoctorCard
+                  key={doctor._id} // Sử dụng _id từ MongoDB nếu bạn sử dụng MongoDB
+                  doctor={doctor}
+                  onClick={() => handleDoctorSelect(doctor)}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
